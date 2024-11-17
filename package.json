@@ -16,6 +16,7 @@
     "@fontsource/bubblegum-sans": "^5.0.18",
     "@fontsource/vt323": "^5.0.8",
     "astro": "^4.15.3",
+    "dotenv": "^16.4.5",
     "gsap": "^3.12.5",
     "tailwindcss": "^3.4.1"
   }
