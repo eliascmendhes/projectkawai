@@ -14,7 +14,6 @@ const { title, date, preview, image, slug } = Astro.props;
     hover:scale-[1.02] hover:shadow-xl transition-all duration-300 
     hover:border-pink-300">
     <div class="flex items-start gap-6">
-      {/* Container da imagem com borda e efeitos */}
       <div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden 
         border-2 border-pink-200 shadow-sm 
         group-hover:shadow-md transition-shadow">
@@ -28,7 +27,6 @@ const { title, date, preview, image, slug } = Astro.props;
       </div>
 
       <div class="flex-1 space-y-3">
-        {/* Título com decoração */}
         <div class="relative">
           <h2 class="font-cherry text-2xl text-pink-600 
             group-hover:text-pink-500 transition-colors">
@@ -38,15 +36,12 @@ const { title, date, preview, image, slug } = Astro.props;
           </h2>
         </div>
 
-        {/* Data com ícone */}
         <p class="font-pixel text-sm text-pink-400 flex items-center gap-2">
           <span class="text-xs">♡</span> {date}
         </p>
 
-        {/* Preview com melhor legibilidade */}
         <p class="font-pixel text-gray-600 leading-relaxed">{preview}</p>
 
-        {/* Botão "Leia mais" melhorado */}
         <div class="pt-2">
           <span class="inline-flex items-center px-4 py-2 
             bg-kawaii-pink text-pink-600 font-pixel rounded-lg 
@@ -62,7 +57,6 @@ const { title, date, preview, image, slug } = Astro.props;
 </a>
 
 <style>
-  /* Opcional: Adiciona um efeito de brilho suave ao hover */
   article {
     position: relative;
     overflow: hidden;
