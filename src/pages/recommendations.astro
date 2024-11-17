@@ -4,18 +4,75 @@ import PageTitle from '../components/PageTitle.astro';
 
 const recommendations = {
   music: [
-    { title: "", artist: "", rating: "♡♡♡♡♡", type: "" },
-    { title: "", artist: "", rating: "♡♡♡♡", type: "" }
+    { 
+      title: "Minecraft", 
+      artist: "C418", 
+      rating: "♡♡♡♡♡", 
+      type: "'ambient, electronic, IDM, and experimental(wikipedia)'",
+      
+      image: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/31/08113125-d66e-1f90-65d9-08e28000495c/859705593825_cover.jpg/500x0w.webp",
+      
+    },
+    { 
+      title: "Is this it", 
+      artist: "The strokes", 
+      rating: "♡♡♡♡♡", 
+      type: "rock, indie",
+      image: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/cf/18/7b/cf187bcd-029d-5167-bab6-87219f32d95a/078636804521.jpg/500x0w.webp"
+    }
   ],
   movies: [
-    { title: "", year: "", rating: "♡♡♡♡♡", genre: "" },
-    { title: "", year: "", rating: "♡♡♡♡", genre: "" }
+    { 
+      title: "Aftersun", 
+      year: "2022", 
+      rating: "♡♡♡♡", 
+      genre: "Drama",
+      image: "https://a.ltrbxd.com/resized/film-poster/8/6/8/5/5/8/868558-aftersun-0-1000-0-1500-crop.jpg?v=5ce2118fca"
+    },
+    { 
+      title: "Sound of metal", 
+      year: "2019", 
+      rating: "♡♡♡♡", 
+      genre: "Drama",
+      image: "https://a.ltrbxd.com/resized/film-poster/4/3/2/0/0/4/432004-sound-of-metal-0-1000-0-1500-crop.jpg?v=289acd955b"
+    },
+    { 
+      title: "Manchester by the Sea", 
+      year: "2016", 
+      rating: "♡♡♡♡", 
+      genre: "Drama",
+      image: "https://a.ltrbxd.com/resized/sm/upload/i7/li/tp/62/i0t7F6b4R1wURRESAiw9VJNuVoV-0-1000-0-1500-crop.jpg?v=65942464ea"
+    },
+    { 
+      title: "Se7en", 
+      year: "1995", 
+      rating: "♡♡♡♡", 
+      genre: "Drama",
+      image: "https://a.ltrbxd.com/resized/film-poster/5/1/3/4/5/51345-se7en-0-1000-0-1500-crop.jpg?v=76a14ef6b4"
+    }
   ],
   games: [
-    { title: "", platform: "", rating: "♡♡♡♡♡", type: "" },
-    { title: "", platform: "", rating: "♡♡♡♡", type: "" }
+    { 
+      title: "Minecraft", 
+      platform: "PC e Xbox", 
+      rating: "♡♡♡♡♡", 
+      type: "Jogo de sobrevivência e construção",
+      image: "https://fazendoanossafesta.com.br/wp-content/uploads/2021/12/Adesivo-Capa-de-Caderno-Horizontal-Minecraft.jpg"
+    },
+    { 
+      title: "Red dead redemption 2", 
+      platform: "Ps4", 
+      rating: "♡♡♡♡♡", 
+      type: "Mundo aberto. Jogo modo campanha.",
+      image: "data:image/webp;base64,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"
+    }
   ]
 };
+
+// Função auxiliar para verificar se a imagem é uma URL ou um import local
+function getImageSrc(image: string | { default: string }) {
+  return typeof image === 'string' ? image : image.default;
+}
 ---
 
 <Layout title="Recomendações">
@@ -25,13 +82,23 @@ const recommendations = {
     <div class="space-y-8">
       <section class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-pink">
         <h2 class="font-cherry text-2xl text-pink-600 mb-4">♫ Musica ♫</h2>
-        <div class="grid gap-4">
+        <div class="grid gap-4 md:grid-cols-2">
           {recommendations.music.map(item => (
-            <div class="bg-white/60 p-4 rounded-lg">
-              <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
-              <p class="font-pixel text-sm">Por: {item.artist}</p>
-              <p class="font-pixel text-sm">tipo: {item.type}</p>
-              <p class="text-pink-400 mt-2">{item.rating}</p>
+            <div class="bg-white/60 p-4 rounded-lg flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img 
+                  src={getImageSrc(item.image)} 
+                  alt={`Capa de ${item.title}`}
+                  class="w-full h-full object-cover rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
+                <p class="font-pixel text-sm">Por: {item.artist}</p>
+                <p class="font-pixel text-sm">tipo: {item.type}</p>
+                <p class="text-pink-400 mt-2">{item.rating}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -39,13 +106,23 @@ const recommendations = {
 
       <section class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-blue">
         <h2 class="font-cherry text-2xl text-pink-600 mb-4">🎬 Filmes</h2>
-        <div class="grid gap-4">
+        <div class="grid gap-4 md:grid-cols-2">
           {recommendations.movies.map(item => (
-            <div class="bg-white/60 p-4 rounded-lg">
-              <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
-              <p class="font-pixel text-sm">Ano: {item.year}</p>
-              <p class="font-pixel text-sm">Genero: {item.genre}</p>
-              <p class="text-pink-400 mt-2">{item.rating}</p>
+            <div class="bg-white/60 p-4 rounded-lg flex gap-4">
+              <div class="w-24 h-36 flex-shrink-0">
+                <img 
+                  src={getImageSrc(item.image)} 
+                  alt={`Poster de ${item.title}`}
+                  class="w-full h-full object-cover rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
+                <p class="font-pixel text-sm">Ano: {item.year}</p>
+                <p class="font-pixel text-sm">Genero: {item.genre}</p>
+                <p class="text-pink-400 mt-2">{item.rating}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -53,13 +130,23 @@ const recommendations = {
 
       <section class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-mint">
         <h2 class="font-cherry text-2xl text-pink-600 mb-4">🎮 Jogos</h2>
-        <div class="grid gap-4">
+        <div class="grid gap-4 md:grid-cols-2">
           {recommendations.games.map(item => (
-            <div class="bg-white/60 p-4 rounded-lg">
-              <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
-              <p class="font-pixel text-sm">Plataforma: {item.platform}</p>
-              <p class="font-pixel text-sm">tipo: {item.type}</p>
-              <p class="text-pink-400 mt-2">{item.rating}</p>
+            <div class="bg-white/60 p-4 rounded-lg flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img 
+                  src={getImageSrc(item.image)} 
+                  alt={`Capa de ${item.title}`}
+                  class="w-full h-full object-cover rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
+                <p class="font-pixel text-sm">Plataforma: {item.platform}</p>
+                <p class="font-pixel text-sm">tipo: {item.type}</p>
+                <p class="text-pink-400 mt-2">{item.rating}</p>
+              </div>
             </div>
           ))}
         </div>
