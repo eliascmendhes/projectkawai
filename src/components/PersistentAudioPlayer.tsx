@@ -5,7 +5,6 @@ const PersistentAudioPlayer = () => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Create audio instance once
     const audioElement = new Audio('https://streaming.radio.co/sefac315e7/listen');
     setAudio(audioElement);
 
@@ -28,7 +27,6 @@ const PersistentAudioPlayer = () => {
   }, []);
 
   useEffect(() => {
-    // Update localStorage whenever isPlaying changes
     localStorage.setItem('audioIsPlaying', isPlaying.toString());
     
     if (audio) {
