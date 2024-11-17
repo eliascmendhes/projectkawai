@@ -1,7 +1,8 @@
 ---
 import '@fontsource/bubblegum-sans';
 import '@fontsource/vt323';
-import MusicButton from '../components/MusicButton.astro';
+// import MusicButton from '../components/MusicButton.astro';
+import PersistentAudioPlayer from '../components/PersistentAudioPlayer';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 interface Props {
@@ -107,7 +108,7 @@ const menuItems = [
         mobileMenu?.classList.toggle('hidden');
       });
     </script>
-    <MusicButton />
+    <PersistentAudioPlayer client:load />
     <Analytics />
     <SpeedInsights />
   </body>
