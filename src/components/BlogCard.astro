@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  preview: string;
+  image: string;
+}
+
+const { title, date, preview, image } = Astro.props;
+---
+
+<article class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender hover:scale-102 transition-transform">
+  <div class="flex items-start gap-4">
+    <div class="w-24 h-24 flex-shrink-0">
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        class="w-full h-full object-cover rounded-lg"
+      />
+    </div>
+    <div class="flex-1">
+      <h2 class="font-cherry text-2xl text-pink-600 mb-2">{title}</h2>
+      <p class="font-pixel text-sm text-pink-400 mb-2">{date}</p>
+      <p class="font-pixel">{preview}</p>
+      <button class="mt-4 px-4 py-2 bg-kawaii-pink text-pink-600 font-pixel rounded-lg hover:bg-pink-200 transition-colors">
+       Leia mais ♡
+      </button>
+    </div>
+  </div>
+</article>

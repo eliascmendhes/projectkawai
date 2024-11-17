@@ -1,0 +1,110 @@
+---
+import '@fontsource/bubblegum-sans';
+import '@fontsource/vt323';
+import MusicButton from '../components/MusicButton.astro';
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+// Menu items array
+const menuItems = [
+  { href: "/about", label: "Stalker" },
+  { href: "/blog", label: "Blog" },
+  { href: "/gallery", label: "Galeria" },
+  { href: "/recommendations", label: "Recomendações" },
+  { href: "/contact", label: "Contato" },
+  { href: "/links", label: "Links" }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Meu blog." />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-kawaii-pink min-h-screen">
+    <nav class="bg-white/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b-4 border-kawaii-lavender">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="font-kawaii text-2xl text-pink-600 hover:scale-110 transition-transform">
+            ✨blé blé✨
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-4 font-pixel text-lg">
+            {menuItems.map(item => (
+              <a
+                href={item.href}
+                class="hover:text-pink-600 hover:scale-110 transition-all"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="menuButton"
+            class="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            aria-label="Toggle menu"
+          >
+            <svg 
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-16 6h16"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobileMenu" class="hidden md:hidden">
+          <div class="px-2 pt-2 pb-3 space-y-1 font-pixel">
+            {menuItems.map(item => (
+              <a
+                href={item.href}
+                class="block px-3 py-2 text-base hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-20 pb-8 px-4">
+      <slot />
+    </main>
+
+    <footer class="bg-white/80 backdrop-blur-sm border-t-4 border-kawaii-lavender py-4">
+      <div class="max-w-5xl mx-auto px-4 text-center font-pixel">
+        <p>✨ Em desenvolvimento ✨</p>
+      </div>
+    </footer>
+
+    <script>
+      // Menu mobile toggle
+      const menuButton = document.getElementById('menuButton');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      menuButton?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+    <MusicButton />
+  </body>
+</html>

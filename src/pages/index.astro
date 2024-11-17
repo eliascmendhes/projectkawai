@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Meu Blog">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="font-cherry text-4xl md:text-6xl text-pink-600 mb-4 animate-float sparkle">
+        Seja bem vindo(a) ao meu espaço!
+      </h1>
+      <p class="font-pixel text-xl text-pink-700">
+        ♡ :) ♡
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <a href="/about" class="group">
+        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender hover:scale-105 transition-transform">
+          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Sobre mim ♡</h2>
+          <p class="font-pixel">Onde eu vou falar um pouco sobre mim!</p>
+        </div>
+      </a>
+
+      <a href="/blog" class="group">
+        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-blue hover:scale-105 transition-transform">
+          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Blog Posts ♡</h2>
+          <p class="font-pixel">Leia meus últimos pensamentos e "aventuras"!</p>
+        </div>
+      </a>
+
+      <a href="/gallery" class="group">
+        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-mint hover:scale-105 transition-transform">
+          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Galeria ♡</h2>
+          <p class="font-pixel">Algumas coisas que encontro na internet.</p>
+        </div>
+      </a>
+
+      <a href="/recommendations" class="group">
+        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-pink hover:scale-105 transition-transform">
+          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Meus favoritos ♡</h2>
+          <p class="font-pixel">Coisas que eu amo ou que acho útil!</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="mt-12 text-center">
+      <div class="inline-block bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender">
+        <h2 class="font-cherry text-2xl text-pink-600 mb-4">Se você quiser me mandar uma mensagem! ♡</h2>
+        <div class="flex justify-center space-x-6 font-pixel">
+          <a href="/contact" class="hover:text-pink-600 hover:scale-110 transition-all">Contato</a>
+          <a href="/links" class="hover:text-pink-600 hover:scale-110 transition-all">Links</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

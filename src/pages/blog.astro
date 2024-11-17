@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageTitle from '../components/PageTitle.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+const posts = [
+  {
+    title: "Em desenvolvimento",
+    date: "",
+    preview: "",
+    image: "/images/"
+  },
+  {
+    title: "",
+    date: "",
+    preview: "",
+    image: "/images/"
+  },
+  {
+    title: "",
+    date: "",
+    preview: "",
+    image: "/images/"
+  }
+];
+---
+
+<Layout title="Blog">
+  <div class="max-w-4xl mx-auto">
+    <PageTitle title="Minhas postagens ♡" />
+    
+    <div class="space-y-6">
+      {posts.map(post => (
+        <BlogCard {...post} />
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  title: string;
+  description: string;
+}
+
+const { src, alt, title, description } = Astro.props;
+---
+
+<div class="group relative bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender hover:scale-105 transition-transform">
+  <div class="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-pink-200/50 to-transparent"></div>
+  </div>
+  <h3 class="font-cherry text-xl text-pink-600 mb-2">{title}</h3>
+  <p class="font-pixel text-sm">{description}</p>
+  <div class="absolute inset-0 bg-pink-200/0 group-hover:bg-pink-200/20 rounded-2xl transition-colors"></div>
+</div>

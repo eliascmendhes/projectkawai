@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageTitle from '../components/PageTitle.astro';
+
+const links = [
+  {
+    category: "Redes sociais que não uso.",
+    items: [
+      { title: "Instagram", url: "#", icon: "📸" },
+      { title: "Twitter", url: "#", icon: "🐦" },
+      { title: "Pinterest", url: "#", icon: "📌" }
+    ]
+  }
+];
+---
+
+<Layout title="Links">
+  <div class="max-w-3xl mx-auto">
+    <PageTitle title="Links ♡" />
+    
+    <div class="space-y-8">
+      {links.map(section => (
+        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender">
+          <h2 class="font-cherry text-2xl text-pink-600 mb-4">{section.category}</h2>
+          <div class="grid gap-4">
+            {section.items.map(link => (
+              <a
+                href={link.url}
+                class="group bg-white/60 p-4 rounded-lg flex items-center gap-4 hover:scale-105 transition-transform"
+              >
+                <span class="text-2xl">{link.icon}</span>
+                <span class="font-pixel text-lg group-hover:text-pink-600 transition-colors">
+                  {link.title}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

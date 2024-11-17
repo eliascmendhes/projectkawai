@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageTitle from '../components/PageTitle.astro';
+import ImageCard from '../components/ImageCard.astro';
+
+const images = [
+  {
+    src: "/images/download.jpeg",
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: "/images/gif01.gif",
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: "/images/gif02.gif",
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: "/images/gif03.gif",
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: "/images/gif04.gif",
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: "/images/gif05.gif",
+    alt: "",
+    title: "",
+    description: ""
+  }
+];
+---
+
+<Layout title="Galeria">
+  <div class="max-w-5xl mx-auto">
+    <PageTitle title="Minha galeria ♡" />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {images.map(img => (
+        <ImageCard {...img} />
+      ))}
+    </div>
+  </div>
+</Layout>
