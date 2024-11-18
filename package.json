@@ -21,6 +21,7 @@
     "@vercel/analytics": "^1.4.0",
     "@vercel/speed-insights": "^1.1.0",
     "astro": "^4.15.3",
+    "astro-content": "^0.0.0-alpha.13",
     "dotenv": "^16.4.5",
     "gsap": "^3.12.5",
     "react": "^18.3.1",

@@ -2,7 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 import BlogCard from '../components/BlogCard.astro';
-import { posts } from '../data/posts'; // Importe os posts
+
+const allPosts = await Astro.glob('../posts/*.md');
+
+const posts = allPosts.map(post => ({
+  title: post.frontmatter.title,
+  date: post.frontmatter.date,
+  preview: post.frontmatter.preview,
+  image: post.frontmatter.image,
+  slug: post.frontmatter.slug,
+  content: post.compiledContent() // Conteúdo HTML do Markdown
+}));
 ---
 
 <Layout title="Blog">
