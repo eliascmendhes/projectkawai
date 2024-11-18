@@ -2,45 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 import ImageCard from '../components/ImageCard.astro';
+import { images } from '../data/images';
 
-const images = [
-  {
-    src: "/images/download.jpeg",
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: "/images/gif01.gif",
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: "/images/gif02.gif",
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: "/images/gif03.gif",
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: "/images/gif04.gif",
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: "/images/gif05.gif",
-    alt: "",
-    title: "",
-    description: ""
-  }
-];
+const imagesPerPage = 6;
+const totalPages = Math.ceil(images.length / imagesPerPage);
+const currentPage = Astro.url.searchParams.get('page') ? parseInt(Astro.url.searchParams.get('page')) : 1;
+const startIndex = (currentPage - 1) * imagesPerPage;
+const endIndex = startIndex + imagesPerPage;
+const currentImages = images.slice(startIndex, endIndex);
+---
 ---
 
 <Layout title="Galeria">
@@ -48,9 +18,23 @@ const images = [
     <PageTitle title="Minha galeria ♡" />
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {images.map(img => (
+      {currentImages.map(img => (
         <ImageCard {...img} />
       ))}
+    </div>
+
+    <div class="mt-6 flex justify-center">
+      {currentPage > 1 && (
+        <a href={`?page=${currentPage - 1}`} class="px-4 py-2 mx-1 bg-pink-200 rounded hover:bg-pink-300">Anterior</a>
+      )}
+
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNumber => (
+        <a href={`?page=${pageNumber}`} class={`px-4 py-2 mx-1 rounded ${pageNumber === currentPage ? 'bg-pink-500 text-white' : 'bg-pink-200 hover:bg-pink-300'}`}>{pageNumber}</a>
+      ))}
+
+      {currentPage < totalPages && (
+        <a href={`?page=${currentPage + 1}`} class="px-4 py-2 mx-1 bg-pink-200 rounded hover:bg-pink-300">Próximo</a>
+      )}
     </div>
   </div>
 </Layout>
