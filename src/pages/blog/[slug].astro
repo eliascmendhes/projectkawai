@@ -7,7 +7,7 @@ const { slug } = Astro.params;
 const post = allPosts.find(p => p.frontmatter.slug === slug);
 
 if (!post) {
-  throw new Error(`Post não encontrado para o slug: ${slug}`);
+  return Astro.redirect('../404.astro');
 }
 ---
 
