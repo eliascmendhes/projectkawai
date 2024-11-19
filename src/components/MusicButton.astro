@@ -38,50 +38,52 @@
   <source src="https://streaming.radio.co/sefac315e7/listen" type="audio/mpeg">
   Seu navegador não suporta o elemento de áudio.
 </audio>
-
 <script>
-  const musicToggle = document.getElementById('musicToggle');
-  const playIcon = document.getElementById('playIcon');
-  const pauseIcon = document.getElementById('pauseIcon');
-  const bgMusic = document.getElementById('bgMusic') as HTMLAudioElement; // Correção aqui!
+  if (typeof window !== 'undefined') {
+    const musicToggle = document.getElementById('musicToggle');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const bgMusic = document.getElementById('bgMusic') as HTMLAudioElement; // Casting explícito
 
-  let isPlaying = false;
+    let isPlaying = false;
 
-  // Check for saved audio state in localStorage
-  const savedPlaybackState = localStorage.getItem('audioPlaybackState');
-  if (savedPlaybackState === 'playing') {
-    bgMusic.play().catch(error => {
-      console.error("Erro ao reproduzir áudio:", error);
-    });
-    playIcon.classList.add('hidden');
-    pauseIcon.classList.remove('hidden');
-    isPlaying = true;
-  }
-
-  musicToggle.addEventListener('click', () => {
-    isPlaying = !isPlaying;
-
-    if (isPlaying) {
+    const savedPlaybackState = localStorage.getItem('audioPlaybackState');
+    if (savedPlaybackState === 'playing') {
       bgMusic.play().catch(error => {
         console.error("Erro ao reproduzir áudio:", error);
-        isPlaying = false;
       });
       playIcon.classList.add('hidden');
       pauseIcon.classList.remove('hidden');
-      localStorage.setItem('audioPlaybackState', 'playing');
-    } else {
-      bgMusic.pause();
+      isPlaying = true;
+    }
+
+    musicToggle.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+
+      if (isPlaying) {
+        bgMusic.play().catch(error => {
+          console.error("Erro ao reproduzir áudio:", error);
+          isPlaying = false;
+        });
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        localStorage.setItem('audioPlaybackState', 'playing');
+      } else {
+        bgMusic.pause();
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        localStorage.setItem('audioPlaybackState', 'paused');
+      }
+    });
+
+    bgMusic.addEventListener('error', (e) => {
+      console.error('Erro no áudio:', e);
+      isPlaying = false;
       playIcon.classList.remove('hidden');
       pauseIcon.classList.add('hidden');
       localStorage.setItem('audioPlaybackState', 'paused');
-    }
-  });
-
-  bgMusic.addEventListener('error', (e) => {
-    console.error('Erro no áudio:', e);
-    isPlaying = false;
-    playIcon.classList.remove('hidden');
-    pauseIcon.classList.add('hidden');
-    localStorage.setItem('audioPlaybackState', 'paused');
-  });
+    });
+  }
 </script>
+
+
