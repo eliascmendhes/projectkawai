@@ -5,49 +5,77 @@ interface Props {
   preview: string;
   image: string;
   slug: string;
+  tags?: string[];
 }
-const { title, date, preview, image, slug } = Astro.props;
+
+const { title, date, preview, image, slug, tags = [] } = Astro.props;
+
+// Mapa de cores para as tags
+const tagColorMap = {
+  "feliz": "#FFD700",
+  "triste": "#87CEEB",
+  "estressante": "#FF69B4",
+  "desenvolvimento": "#8A4FFF",
+  "feature": "#32CD32",
+  "bug": "#FF6347",
+};
 ---
 
 <a href={`/blog/${slug}`} class="block group">
-  <article class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender 
-    hover:scale-[1.02] hover:shadow-xl transition-all duration-300 
-    hover:border-pink-300">
+  <article class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FFC0CB]
+     hover:scale-[1.02] hover:shadow-xl transition-all duration-300
+     hover:border-[#FF69B4]">
     <div class="flex items-start gap-6">
-      <div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden 
-        border-2 border-pink-200 shadow-sm 
-        group-hover:shadow-md transition-shadow">
+      <div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden
+         border-2 border-[#FFB6C1] shadow-sm
+         group-hover:shadow-md transition-shadow">
         <img
           src={image}
           alt={title}
           loading="lazy"
-          class="w-full h-full object-cover object-center 
-            transform group-hover:scale-110 transition-transform duration-500"
+          class="w-full h-full object-cover object-center
+             transform group-hover:scale-110 transition-transform duration-500"
         />
       </div>
 
       <div class="flex-1 space-y-3">
         <div class="relative">
-          <h2 class="font-cherry text-2xl text-pink-600 
-            group-hover:text-pink-500 transition-colors">
+          <h2 class="font-[Dela+Gothic+One] text-2xl text-[#FF1493]
+             group-hover:text-[#FF69B4] transition-colors">
             {title}
-            <span class="absolute -top-1 -right-2 text-pink-300 opacity-0 
-              group-hover:opacity-100 transition-opacity">♡</span>
+            <span class="absolute -top-1 -right-2 text-[#FFD700] opacity-0
+               group-hover:opacity-100 transition-opacity">🍡</span>
           </h2>
         </div>
 
-        <p class="font-pixel text-sm text-pink-400 flex items-center gap-2">
-          <span class="text-xs">♡</span> {date}
+        <p class="font-[Mochiy+Pop+One] text-sm text-[#8A4FFF] flex items-center gap-2">
+          <span class="text-xs">🌸</span> {date}
         </p>
 
-        <p class="font-pixel text-gray-600 leading-relaxed">{preview}</p>
+        {tags && tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {tags.map(tag => (
+              <span
+                class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One] 
+                border-2 border-[#FFD1DC] shadow-sm transform hover:scale-105 
+                transition-all duration-200"
+                style={`background-color: ${tagColorMap[tag] || '#FFD1DC'}; 
+                color: ${tagColorMap[tag] === '#FFD700' ? '#FF69B4' : '#FFF'}`}
+              >
+                ✧ {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <p class="font-[Mochiy+Pop+One] text-[#333] leading-relaxed">{preview}</p>
 
         <div class="pt-2">
-          <span class="inline-flex items-center px-4 py-2 
-            bg-kawaii-pink text-pink-600 font-pixel rounded-lg 
-            group-hover:bg-pink-200 transition-colors
-            shadow-sm hover:shadow-md">
-            Leia mais 
+          <span class="inline-flex items-center px-4 py-2
+             bg-[#FFD1DC] text-[#FF1493] font-[Mochiy+Pop+One] rounded-lg
+             group-hover:bg-[#FFC0CB] transition-colors
+             shadow-sm hover:shadow-md">
+            Leia mais
             <span class="ml-1 group-hover:ml-2 transition-all duration-300">♡</span>
           </span>
         </div>
@@ -69,7 +97,7 @@ const { title, date, preview, image, slug } = Astro.props;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255,192,203,0.2) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;

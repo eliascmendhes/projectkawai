@@ -4,37 +4,109 @@ import PageTitle from '../components/PageTitle.astro';
 
 const links = [
   {
-    category: "",
+    category: "Perfis Pessoais",
     items: [
-      { title: "letterboxd", url: "https://letterboxd.com/amitysideral/", icon: "🎬" }
+      { 
+        title: "Letterboxd", 
+        url: "https://letterboxd.com/amitysideral/", 
+        icon: "🎬",
+        description: "Meu diário de filmes e séries"
+      }
+    ]
+  },
+  // {
+  //   category: "Redes Sociais",
+  //   items: []
+  // },
+  {
+    category: "Música e Entretenimento",
+    items: [
+      { 
+        title: "Steam", 
+        url: "https://steamcommunity.com/profiles/76561198421883604/", 
+        icon: "🎮",
+        description: "Perfil de jogos e biblioteca"
+      }
     ]
   }
 ];
 ---
 
 <Layout title="Links">
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-4xl mx-auto space-y-10">
     <PageTitle title="Links ♡" />
     
-    <div class="space-y-8">
-      {links.map(section => (
-        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender">
-          <h2 class="font-cherry text-2xl text-pink-600 mb-4">{section.category}</h2>
-          <div class="grid gap-4">
-            {section.items.map(link => (
-              <a
-                href={link.url}
-                class="group bg-white/60 p-4 rounded-lg flex items-center gap-4 hover:scale-105 transition-transform"
-              >
-                <span class="text-2xl">{link.icon}</span>
-                <span class="font-pixel text-lg group-hover:text-pink-600 transition-colors">
-                  {link.title}
+    {links.map(section => (
+      <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-pink-200 shadow-lg">
+        <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center">
+          {section.category}
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {section.items.map(link => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block"
+            >
+              <div class="bg-pink-50/60 p-6 rounded-2xl flex items-center gap-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <span class="text-4xl opacity-80 group-hover:opacity-100 transition-opacity">
+                  {link.icon}
                 </span>
-              </a>
-            ))}
-          </div>
+                <div>
+                  <h3 class="font-cherry text-2xl text-pink-500 mb-1 group-hover:text-pink-600 transition-colors">
+                    {link.title}
+                  </h3>
+                  <p class="font-pixel text-sm text-gray-600">
+                    {link.description}
+                  </p>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    class="h-6 w-6 text-pink-400" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      stroke-width="2" 
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4v2m0 0v2m0-2h2m-2 2h-2m2 8H6a2 2 0 01-2-2V7a2 2 0 012-2h2m10 0l-4-4m4 4l-4 4m4-4v10" 
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
-      ))}
+      </div>
+    ))}
+
+    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-purple-200 shadow-lg text-center">
+      <h3 class="font-cherry text-2xl text-pink-600 mb-4">
+        💌 Entre em contato
+      </h3>
+      <p class="font-pixel text-gray-600 mb-4">
+        Sim, eu vou receber essa mensagem.
+      </p>
+      <a 
+        href="/contact" 
+        class="inline-block bg-pink-500 text-white font-cherry px-6 py-3 rounded-full hover:bg-pink-600 transition-colors"
+      >
+        Formulário de Contato
+      </a>
     </div>
   </div>
 </Layout>
+
+<style>
+  body {
+    background-image: 
+      radial-gradient(rgba(255,182,193,0.1) 8%, transparent 8%),
+      radial-gradient(rgba(255,182,193,0.1) 8%, transparent 8%);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+  }
+</style>

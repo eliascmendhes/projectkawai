@@ -10,52 +10,75 @@ const { href, title, body } = Astro.props;
 
 <li class="link-card">
 	<a href={href}>
-		<h2>
+		<h2 class="card-title">
 			{title}
 			<span>&rarr;</span>
 		</h2>
-		<p>
+		<p class="card-body">
 			{body}
 		</p>
 	</a>
 </li>
+
 <style>
+	:root {
+		--card-bg: rgba(255, 255, 255, 0.9);
+		--card-shadow: rgba(0, 0, 0, 0.1);
+		--card-hover-bg: rgba(255, 105, 180, 0.9);
+		--card-hover-shadow: rgba(255, 105, 180, 0.5);
+		--card-border: #ffb6c1;
+	}
+
 	.link-card {
 		list-style: none;
 		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1rem;
+		background-color: var(--card-bg);
+		border-radius: 12px;
+		border: 2px solid var(--card-border);
+		box-shadow: 0 4px 8px var(--card-shadow);
+		transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 	}
+
 	.link-card > a {
 		width: 100%;
 		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
+		color: #333;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.card-title {
+		font-size: 1.5rem;
+		font-family: 'Cherry Bomb One', cursive;
+		color: #ff69b4;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		transition: color 0.3s ease;
+	}
+
+	.card-body {
+		font-size: 1rem;
+		font-family: 'Mochiy Pop One', sans-serif;
+		color: #666;
+		line-height: 1.5;
+	}
+
+	.link-card:hover {
+		transform: translateY(-5px);
+		background-color: var(--card-hover-bg);
+		box-shadow: 0 6px 12px var(--card-hover-shadow);
+	}
+
+	.link-card:hover .card-title {
 		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
+
+	.link-card:hover .card-body {
+		color: #ffe4e1;
 	}
 </style>

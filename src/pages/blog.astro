@@ -4,25 +4,110 @@ import PageTitle from '../components/PageTitle.astro';
 import BlogCard from '../components/BlogCard.astro';
 
 const allPosts = await Astro.glob('../posts/*.md');
-
 const posts = allPosts.map(post => ({
   title: post.frontmatter.title,
   date: post.frontmatter.date,
   preview: post.frontmatter.preview,
   image: post.frontmatter.image,
   slug: post.frontmatter.slug,
-  content: post.compiledContent() // Conteúdo HTML do Markdown
+  tags: post.frontmatter.tags || [],
+  content: post.compiledContent()
 }));
+
+// Obter todas as tags únicas
+const allTags = [...new Set(posts.flatMap(post => post.tags))];
 ---
 
 <Layout title="Blog">
   <div class="max-w-4xl mx-auto">
     <PageTitle title="Minhas postagens ♡" />
 
+    <!-- Filtro de Tags -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2 justify-center" id="tag-filters">
+        <button
+          class="px-4 py-2 rounded-full font-[Mochiy+Pop+One] text-sm
+          bg-white/90 text-[#FF1493] border-2 border-[#FFD1DC]
+          hover:bg-[#FFD1DC] hover:border-[#FF69B4] transition-all
+          filter-all active"
+        >
+          ✧ Todas ✧
+        </button>
+        {allTags.map(tag => (
+          <button
+            class="px-4 py-2 rounded-full font-[Mochiy+Pop+One] text-sm
+            bg-white/90 text-[#FF1493] border-2 border-[#FFD1DC]
+            hover:bg-[#FFD1DC] hover:border-[#FF69B4] transition-all
+            tag-filter"
+            data-tag={tag}
+          >
+            ✧ {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
     <div class="space-y-6">
       {posts.map(post => (
-        <BlogCard {...post} />
+        <div class="post-card" data-tags={post.tags.join(',')}>
+          <BlogCard {...post} />
+        </div>
       ))}
     </div>
   </div>
 </Layout>
+
+<script>
+  let activeTag: string | null = null;
+
+  function updateFilterButtons() {
+    document.querySelectorAll('.tag-filter, .filter-all').forEach((button) => {
+      const buttonElement = button as HTMLButtonElement;
+      buttonElement.classList.remove('active', 'bg-[#FFD1DC]');
+      
+      if (
+        (buttonElement.classList.contains('filter-all') && !activeTag) ||
+        (buttonElement.getAttribute('data-tag') === activeTag)
+      ) {
+        buttonElement.classList.add('active', 'bg-[#FFD1DC]');
+      }
+    });
+  }
+
+  function filterPosts(tag: string | null) {
+    const posts = document.querySelectorAll('.post-card');
+    
+    posts.forEach((post) => {
+      const postElement = post as HTMLElement;
+      const postTags = postElement.getAttribute('data-tags')?.split(',') || [];
+      
+      if (!tag || postTags.includes(tag)) {
+        postElement.style.display = 'block';
+      } else {
+        postElement.style.display = 'none';
+      }
+    });
+  }
+
+  // Event listeners
+  const allFilterButton = document.querySelector('.filter-all');
+  if (allFilterButton) {
+    allFilterButton.addEventListener('click', () => {
+      activeTag = null;
+      updateFilterButtons();
+      filterPosts(null);
+    });
+  }
+
+  document.querySelectorAll('.tag-filter').forEach((button) => {
+    const buttonElement = button as HTMLButtonElement;
+    buttonElement.addEventListener('click', () => {
+      const tag = buttonElement.getAttribute('data-tag');
+      if (tag) {
+        activeTag = activeTag === tag ? null : tag;
+        updateFilterButtons();
+        filterPosts(activeTag);
+      }
+    });
+  });
+</script>

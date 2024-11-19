@@ -1,11 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageTitle from '../components/PageTitle.astro';
 ---
-<Layout title="Página não encontrada">
-  <div class="text-center py-20">
-    <h1 class="font-cherry text-4xl text-pink-600">Página não encontrada :(</h1>
-    <a href="/blog" class="font-pixel text-pink-500 mt-4 inline-block">
-      Voltar para o blog
-    </a>
+
+<Layout title="Página não encontrada - 404">
+  <div class="max-w-3xl mx-auto text-center py-20">
+    <PageTitle title="Oops! Página não encontrada ♡" />
+    
+    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFB6C1] shadow-lg">
+      <h1 class="font-[Dela+Gothic+One] text-6xl text-[#FF1493] mb-6">
+        404 😱
+      </h1>
+      
+      <p class="font-[Mochiy+Pop+One] text-xl text-[#8A4FFF] mb-8">
+        Parece que você se perdeu :( 
+      </p>
+      
+      <div class="space-y-4">
+        <a 
+          href="/" 
+          class="inline-block bg-[#FFB6C1] hover:bg-[#FF69B4] text-white font-[Mochiy+Pop+One] 
+          py-3 px-6 rounded-xl border-2 border-[#FF69B4] transition-all hover:scale-105 hover:shadow-lg"
+        >
+          ✧ Voltar para a página inicial ✧
+        </a>
+        
+        <a 
+          href="/blog" 
+          class="block mt-4 font-[Mochiy+Pop+One] text-[#8A4FFF] hover:text-[#FF69B4] hover:underline"
+        >
+          Ou ir para o blog 📓
+        </a>
+      </div>
+    </div>
   </div>
 </Layout>

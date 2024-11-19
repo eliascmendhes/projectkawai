@@ -7,178 +7,237 @@ const recommendations = {
     { 
       title: "Minecraft", 
       artist: "C418", 
-      rating: "♡♡♡♡♡", 
-      type: "'ambient, electronic, IDM, and experimental(wikipedia)'",
-      
-      image: "../images/musica/minecraft.jpg",
-      
+      rating: 5, 
+      type: "Ambient, Electronic, IDM",
+      description: "Música icônica que define a atmosfera do jogo Minecraft",
+      image: "/images/musica/minecraft.jpg"
     },
     { 
-      title: "Is this it", 
-      artist: "The strokes", 
-      rating: "♡♡♡♡♡", 
-      type: "rock, indie",
-      image: "../images/musica/isthisit.jpg"
+      title: "Is This It", 
+      artist: "The Strokes", 
+      rating: 5, 
+      type: "Rock, Indie",
+      description: "Álbum que definiu o indie rock dos anos 2000",
+      image: "/images/musica/isthisit.jpg"
     },
     { 
-      title: "Meat is murder", 
-      artist: "The smiths", 
-      rating: "♡♡♡♡♡", 
-      type: "rock, indie",
-      image: "../images/musica/meatismurder.jpg"
+      title: "Meat Is Murder", 
+      artist: "The Smiths", 
+      rating: 5, 
+      type: "Rock, Indie",
+      description: "Álbum clássico que captura a essência do indie alternativo",
+      image: "/images/musica/meatismurder.jpg"
     },
     { 
       title: "The Suburbs", 
-      artist: "Arcade fire", 
-      rating: "♡♡♡♡♡", 
-      type: "rock, indie",
-      image: "../images/musica/thesuburbs.jpg"
+      artist: "Arcade Fire", 
+      rating: 5, 
+      type: "Rock, Indie",
+      description: "Explorando vida suburbana e relembrando dos  velhos tempos.",
+      image: "/images/musica/thesuburbs.jpg"
     }
   ],
   movies: [
     { 
       title: "Aftersun", 
-      year: "2022", 
-      rating: "♡♡♡♡♡", 
+      year: 2022, 
+      rating: 5, 
       genre: "Drama",
-      image: "../images/films/aftersun.jpg"
+      description: "Uma reflexão emocionante sobre memória e relacionamento familiar",
+      image: "/images/films/aftersun.jpg",
     },
     { 
-      title: "Sound of metal", 
-      year: "2019", 
-      rating: "♡♡♡♡♡", 
+      title: "Sound of Metal", 
+      year: 2019, 
+      rating: 5, 
       genre: "Drama",
-      image: "../images/films/soundofmetal.jpg"
+      description: "História poderosa sobre um baterista que perde a audição",
+      image: "/images/films/soundofmetal.jpg",
     },
     { 
       title: "Manchester by the Sea", 
-      year: "2016", 
-      rating: "♡♡♡♡♡", 
+      year: 2016, 
+      rating: 5, 
       genre: "Drama",
-      image: "../images/films/manchesterbythesea.jpg"
+      description: "Drama intenso sobre perda, culpa e redenção",
+      image: "/images/films/manchesterbythesea.jpg"
     },
     { 
       title: "Se7en", 
-      year: "1995", 
-      rating: "♡♡♡♡♡", 
-      genre: "Crime, mistério, thriller",
-      image: "../images/films/seven.jpg"
+      year: 1995, 
+      rating: 5, 
+      genre: "Crime, Mistério, Thriller",
+      description: "Thriller psicológico noir.",
+      image: "/images/films/seven.jpg"
     }
   ],
   games: [
     { 
       title: "Minecraft", 
-      platform: "PC e Xbox", 
-      rating: "♡♡♡♡♡", 
-      type: "Jogo de sobrevivência e construção",
-      image: "../images/recomendacoes/minecraft.jpg"
+      platform: "PC, Xbox", 
+      rating: 5, 
+      type: "Sobrevivência e Construção",
+      description: "Jogo que revolucionou os jogos de mundo aberto e criatividade",
+      image: "/images/recomendacoes/minecraft.jpg"
     },
     { 
-      title: "Red dead redemption 2", 
-      platform: "Ps4", 
-      rating: "♡♡♡♡♡", 
-      type: "Mundo aberto. Jogo modo campanha.",
-      image: "../images/recomendacoes/rdr2.jpg"
+      title: "Red Dead Redemption 2", 
+      platform: "PS4, Xbox, PC", 
+      rating: 5, 
+      type: "Mundo Aberto, Narrativo",
+      description: "Épico western com narrativa profunda e mundo imersivo",
+      image: "/images/recomendacoes/rdr2.jpg"
     },
     { 
-      title: "The sims 2", 
-      platform: "Pc", 
-      rating: "♡♡♡♡♡", 
-      type: "Simulação",
-      image: "../images/recomendacoes/ts2.jpg"
+      title: "The Sims 2", 
+      platform: "PC", 
+      rating: 5, 
+      type: "Simulação de Vida",
+      description: "Clássico da simulação que definiu uma geração de jogadores",
+      image: "/images/recomendacoes/ts2.jpg"
     },
     { 
-      title: "The last of us(part 1 e 2)", 
-      platform: "Ps4", 
-      rating: "♡♡♡♡♡", 
-      type: "ação-aventura e sobrevivência ",
-      image: "../images/recomendacoes/tlou.jpg"
+      title: "The Last of Us (Part 1 & 2)", 
+      platform: "PS4, PS5", 
+      rating: 5, 
+      type: "Ação-Aventura, Sobrevivência",
+      description: "Série que redefiniu narrativas em jogos de sobrevivência",
+      image: "/images/recomendacoes/tlou.jpg"
     }
   ]
 };
 
-// Função auxiliar para verificar se a imagem é uma URL ou um import local
-function getImageSrc(image: string | { default: string }) {
-  return typeof image === 'string' ? image : image.default;
+// Função para renderizar estrelas de rating
+function renderStars(rating: number) {
+  return "♡".repeat(rating);
 }
 ---
 
 <Layout title="Recomendações">
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-5xl mx-auto space-y-12">
     <PageTitle title="Meus favoritos ♡" />
     
-    <div class="space-y-8">
-      <section class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-pink">
-        <h2 class="font-cherry text-2xl text-pink-600 mb-4">♫ Musica ♫</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          {recommendations.music.map(item => (
-            <div class="bg-white/60 p-4 rounded-lg flex gap-4">
-              <div class="w-24 h-24 flex-shrink-0">
-                <img 
-                  src={getImageSrc(item.image)} 
-                  alt={`Capa de ${item.title}`}
-                  class="w-full h-full object-cover rounded-lg"
-                  loading="lazy"
-                />
-              </div>
+    <section class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-pink-200 shadow-lg">
+      <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center flex items-center justify-center gap-3">
+        <span>♫ Música ♫</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {recommendations.music.map(item => (
+          <div class="bg-pink-50/60 p-6 rounded-2xl flex gap-6 hover:shadow-xl transition-all duration-300 group">
+            <div class="w-32 h-32 flex-shrink-0">
+              <img 
+                src={item.image} 
+                alt={`Capa de ${item.title}`}
+                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col justify-between flex-grow">
               <div>
-                <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
-                <p class="font-pixel text-sm">Por: {item.artist}</p>
-                <p class="font-pixel text-sm">tipo: {item.type}</p>
-                <p class="text-pink-400 mt-2">{item.rating}</p>
+                <h3 class="font-cherry text-2xl text-pink-500 mb-2">{item.title}</h3>
+                <p class="font-pixel text-sm text-gray-600 mb-1">Artista: {item.artist}</p>
+                <p class="font-pixel text-sm text-gray-600 mb-2">Gênero: {item.type}</p>
+                <p class="text-sm text-gray-700 mb-3">{item.description}</p>
+              </div>
+              <div class="flex justify-between items-center">
+                <p class="text-pink-400 text-xl">{renderStars(item.rating)}</p>
+                <a 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-green-500 hover:text-green-600 transition-colors"
+                >
+                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    </section>
 
-      <section class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-blue">
-        <h2 class="font-cherry text-2xl text-pink-600 mb-4">🎬 Filmes</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          {recommendations.movies.map(item => (
-            <div class="bg-white/60 p-4 rounded-lg flex gap-4">
-              <div class="w-24 h-36 flex-shrink-0">
-                <img 
-                  src={getImageSrc(item.image)} 
-                  alt={`Poster de ${item.title}`}
-                  class="w-full h-full object-cover rounded-lg"
-                  loading="lazy"
-                />
-              </div>
+    <section class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-blue-200 shadow-lg">
+      <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center flex items-center justify-center gap-3">
+        <span>🎬 Filmes 🎬</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {recommendations.movies.map(item => (
+          <div class="bg-blue-50/60 p-6 rounded-2xl flex gap-6 hover:shadow-xl transition-all duration-300 group">
+            <div class="w-32 h-48 flex-shrink-0">
+              <img 
+                src={item.image} 
+                alt={`Poster de ${item.title}`}
+                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col justify-between flex-grow">
               <div>
-                <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
-                <p class="font-pixel text-sm">Ano: {item.year}</p>
-                <p class="font-pixel text-sm">Gênero: {item.genre}</p>
-                <p class="text-pink-400 mt-2">{item.rating}</p>
+                <h3 class="font-cherry text-2xl text-pink-500 mb-2">{item.title}</h3>
+                <p class="font-pixel text-sm text-gray-600 mb-1">Ano: {item.year}</p>
+                <p class="font-pixel text-sm text-gray-600 mb-2">Gênero: {item.genre}</p>
+                <p class="text-sm text-gray-700 mb-3">{item.description}</p>
+              </div>
+              <div class="flex justify-between items-center">
+                <p class="text-pink-400 text-xl">{renderStars(item.rating)}</p>
+                <a 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-yellow-600 hover:text-yellow-700 transition-colors"
+                >
+                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    </section>
 
-      <section class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-mint">
-        <h2 class="font-cherry text-2xl text-pink-600 mb-4">🎮 Jogos</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          {recommendations.games.map(item => (
-            <div class="bg-white/60 p-4 rounded-lg flex gap-4">
-              <div class="w-24 h-24 flex-shrink-0">
-                <img 
-                  src={getImageSrc(item.image)} 
-                  alt={`Capa de ${item.title}`}
-                  class="w-full h-full object-cover rounded-lg"
-                  loading="lazy"
-                />
-              </div>
+    
+    <section class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-green-200 shadow-lg">
+      <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center flex items-center justify-center gap-3">
+        <span>🎮 Jogos 🎮</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {recommendations.games.map(item => (
+          <div class="bg-green-50/60 p-6 rounded-2xl flex gap-6 hover:shadow-xl transition-all duration-300 group">
+            <div class="w-32 h-32 flex-shrink-0">
+              <img 
+                src={item.image} 
+                alt={`Capa de ${item.title}`}
+                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col justify-between flex-grow">
               <div>
-                <h3 class="font-cherry text-xl text-pink-500">{item.title}</h3>
-                <p class="font-pixel text-sm">Plataforma: {item.platform}</p>
-                <p class="font-pixel text-sm">tipo: {item.type}</p>
-                <p class="text-pink-400 mt-2">{item.rating}</p>
+                <h3 class="font-cherry text-2xl text-pink-500 mb-2">{item.title}</h3>
+                <p class="font-pixel text-sm text-gray-600 mb-1">Plataforma: {item.platform}</p>
+                <p class="font-pixel text-sm text-gray-600 mb-2">Tipo: {item.type}</p>
+                <p class="text-sm text-gray-700 mb-3">{item.description}</p>
+              </div>
+              <div class="flex justify-between items-center">
+                <p class="text-pink-400 text-xl">{renderStars(item.rating)}</p>
+                <a 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-purple-500 hover:text-purple-600 transition-colors"
+                >
+                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          </div>
+        ))}
+      </div>
+    </section>
   </div>
 </Layout>
+
+<style>
+ 
+  body {
+    background-image: 
+      radial-gradient(rgba(255,182,193,0.1) 8%, transparent 8%),
+      radial-gradient(rgba(255,182,193,0.1) 8%, transparent 8%);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+  }
+</style>

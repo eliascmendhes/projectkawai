@@ -2,55 +2,103 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Meu Blog">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <h1 class="font-cherry text-4xl md:text-6xl text-pink-600 mb-4 animate-float sparkle">
-        Seja bem-vindo(a) ao meu espaço!
-      </h1>
-      <p class="font-pixel text-xl text-pink-700">
-        ♡ :) ♡
-      </p>
+<Layout title="Meu Espaço Kawaii">
+    <div class="max-w-5xl mx-auto p-4">
+        <div class="text-center mb-12 bg-white/80 rounded-xl p-6 shadow-lg">
+            <h1 class="font-cherry text-4xl md:text-6xl text-[#FF69B4] mb-4 animate-float sparkle">
+                こんにちは！ (Olá!) 🍡🍵
+            </h1>
+            <p class="font-pixel text-xl text-[#8A4FFF]">
+                ♡ Bem-vindo(a) ♡
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="/about" class="group">
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FF9CEE] hover:scale-105 transition-transform shadow-md">
+                    <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
+                        <span class="mr-2">👦</span>Sobre mim ♡
+                    </h2>
+                    <p class="font-pixel text-[#8A4FFF]">Minha introdução</p>
+                </div>
+            </a>
+
+            <a href="/blog" class="group">
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#A2D9CE] hover:scale-105 transition-transform shadow-md">
+                    <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
+                        <span class="mr-2">📓</span>Postagens ♡
+                    </h2>
+                    <p class="font-pixel text-[#8A4FFF]">Meus pensamentos!</p>
+                </div>
+            </a>
+
+            <a href="/gallery" class="group">
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FFDAB9] hover:scale-105 transition-transform shadow-md">
+                    <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
+                        <span class="mr-2">📸</span>Galeria ♡
+                    </h2>
+                    <p class="font-pixel text-[#8A4FFF]">Coisas fofas, divertidas, gifs e por aí vai.</p>
+                </div>
+            </a>
+
+            <a href="/recommendations" class="group">
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#E6E6FA] hover:scale-105 transition-transform shadow-md">
+                    <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
+                        <span class="mr-2">⭐</span>Meus favoritos ♡
+                    </h2>
+                    <p class="font-pixel text-[#8A4FFF]">Recomendações!</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="mt-12 text-center">
+            <div class="inline-block bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#DDA0DD] shadow-lg">
+                <h2 class="font-cherry text-2xl text-[#FF1493] mb-4">
+                    Vamos conversar? 🌸 ♡
+                </h2>
+                <div class="flex justify-center space-x-6 font-pixel">
+                    <a href="/contact" class="text-[#8A4FFF] hover:text-[#FF69B4] hover:scale-110 transition-all">
+                        Contato 📧
+                    </a>
+                    <a href="/links" class="text-[#8A4FFF] hover:text-[#FF69B4] hover:scale-110 transition-all">
+                        Links 🔗
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <a href="/about" class="group">
-        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender hover:scale-105 transition-transform">
-          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Sobre mim ♡</h2>
-          <p class="font-pixel">Um pouco sobre mim!</p>
-        </div>
-      </a>
-
-      <a href="/blog" class="group">
-        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-blue hover:scale-105 transition-transform">
-          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Postagens ♡</h2>
-          <p class="font-pixel">Leia meus últimos pensamentos e "aventuras"!</p>
-        </div>
-      </a>
-
-      <a href="/gallery" class="group">
-        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-mint hover:scale-105 transition-transform">
-          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Galeria ♡</h2>
-          <p class="font-pixel">Algumas coisas que encontro na internet.</p>
-        </div>
-      </a>
-
-      <a href="/recommendations" class="group">
-        <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-pink hover:scale-105 transition-transform">
-          <h2 class="font-cherry text-2xl text-pink-600 mb-2">Meus favoritos ♡</h2>
-          <p class="font-pixel">Coisas que eu amo ou que acho útil!</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="mt-12 text-center">
-      <div class="inline-block bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-4 border-kawaii-lavender">
-        <h2 class="font-cherry text-2xl text-pink-600 mb-4">Se você quiser me mandar uma mensagem! ♡</h2>
-        <div class="flex justify-center space-x-6 font-pixel">
-          <a href="/contact" class="hover:text-pink-600 hover:scale-110 transition-all">Contato</a>
-          <a href="/links" class="hover:text-pink-600 hover:scale-110 transition-all">Links</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </Layout>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Cherry+Bomb+One&display=swap');
+
+    .font-cherry {
+        font-family: 'Cherry Bomb One', cursive;
+    }
+
+    .font-pixel {
+        font-family: 'Mochiy Pop One', sans-serif;
+    }
+
+    .animate-float {
+        animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .sparkle::after {
+        content: "✧";
+        position: absolute;
+        color: #FFD700;
+        opacity: 0.7;
+        animation: sparkle 1.5s infinite;
+    }
+
+    @keyframes sparkle {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+    }
+</style>

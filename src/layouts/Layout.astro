@@ -1,10 +1,11 @@
 ---
 import '@fontsource/bubblegum-sans';
 import '@fontsource/vt323';
-// import MusicButton from '../components/MusicButton.astro';
-import PersistentAudioPlayer from '../components/PersistentAudioPlayer';
+import MusicButton from '../components/MusicButton.astro';
+// import M from '../components/PersistentAudioPlayer';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+
 interface Props {
   title: string;
 }
@@ -22,28 +23,30 @@ const menuItems = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Meu blog." />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Dela+Gothic+One&display=swap');
+    </style>
   </head>
-  <body class="bg-kawaii-pink min-h-screen">
-    <nav class="bg-white/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b-4 border-kawaii-lavender">
+  <body class="bg-gradient-to-br from-[#FFD1DC] to-[#FFF0F5] min-h-screen text-[#333]">
+    <nav class="bg-white/90 backdrop-blur-sm fixed w-full top-0 z-50 border-b-4 border-[#FFC0CB] shadow-md">
       <div class="max-w-5xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
-          <a href="/" class="font-kawaii text-2xl text-pink-600 hover:scale-110 transition-transform">
-            ✨blé blé✨
+          <a href="/" class="font-[Dela+Gothic+One] text-2xl text-[#FF69B4] hover:scale-110 transition-transform">
+            🌸 blé blé 🍡
           </a>
 
           <!-- Desktop Menu -->
-          <div class="hidden md:flex space-x-4 font-pixel text-lg">
+          <div class="hidden md:flex space-x-4 font-[Mochiy+Pop+One] text-lg">
             {menuItems.map(item => (
               <a
                 href={item.href}
-                class="hover:text-pink-600 hover:scale-110 transition-all"
+                class="text-[#8A4FFF] hover:text-[#FF69B4] hover:scale-110 transition-all"
               >
                 {item.label}
               </a>
@@ -53,11 +56,11 @@ const menuItems = [
           <!-- Mobile Menu Button -->
           <button
             id="menuButton"
-            class="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            class="md:hidden p-2 rounded-lg hover:bg-pink-100"
             aria-label="Toggle menu"
           >
             <svg 
-              class="w-6 h-6"
+              class="w-6 h-6 text-[#FF69B4]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -74,11 +77,11 @@ const menuItems = [
 
         <!-- Mobile Menu  -->
         <div id="mobileMenu" class="hidden md:hidden">
-          <div class="px-2 pt-2 pb-3 space-y-1 font-pixel">
+          <div class="px-2 pt-2 pb-3 space-y-1 font-[Mochiy+Pop+One]">
             {menuItems.map(item => (
               <a
                 href={item.href}
-                class="block px-3 py-2 text-base hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors"
+                class="block px-3 py-2 text-base text-[#8A4FFF] hover:text-[#FF69B4] hover:bg-pink-50 rounded-md transition-colors"
               >
                 {item.label}
               </a>
@@ -92,9 +95,9 @@ const menuItems = [
       <slot />
     </main>
 
-    <footer class="bg-white/80 backdrop-blur-sm border-t-4 border-kawaii-lavender py-4">
-      <div class="max-w-5xl mx-auto px-4 text-center font-pixel">
-        <p>✨ Em desenvolvimento ✨</p>
+    <footer class="bg-white/90 backdrop-blur-sm border-t-4 border-[#FFC0CB] py-4">
+      <div class="max-w-5xl mx-auto px-4 text-center font-[Mochiy+Pop+One]">
+        <p>🌈 Em desenvolvimento 🍰</p>
       </div>
     </footer>
 
@@ -107,7 +110,7 @@ const menuItems = [
         mobileMenu?.classList.toggle('hidden');
       });
     </script>
-    <PersistentAudioPlayer client:load />
+    <MusicButton client:load />
     <Analytics />
     <SpeedInsights />
   </body>

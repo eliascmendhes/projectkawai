@@ -3,46 +3,39 @@ import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 ---
 
-<Layout title="Sobre mim- Meu blog cute">
+<Layout title="Sobre mim - Meu blog cute">
   <div class="max-w-3xl mx-auto">
-    <PageTitle title="Sobre mim♡" />
+    <PageTitle title="Sobre mim ♡" />
     
-    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border-4 border-kawaii-lavender">
+    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFC0CB] shadow-lg">
       <div class="text-center mb-8">
-        <div class="w-48 h-48 mx-auto relative">
+        <div class="w-48 h-48 mx-auto relative group">
           <img
             src="/images/profile.gif"
             alt="Profile Picture"
-            class="w-full h-full object-cover rounded-full border-4 border-kawaii-lavender"
+            class="w-full h-full object-cover rounded-full border-4 border-[#FFB6C1] transition-transform group-hover:scale-105"
           />
-          <!-- <img
-            src="/images/gif06.gif"
-            alt="Sparkles"
-            class="absolute -top-4 -right-4 w-12 h-12"
-          />
-          <img
-            src="/images/gif06.gif"
-            alt="Sparkles"
-            class="absolute -bottom-4 -left-4 w-12 h-12"
-          /> -->
+          <div class="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-[#FF69B4] transition-all"></div>
         </div>
-        <h2 class="font-cherry text-2xl text-pink-600 mb-2">✨Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ✨</h2>
+        <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-2 mt-4">
+          ✨ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ✨
+        </h2>
       </div>
-
-      <div class="font-pixel space-y-4 text-lg">
+      
+      <div class="font-[Mochiy+Pop+One] space-y-4 text-lg text-[#333]">
         <p>
           Esse espaço vai ser minha rede social. ♡
         </p>
         <p>
-          ✧ Minhas coisas favoritas
+          ✧ Minhas coisas favoritas ✧
         </p>
-        <ul class="list-disc list-inside pl-4 space-y-2">
-          <li>Ouvir música 🎶</li>
-          <li>Assistir filmes 🎥</li>
-          <li>Jogar 🎮</li>
+        <ul class="list-inside space-y-2 pl-4">
+          <li class="before:content-['🎵'] before:mr-2">Ouvir música</li>
+          <li class="before:content-['🎮'] before:mr-2">Jogar</li>
+          <li class="before:content-['🎥'] before:mr-2">Assistir filmes</li>
         </ul>
         <p>
-          Eu crie esse espaço para esvaziar minha mente de muita coisa escura. ♡
+          Eu criei esse espaço para esvaziar minha mente de muita coisa escura. ♡
         </p>
       </div>
     </div>

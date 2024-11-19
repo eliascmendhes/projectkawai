@@ -1,91 +1,87 @@
-
-
 <button
   id="musicToggle"
-  class="fixed bottom-4 right-4 z-50 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border-2 border-kawaii-lavender"
+  class="fixed bottom-4 right-4 z-50 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg 
+  hover:scale-110 transition-all duration-300 border-2 border-[#FFB6C1] 
+  animate-pulse hover:animate-none"
   aria-label="Toggle music"
 >
+  <span class="sr-only">Ligar/Desligar Música</span>
   <svg
     id="playIcon"
-    class="w-6 h-6 text-pink-600"
+    class="w-6 h-6 text-[#FF69B4]"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-    />
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      fill-rule="evenodd"
+      d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+      clip-rule="evenodd"
     />
   </svg>
 
   <svg
     id="pauseIcon"
-    class="w-6 h-6 text-pink-600 hidden"
+    class="w-6 h-6 text-[#FF69B4] hidden"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
+    <rect x="6" y="4" width="4" height="16" rx="1" />
+    <rect x="14" y="4" width="4" height="16" rx="1" />
   </svg>
 </button>
 
-<audio id="bgMusic" class="hidden">
+<audio id="bgMusic" loop>
   <source src="https://streaming.radio.co/sefac315e7/listen" type="audio/mpeg">
+  Seu navegador não suporta o elemento de áudio.
 </audio>
 
 <script>
-  let isPlaying = false;
-  const audioElement = document.getElementById('bgMusic') as HTMLAudioElement;
   const musicToggle = document.getElementById('musicToggle');
   const playIcon = document.getElementById('playIcon');
   const pauseIcon = document.getElementById('pauseIcon');
+  const bgMusic = document.getElementById('bgMusic') as HTMLAudioElement; // Correção aqui!
 
-  function toggleMusic() {
-    if (!audioElement) return;
-    
-    if (isPlaying) {
-      audioElement.pause();
-      playIcon?.classList.remove('hidden');
-      pauseIcon?.classList.add('hidden');
-    } else {
-      // Tenta iniciar a reprodução
-      const playPromise = audioElement.play();
-      
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            playIcon?.classList.add('hidden');
-            pauseIcon?.classList.remove('hidden');
-          })
-          .catch(error => {
-            console.error("Erro ao reproduzir áudio:", error);
-            isPlaying = false;
-          });
-      }
-    }
-    
-    isPlaying = !isPlaying;
+  let isPlaying = false;
+
+  // Check for saved audio state in localStorage
+  const savedPlaybackState = localStorage.getItem('audioPlaybackState');
+  if (savedPlaybackState === 'playing') {
+    bgMusic.play().catch(error => {
+      console.error("Erro ao reproduzir áudio:", error);
+    });
+    playIcon.classList.add('hidden');
+    pauseIcon.classList.remove('hidden');
+    isPlaying = true;
   }
 
-  musicToggle?.addEventListener('click', toggleMusic);
+  musicToggle.addEventListener('click', () => {
+    isPlaying = !isPlaying;
 
-  audioElement?.addEventListener('error', (e) => {
+    if (isPlaying) {
+      bgMusic.play().catch(error => {
+        console.error("Erro ao reproduzir áudio:", error);
+        isPlaying = false;
+      });
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+      localStorage.setItem('audioPlaybackState', 'playing');
+    } else {
+      bgMusic.pause();
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+      localStorage.setItem('audioPlaybackState', 'paused');
+    }
+  });
+
+  bgMusic.addEventListener('error', (e) => {
     console.error('Erro no áudio:', e);
     isPlaying = false;
-    playIcon?.classList.remove('hidden');
-    pauseIcon?.classList.add('hidden');
+    playIcon.classList.remove('hidden');
+    pauseIcon.classList.add('hidden');
+    localStorage.setItem('audioPlaybackState', 'paused');
   });
 </script>
