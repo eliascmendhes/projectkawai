@@ -10,9 +10,9 @@ interface Image {
 export const images: Image[] = [
   {
     src: "/images/download.jpeg",
-    alt: "",
-    title: "",
-    description: ""
+    alt: "teste",
+    title: "teste",
+    description: "teste teste teste "
   },
   {
     src: "/images/gif01.gif",
