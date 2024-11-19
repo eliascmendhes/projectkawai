@@ -1,11 +1,9 @@
 ---
 import '@fontsource/bubblegum-sans';
 import '@fontsource/vt323';
-// import MusicButton from '../components/MusicButton.astro';
-// import M from '../components/PersistentAudioPlayer';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
-
+import MusicPlayerIsland from '../components/MusicPlayerIsland.astro';
 interface Props {
   title: string;
 }
@@ -100,7 +98,7 @@ const menuItems = [
         <p>🌈 Em desenvolvimento 🍰</p>
       </div>
     </footer>
-
+    <MusicPlayerIsland />
     <script>
       // Menu mobile toggle
       const menuButton = document.getElementById('menuButton');
@@ -110,7 +108,6 @@ const menuItems = [
         mobileMenu?.classList.toggle('hidden');
       });
     </script>
-    <!-- <MusicButton client:load /> -->
     <Analytics />
     <SpeedInsights />
   </body>
