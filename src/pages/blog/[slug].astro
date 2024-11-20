@@ -1,14 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const allPosts = await Astro.glob('../../posts/*.md');
-
 const { slug } = Astro.params;
+const allPosts = await Astro.glob('../../posts/*.md');
 const post = allPosts.find(p => p.frontmatter.slug === slug);
 
+console.log('Posts encontrados:', allPosts.map(p => p.frontmatter.slug));
+console.log('Slug procurado:', slug);
+console.log('Post encontrado:', post);
 if (!post) {
   return Astro.redirect('../404.astro');
 }
+
 ---
 
 <Layout title={post.frontmatter.title}>
