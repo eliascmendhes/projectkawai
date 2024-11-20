@@ -4,15 +4,23 @@ import PageTitle from '../components/PageTitle.astro';
 import BlogCard from '../components/BlogCard.astro';
 
 const allPosts = await Astro.glob('../posts/*.md');
-const posts = allPosts.map(post => ({
-  title: post.frontmatter.title,
-  date: post.frontmatter.date,
-  preview: post.frontmatter.preview,
-  image: post.frontmatter.image,
-  slug: post.frontmatter.slug,
-  tags: post.frontmatter.tags || [],
-  content: post.compiledContent()
-}));
+const posts = allPosts
+  .map(post => ({
+    title: post.frontmatter.title,
+    date: post.frontmatter.date,
+    preview: post.frontmatter.preview,
+    image: post.frontmatter.image,
+    slug: post.frontmatter.slug,
+    tags: post.frontmatter.tags || [],
+    content: post.compiledContent()
+  }))
+  .sort((a, b) => {
+    // Trabalho nas datas dos posts.
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    // Ordena do mais recente para o mais antigo
+    return dateB.getTime() - dateA.getTime();
+  });
 
 // Obter todas as tags únicas
 const allTags = [...new Set(posts.flatMap(post => post.tags))];
@@ -64,7 +72,7 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
     document.querySelectorAll('.tag-filter, .filter-all').forEach((button) => {
       const buttonElement = button as HTMLButtonElement;
       buttonElement.classList.remove('active', 'bg-[#FFD1DC]');
-      
+
       if (
         (buttonElement.classList.contains('filter-all') && !activeTag) ||
         (buttonElement.getAttribute('data-tag') === activeTag)
@@ -76,11 +84,11 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
 
   function filterPosts(tag: string | null) {
     const posts = document.querySelectorAll('.post-card');
-    
+
     posts.forEach((post) => {
       const postElement = post as HTMLElement;
       const postTags = postElement.getAttribute('data-tags')?.split(',') || [];
-      
+
       if (!tag || postTags.includes(tag)) {
         postElement.style.display = 'block';
       } else {
