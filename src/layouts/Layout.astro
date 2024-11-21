@@ -3,7 +3,7 @@ import '@fontsource/bubblegum-sans';
 import '@fontsource/vt323';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import MusicPlayerIsland from '../components/MusicPlayerIsland.astro';
+import MusicPlayer from '../components/MusicPlayer.astro';
 interface Props {
   title: string;
 }
@@ -16,7 +16,7 @@ const menuItems = [
   { href: "/gallery", label: "Galeria" },
   { href: "/recommendations", label: "Recomendações" },
   { href: "/contact", label: "Contato" },
-  { href: "/links", label: "Links" }
+  { href: "/links", label: "Links" },
 ];
 ---
 
@@ -98,7 +98,6 @@ const menuItems = [
         <p>🌈 Em desenvolvimento 🍰</p>
       </div>
     </footer>
-    <MusicPlayerIsland />
     <script>
       // Menu mobile toggle
       const menuButton = document.getElementById('menuButton');
@@ -108,6 +107,7 @@ const menuItems = [
         mobileMenu?.classList.toggle('hidden');
       });
     </script>
+    <MusicPlayer />
     <Analytics />
     <SpeedInsights />
   </body>

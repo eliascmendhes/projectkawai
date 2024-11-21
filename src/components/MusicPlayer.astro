@@ -1,0 +1,222 @@
+---
+interface Music {
+  title: string;
+  artist: string;
+  file: string;
+  cover: string;
+}
+---
+
+<div class="fixed bottom-4 right-4 w-[calc(100%-2rem)] md:w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-pink-200 p-2 z-30">
+  <div class="flex items-center gap-2">
+    <div class="w-12 h-12 rounded-lg overflow-hidden border border-pink-100">
+      <img src="/covers/minecraft_music.jpeg" alt="Album cover" class="w-full h-full object-cover" id="musicCover">
+    </div>
+
+    <div class="flex-1">
+      <div class="text-xs">
+        <h3 class="font-[Mochiy+Pop+One] text-pink-600 truncate" id="musicTitle">Nome da Música</h3>
+        <p class="text-purple-500 text-xs truncate" id="musicArtist">Artista</p>
+      </div>
+
+      <!-- Barra de progresso -->
+      <div class="w-full bg-pink-100 rounded-full h-1 mt-1">
+        <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-1 rounded-full w-0" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-1">
+      <button class="hover:scale-110 transition-transform p-1" id="playButton">
+        <span class="text-xl">▶️</span>
+      </button>
+      <button class="hover:scale-110 transition-transform p-1" id="nextButton">
+        <span class="text-xl">⏭️</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  class MusicPlayerState {
+    private static instance: MusicPlayerState;
+    private audio: HTMLAudioElement;
+
+    private constructor() {
+      this.audio = new Audio();
+      // Recuperar estado anterior se existir
+      const savedTime = localStorage.getItem('musicTime');
+      const savedIndex = localStorage.getItem('currentSongIndex');
+      const savedIsPlaying = localStorage.getItem('isPlaying');
+
+      if (savedTime) this.audio.currentTime = parseFloat(savedTime);
+      if (savedIsPlaying === 'true') this.audio.play();
+
+      // Salvar estado periodicamente
+      setInterval(() => {
+        localStorage.setItem('musicTime', this.audio.currentTime.toString());
+        localStorage.setItem('isPlaying', (!this.audio.paused).toString());
+      }, 1000);
+    }
+
+    static getInstance(): MusicPlayerState {
+      if (!MusicPlayerState.instance) {
+        MusicPlayerState.instance = new MusicPlayerState();
+      }
+      return MusicPlayerState.instance;
+    }
+
+    getAudio(): HTMLAudioElement {
+      return this.audio;
+    }
+  }
+
+  // Usar uma única instância do audio
+  const playerState = MusicPlayerState.getInstance();
+  const audio = playerState.getAudio();
+
+  // Função para obter nome da música do arquivo
+  function getNameFromFile(file: string): string {
+    const fileName = file.split('/').pop()?.split('.')[0] || '';
+    return fileName
+      .replace(/-/g, ' ')
+      .replace(/_/g, ' ')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
+  const playlist = [
+    {
+      file: "/music/key.mp3",
+      cover: "/covers/minecraft_music.jpeg"
+    },
+    {
+      file: "/music/cat.mp3",
+      cover: "/covers/minecraft_music.jpeg"
+    },
+     {
+      file: "/music/dry_hands.mp3",
+      cover: "/covers/minecraft_music.jpeg"
+    },
+    {
+      file: "/music/minecraft.mp3",
+      cover: "/covers/minecraft_music.jpeg"
+    },
+    {
+      file: "/music/sweden.mp3",
+      cover: "/covers/minecraft_music.jpeg"
+    },
+    {
+      file: "/music/laintheme.mp3",
+      cover: "/covers/laintheme.png"
+    },
+    {
+      file: "/music/familyportrait.mp3",
+      cover: "/covers/laintheme.png"
+    },
+    {
+      file: "/music/creditsound.mp3",
+      cover: "",
+    },
+    {
+      file: "/music/introduction.mp3",
+      cover: "",
+    },
+    {
+      file: "/music/RdyS.mp3",
+      cover: "",
+    },
+    {
+      file: "/music/lainmaintheme.mp3",
+      cover: "",
+    },
+    {
+      file: "/music/kids.mp3",
+      cover: "",
+    },
+    {
+      file: "/music/KirbysDreamCourse.mp3",
+      cover: "",
+    }
+
+  ].map(song => ({
+    ...song,
+    title: getNameFromFile(song.file),
+    artist: "Unknown Artist"
+  }));
+
+  let currentSongIndex = parseInt(localStorage.getItem('currentSongIndex') || '0');
+  let isPlaying = !audio.paused;
+
+  const playButton = document.getElementById('playButton');
+  const nextButton = document.getElementById('nextButton');
+  const progressBar = document.getElementById('progressBar');
+  const musicTitle = document.getElementById('musicTitle');
+  const musicArtist = document.getElementById('musicArtist');
+  const musicCover = document.getElementById('musicCover');
+
+  // Função para carregar música
+  function loadSong(index: number) {
+    const song = playlist[index];
+    if (audio.src !== new URL(song.file, window.location.href).href) {
+      audio.src = song.file;
+      musicTitle!.textContent = song.title;
+      musicArtist!.textContent = song.artist;
+      musicCover!.setAttribute('src', song.cover);
+    }
+    localStorage.setItem('currentSongIndex', index.toString());
+  }
+
+  // Função para próxima música
+  function nextSong() {
+    currentSongIndex = (currentSongIndex + 1) % playlist.length;
+    loadSong(currentSongIndex);
+    if (isPlaying) {
+      audio.play();
+    }
+  }
+
+  // Funções de controle
+  function togglePlay() {
+    if (isPlaying) {
+      audio.pause();
+      playButton!.innerHTML = '<span class="text-xl">▶️</span>';
+    } else {
+      audio.play();
+      playButton!.innerHTML = '<span class="text-xl">⏸️</span>';
+    }
+    isPlaying = !isPlaying;
+  }
+
+  // Event listeners
+  playButton?.addEventListener('click', togglePlay);
+  nextButton?.addEventListener('click', nextSong);
+
+  // Atualizar barra de progresso
+  audio.addEventListener('timeupdate', () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    if (progressBar) progressBar.style.width = `${progress}%`;
+  });
+
+  // Próxima música quando acabar
+  audio.addEventListener('ended', nextSong);
+
+  // Atualizar botão play/pause quando o estado mudar
+  audio.addEventListener('play', () => {
+    isPlaying = true;
+    playButton!.innerHTML = '<span class="text-xl">⏸️</span>';
+  });
+
+  audio.addEventListener('pause', () => {
+    isPlaying = false;
+    playButton!.innerHTML = '<span class="text-xl">▶️</span>';
+  });
+
+  // Carregar música atual
+  loadSong(currentSongIndex);
+
+  // Atualizar UI com estado atual
+  if (isPlaying) {
+    playButton!.innerHTML = '<span class="text-xl">⏸️</span>';
+  }
+</script>
