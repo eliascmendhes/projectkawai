@@ -1,7 +1,7 @@
 ---
 title: 'Ficar Sozinho em Casa'
 date: '2024-11-20'
-preview: 'Ficar sozinho pode ser entediante, mas também traz reflexões.'
+preview: 'Reflexão da noite.'
 image: 'https://i5.glitter-graphics.org/pub/486/486215k3mgrck4ys.jpg'
 slug: 'sexto-post'
 tags: ['solitário', 'pensativo']
