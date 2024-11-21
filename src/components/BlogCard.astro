@@ -12,12 +12,45 @@ const { title, date, preview, image, slug, tags = [] } = Astro.props;
 
 // Mapa de cores para as tags
 const tagColorMap = {
+  // Emoções Básicas
   "feliz": "#FFD700",
   "triste": "#87CEEB",
   "estressante": "#FF69B4",
+  "animado": "#FFA500",
+  "ansioso": "#9370DB",
+  "tranquilo": "#98FB98",
+  "frustrado": "#FF4500",
+  "orgulhoso": "#DDA0DD",
+
+  // Emoções Adicionais
+  "pensativo": "#B0C4DE",    // Azul suave
+  "solitário": "#E6E6FA",    // Lavanda claro
+  "sonolento": "#DEB887",    // Marrom suave
+  "nostálgico": "#FFE4B5",   // Pêssego
+  "apaixonado": "#FFB6C1",   // Rosa claro
+  "determinado": "#98FB98",  // Verde pastel
+  "sonhador": "#E0FFFF",     // Ciano claro
+  "tímido": "#FFC0CB",       // Rosa bebê
+
+  // Tags Kawaii/Fofas
+  "kawaii": "#FFC0CB",       // Rosa suave
+  "mochi": "#FFE4E1",        // Rosa misty
+  "pastel": "#F0FFF0",       // Verde honeydew
+  "chibi": "#FFE4B5",        // Moccasin
+  "fluffy": "#F0F8FF",       // Azul alice
+  "sparkly": "#FFE4E1",      // Rosa misty
+  "melody": "#E6E6FA",       // Lavanda
+  "dreamy": "#F8F8FF",       // Branco fantasma
+
+  // Tags Técnicas
   "desenvolvimento": "#8A4FFF",
   "feature": "#32CD32",
   "bug": "#FF6347",
+  "design": "#FF1493",
+  "performance": "#4169E1",
+  "refactor": "#20B2AA",
+  "teste": "#BA55D3",
+  "deploy": "#32CD32"
 };
 ---
 
@@ -56,10 +89,10 @@ const tagColorMap = {
           <div class="flex flex-wrap gap-2">
             {tags.map(tag => (
               <span
-                class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One] 
-                border-2 border-[#FFD1DC] shadow-sm transform hover:scale-105 
+                class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One]
+                border-2 border-[#FFD1DC] shadow-sm transform hover:scale-105
                 transition-all duration-200"
-                style={`background-color: ${tagColorMap[tag] || '#FFD1DC'}; 
+                style={`background-color: ${tagColorMap[tag] || '#FFD1DC'};
                 color: ${tagColorMap[tag] === '#FFD700' ? '#FF69B4' : '#FFF'}`}
               >
                 ✧ {tag}
