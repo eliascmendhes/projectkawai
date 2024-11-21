@@ -87,17 +87,31 @@ const tagColorMap = {
 
         {tags && tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
-            {tags.map(tag => (
-              <span
-                class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One]
-                border-2 border-[#FFD1DC] shadow-sm transform hover:scale-105
-                transition-all duration-200"
-                style={`background-color: ${tagColorMap[tag] || '#FFD1DC'};
-                color: ${tagColorMap[tag] === '#FFD700' ? '#FF69B4' : '#FFF'}`}
-              >
-                ✧ {tag}
-              </span>
-            ))}
+            {tags.map(tag => {
+
+              const getBrightness = (hexColor) => {
+                const rgb = parseInt(hexColor.slice(1), 16);
+                const r = (rgb >> 16) & 0xff;
+                const g = (rgb >> 8) & 0xff;
+                const b = (rgb & 0xff);
+                return (r * 299 + g * 587 + b * 114) / 1000;
+              };
+
+              const bgColor = tagColorMap[tag] || '#FFD1DC';
+              
+              const textColor = getBrightness(bgColor) > 155 ? '#333333' : '#FFFFFF';
+
+              return (
+                <span
+                  class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One]
+                  border-2 border-[#FFD1DC] shadow-sm transform hover:scale-105
+                  transition-all duration-200"
+                  style={`background-color: ${bgColor}; color: ${textColor}`}
+                >
+                  ✧ {tag}
+                </span>
+              );
+            })}
           </div>
         )}
 
