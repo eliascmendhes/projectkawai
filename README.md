@@ -1,6 +1,6 @@
 # 🌸 Projeto Kawaii 🍡
 
-Um blog pessoal desenvolvido com Astro, focado em compartilhar pensamentos, recomendações e momentos especiais em um ambiente kawaii e acolhedor.
+Um blog pessoal desenvolvido com Astro, focado em compartilhar pensamentos, recomendações e momentos especiais.
 
 ## ✨ Características
 
