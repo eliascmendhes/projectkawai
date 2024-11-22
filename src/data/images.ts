@@ -44,5 +44,17 @@ export const images: Image[] = [
     title: '',
     description: '',
   },
-
+  {
+    src: '/images/images-gallery/image16.jpeg',
+    alt: 'Midori Nagumo dublada por Mikako Komatsu',
+    title: 'Midori Nagumo dublada por Mikako Komatsu',
+    description: '',
+  },
+  {
+    src: '/images/images-gallery/image17.png',
+    alt: 'CITY THE ANIMATION',
+    title: 'CITY THE ANIMATION',
+    description:
+      'CITY THE ANIMATION é descrito a seguir: Esta cidade não é apenas uma cidade normal. Há risos, amor e momentos emocionais. Uma vida comum imprevisível apresentada pelos moradores! Coisas emocionantes vêm uma após a outra. Bem-vindo à CITY.',
+  },
 ]
