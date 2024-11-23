@@ -30,6 +30,49 @@ const menuItems = [
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Dela+Gothic+One&display=swap');
     </style>
+    <style is:global>
+      /* Estilização da scrollbar para Webkit (Chrome, Safari, etc) */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(255, 209, 220, 0.3);  /* Rosa claro com transparência */
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #FF69B4, #FFB6C1);  /* Gradiente rosa */
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(45deg, #FF1493, #FF69B4);  /* Gradiente rosa mais escuro no hover */
+      }
+
+      /* Estilização da scrollbar para Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #FF69B4 rgba(255, 209, 220, 0.3);
+      }
+
+      /* Adicionar pequenos elementos decorativos nas extremidades */
+      ::-webkit-scrollbar-button:single-button:vertical:start {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23FF69B4'%3E%3Cpath d='M12 2L2 12h20L12 2z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 12px;
+      }
+
+      ::-webkit-scrollbar-button:single-button:vertical:end {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23FF69B4'%3E%3Cpath d='M12 22L2 12h20L12 22z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 12px;
+      }
+    </style>
   </head>
   <body class="bg-gradient-to-br from-[#FFD1DC] to-[#FFF0F5] min-h-screen text-[#333]">
     <nav class="bg-white/90 backdrop-blur-sm fixed w-full top-0 z-50 border-b-4 border-[#FFC0CB] shadow-md">
