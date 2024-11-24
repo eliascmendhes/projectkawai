@@ -9,7 +9,7 @@ interface Props {
 const { src, alt, title, description } = Astro.props;
 ---
 
-<div class="group relative bg-white/90 backdrop-blur-sm p-6 rounded-3xl border-4 border-[#FFC0CB] 
+<div class="group relative bg-white/90 backdrop-blur-sm p-6 rounded-3xl border-4 border-[#FFC0CB]
   hover:scale-102 hover:border-[#FF69B4] transition-all duration-300 shadow-lg hover:shadow-xl">
   <div class="relative w-full h-48 mb-4 overflow-hidden rounded-2xl">
     <img
@@ -18,9 +18,9 @@ const { src, alt, title, description } = Astro.props;
       loading="lazy"
       class="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-pink-200/50 to-transparent 
+    <div class="absolute inset-0 bg-gradient-to-t from-pink-200/50 to-transparent
       group-hover:from-pink-300/60 transition-all duration-300"></div>
-    
+
     <div class="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">✨</div>
     <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">🌸</div>
   </div>
@@ -34,6 +34,6 @@ const { src, alt, title, description } = Astro.props;
     </p>
   </div>
 
-  <div class="absolute inset-0 bg-gradient-to-br from-pink-200/0 to-purple-200/0 
+  <div class="absolute inset-0 bg-gradient-to-br from-pink-200/0 to-purple-200/0
     group-hover:from-pink-200/20 group-hover:to-purple-200/20 rounded-3xl transition-all duration-300"></div>
 </div>

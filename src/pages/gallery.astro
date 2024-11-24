@@ -15,7 +15,7 @@ const currentImages = images.slice(startIndex, endIndex);
 <Layout title="Galeria">
   <div class="max-w-5xl mx-auto p-4">
     <PageTitle title="Minha galeria ♡" />
-    
+
     <div class="relative mb-8">
       <span class="absolute -top-4 left-4 text-2xl animate-bounce">🎀</span>
       <span class="absolute -top-4 right-4 text-2xl animate-bounce delay-75">✨</span>
@@ -31,7 +31,7 @@ const currentImages = images.slice(startIndex, endIndex);
       {currentPage > 1 && (
         <a
           href={`?page=${currentPage - 1}`}
-          class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg 
+          class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg
           hover:scale-105 hover:border-[#FF69B4] transition-all duration-300 flex items-center gap-2"
         >
           🌸 Anterior
@@ -42,8 +42,8 @@ const currentImages = images.slice(startIndex, endIndex);
         {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNumber => (
           <a
             href={`?page=${pageNumber}`}
-            class={`bg-white/90 backdrop-blur-sm w-12 h-12 flex items-center justify-center rounded-full border-4 
-            ${pageNumber === currentPage ? 'border-[#FF69B4] bg-pink-50/50' : 'border-[#FFC0CB]'} 
+            class={`bg-white/90 backdrop-blur-sm w-12 h-12 flex items-center justify-center rounded-full border-4
+            ${pageNumber === currentPage ? 'border-[#FF69B4] bg-pink-50/50' : 'border-[#FFC0CB]'}
             shadow-lg hover:scale-105 transition-all duration-300
             ${pageNumber === currentPage ? 'animate-pulse' : ''}`}
           >
@@ -55,7 +55,7 @@ const currentImages = images.slice(startIndex, endIndex);
       {currentPage < totalPages && (
         <a
           href={`?page=${currentPage + 1}`}
-          class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg 
+          class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg
           hover:scale-105 hover:border-[#FF69B4] transition-all duration-300 flex items-center gap-2"
         >
           Próximo 🌸
