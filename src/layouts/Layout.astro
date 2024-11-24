@@ -75,29 +75,141 @@ const menuItems = [
 
       /* Estilos retrô */
       .nostalgic-mode {
-        /* Paleta de Cores */
-        --bg-color: #f0e6d6;
-        --text-color: #333333;
-        --border-color: #d3d3d3;
-        --accent-color: #8b4513;
+        --bg-color: #d4d0c8;
+        --text-color: #000000;
+        --link-color: #000080;
+        --visited-color: #800080;
 
-        /* Aplicando as cores ao body */
-        background: var(--bg-color);
+        background-color: var(--bg-color);
         color: var(--text-color);
+        font-family: 'MS Gothic', monospace;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAAVElEQVRoQ+3SMQoAIAzF0Nz/0K4OQhyKhXd4kBR+FskYERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERkYNVuqzsBJ5eLbCrAAAAAElFTkSuQmCC");
       }
 
       .nostalgic-mode nav {
-        background: #f8f8f8;
-        border-bottom-color: #d3d3d3;
+        background: #c0c0c0;
+        border-top: 2px solid #fff;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #404040;
+        border-bottom: 2px solid #404040;
+        box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px #808080;
       }
 
       .nostalgic-mode a {
-        color: #8b4513;
-        font-family: 'MS Gothic', monospace;
+        color: var(--link-color);
+        text-decoration: none;
+        position: relative;
+        padding: 2px 5px;
+      }
+
+      .nostalgic-mode a:visited {
+        color: var(--visited-color);
       }
 
       .nostalgic-mode a:hover {
-        color: #a0522d;
+        background: #000080;
+        color: #ffffff;
+      }
+
+      .nostalgic-mode a:hover::before {
+        content: "【";
+        position: absolute;
+        left: -15px;
+      }
+
+      .nostalgic-mode a:hover::after {
+        content: "】";
+        position: absolute;
+        right: -15px;
+      }
+
+      .nostalgic-mode .group > div {
+        background: #ffffff;
+        border: 2px solid;
+        border-color: #808080 #ffffff #ffffff #808080;
+        box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px #000;
+        margin: 10px 0;
+        padding: 15px;
+      }
+
+      /* Botões estilo Windows 98 */
+      .nostalgic-mode button {
+        background: #c0c0c0;
+        border: 2px solid;
+        border-color: #ffffff #404040 #404040 #ffffff;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+        color: #000000;
+        padding: 4px 10px;
+        font-family: 'MS Gothic', monospace;
+        position: relative;
+      }
+
+      .nostalgic-mode button:active {
+        border-color: #404040 #ffffff #ffffff #404040;
+        box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+        top: 1px;
+        left: 1px;
+      }
+
+      /* Scrollbar Retrô */
+      .nostalgic-mode::-webkit-scrollbar {
+        width: 16px;
+        height: 16px;
+      }
+
+      .nostalgic-mode::-webkit-scrollbar-track {
+        background: #dfdfdf;
+        border: 1px solid #808080;
+      }
+
+      .nostalgic-mode::-webkit-scrollbar-thumb {
+        background: #c0c0c0;
+        border: 1px solid;
+        border-color: #dfdfdf #808080 #808080 #dfdfdf;
+        box-shadow: inset 1px 1px #ffffff, inset -1px -1px #404040;
+      }
+
+      .nostalgic-mode::-webkit-scrollbar-button:single-button {
+        background: #c0c0c0;
+        border: 1px solid;
+        border-color: #dfdfdf #808080 #808080 #dfdfdf;
+        box-shadow: inset 1px 1px #ffffff, inset -1px -1px #404040;
+      }
+
+      .nostalgic-mode .bg-white\/90 {
+        background: #c0c0c0;
+      }
+
+      .nostalgic-mode footer {
+        background: #c0c0c0;
+        border-top: 2px solid #fff;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #404040;
+        border-bottom: 2px solid #404040;
+      }
+
+      .nostalgic-mode .animate-float {
+        animation: none;
+      }
+
+      .nostalgic-mode .sparkle::after {
+        display: none;
+      }
+
+      .nostalgic-mode main::before {
+        content: "━━━━━━━━━━━━━━━━━━━━━━";
+        display: block;
+        text-align: center;
+        color: #000080;
+        margin: 10px 0;
+      }
+
+      .nostalgic-mode main::after {
+        content: "━━━━━━━━━━━━━━━━━━━━━━";
+        display: block;
+        text-align: center;
+        color: #000080;
+        margin: 10px 0;
       }
 
       .nostalgic-mode .font-cherry, .nostalgic-mode .font-pixel {
@@ -111,39 +223,6 @@ const menuItems = [
 
       .nostalgic-mode .border-4 {
         border-width: 2px;
-      }
-
-      .nostalgic-mode .bg-white\/90 {
-        background: #f5f5f5;
-      }
-
-      .nostalgic-mode .sparkle::after {
-        content: "✧";
-        position: absolute;
-        color: #c0c0c0;
-        opacity: 0.5;
-        animation: sparkle 1.5s infinite;
-      }
-
-      .nostalgic-mode .animate-float {
-        animation: none;
-      }
-
-      .nostalgic-mode .shadow-md {
-        box-shadow: none;
-      }
-
-
-  /*
-  .nostalgic-mode .grid {
-    display: block;
-  }
-  */
-
-      .nostalgic-mode .group > div {
-        border: 1px solid var(--border-color);
-        padding: 10px;
-        margin-bottom: 10px;
       }
 
       .nostalgic-mode .pixel-divider {
@@ -190,6 +269,14 @@ const menuItems = [
       :global(.nostalgic-mode)::-webkit-scrollbar-button:single-button:vertical:end {
         background-image: none;
       }
+
+      .nostalgic-mode .kawaii-title {
+        display: none;
+      }
+
+      .nostalgic-mode .retro-title {
+        display: inline;
+      }
     </style>
   </head>
   <body class="bg-gradient-to-br from-[#FFD1DC] to-[#FFF0F5] min-h-screen text-[#333]">
@@ -197,7 +284,8 @@ const menuItems = [
       <div class="max-w-5xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <a href="/" class="font-[Dela+Gothic+One] text-2xl text-[#FF69B4] hover:scale-110 transition-transform">
-            🌸 blé blé 🍡
+            <span class="kawaii-title">🌸 blé blé 🍡</span>
+            <span class="retro-title hidden">.:[ blé blé ]:.</span>
           </a>
 
           <!-- Menu Desktop -->
@@ -267,7 +355,8 @@ const menuItems = [
 
     <footer class="bg-white/90 backdrop-blur-sm border-t-4 border-[#FFC0CB] py-4">
       <div class="max-w-5xl mx-auto px-4 text-center font-[Mochiy+Pop+One]">
-        <p>🌈 Em desenvolvimento 🍰</p>
+        <p class="nostalgic-mode:hidden">🌈 Em desenvolvimento 🍰</p>
+        <p class="hidden nostalgic-mode:inline">-=[ Em desenvolvimento ]=-</p>
       </div>
     </footer>
     <script>

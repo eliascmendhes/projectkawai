@@ -19,97 +19,145 @@ interface Music {
         <p class="text-purple-500 text-xs truncate nostalgic-artist" id="musicArtist">Artista</p>
       </div>
 
-      <div class="w-full bg-pink-100 rounded-full h-1 mt-1 nostalgic-progress-container">
-        <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-1 rounded-full w-0 nostalgic-progress" id="progressBar"></div>
+      <div class="w-full bg-pink-100 rounded-full h-1.5 mt-1.5 nostalgic-progress-container">
+        <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-1.5 rounded-full w-0 nostalgic-progress" id="progressBar"></div>
       </div>
     </div>
 
     <div class="flex items-center gap-1">
-      <button class="hover:scale-110 transition-transform p-1 nostalgic-button" id="playButton">
-        <span class="text-xl">▶️</span>
+      <button class="hover:scale-110 transition-transform p-1.5 nostalgic-button" id="playButton">
+        <span class="kawaii-content">▶️</span>
+        <span class="retro-content">►</span>
       </button>
-      <button class="hover:scale-110 transition-transform p-1 nostalgic-button" id="nextButton">
-        <span class="text-xl">⏭️</span>
+      <button class="hover:scale-110 transition-transform p-1.5 nostalgic-button" id="nextButton">
+        <span class="kawaii-content">⏭️</span>
+        <span class="retro-content">»</span>
       </button>
     </div>
   </div>
 </div>
 
 <style>
+  /* Estilos Kawaii */
+  .kawaii-content {
+    display: block;
+  }
+
+  .retro-content {
+    display: none;
+  }
+
+  .nostalgic-player {
+    transition: all 0.3s ease;
+  }
+
+  .nostalgic-cover {
+    transition: transform 0.3s ease;
+  }
+
+  .nostalgic-cover:hover {
+    transform: scale(1.05);
+  }
+
+  .nostalgic-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .nostalgic-button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  .nostalgic-progress {
+    transition: width 0.1s linear;
+  }
+
   /* Estilos para o modo retrô */
   :global(.nostalgic-mode) .nostalgic-player {
-    background: #f5f5f5;
-    border: 1px solid #999;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
     border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
-    padding: 0.5rem;
+    padding: 8px;
   }
 
   :global(.nostalgic-mode) .nostalgic-cover {
-    border: 1px solid #999;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080;
     border-radius: 0;
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
 
   :global(.nostalgic-mode) .nostalgic-title {
     font-family: 'MS Gothic', monospace;
-    color: #333;
+    color: #000080;
     font-weight: bold;
+    font-size: 0.75rem;
   }
 
   :global(.nostalgic-mode) .nostalgic-artist {
     font-family: 'MS Gothic', monospace;
-    color: #666;
+    color: #000000;
+    font-size: 0.7rem;
   }
 
   :global(.nostalgic-mode) .nostalgic-progress-container {
-    background: #ccc;
-    border: 1px solid #999;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080;
     border-radius: 0;
-    height: 8px;
+    height: 10px;
   }
 
   :global(.nostalgic-mode) .nostalgic-progress {
-    background: #666;
+    background: #000080;
     border-radius: 0;
     height: 6px;
+    margin: 1px;
   }
 
   :global(.nostalgic-mode) .nostalgic-button {
-    background: #e5e5e5;
-    border: 1px solid #999;
-    border-radius: 0;
-    padding: 2px 4px;
-    box-shadow: 2px 2px 0 #666;
-    transition: none;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
+    font-family: 'MS Gothic', monospace;
+    padding: 2px 6px;
+    font-size: 0.875rem;
+    min-width: 24px;
+    text-align: center;
   }
 
   :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #d5d5d5;
+    background: #d4d0c8;
   }
 
   :global(.nostalgic-mode) .nostalgic-button:active {
-    background: #ccc;
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+    padding-top: 3px;
+    padding-left: 7px;
   }
 
-  /* Remove todas as animações no modo retrô */
-  :global(.nostalgic-mode) .transition-transform {
+  /* Controle de visibilidade */
+  :global(.nostalgic-mode) .kawaii-content {
+    display: none !important;
+  }
+
+  :global(.nostalgic-mode) .retro-content {
+    display: block !important;
+  }
+
+  /* Remove animações no modo retrô */
+  :global(.nostalgic-mode) * {
     transition: none !important;
-  }
-
-  :global(.nostalgic-mode) .hover\:scale-110:hover {
     transform: none !important;
-  }
-
-  /* Ajustes para emojis no modo retrô */
-  :global(.nostalgic-mode) .nostalgic-button span {
-    filter: grayscale(100%);
-  }
-
-  /* Ajustes para gradientes no modo retrô */
-  :global(.nostalgic-mode) .bg-gradient-to-r {
-    background: #666;
   }
 </style>
 

@@ -86,86 +86,131 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
 <style>
   /* Estilos para o modo retrô */
   :global(.nostalgic-mode) .nostalgic-button {
-    background: #f5f5f5;
-    border: 1px solid #999;
-    border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
-    transition: none;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
+    padding: 4px 10px;
     font-family: 'MS Gothic', monospace;
-    color: #333;
+    position: relative;
+    border-radius: 0;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #e5e5e5;
-    transform: none;
+  :global(.nostalgic-mode) .nostalgic-button:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+    top: 1px;
+    left: 1px;
   }
 
   :global(.nostalgic-mode) .nostalgic-dropdown {
-    background: #f5f5f5;
-    border: 1px solid #999;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
     border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
+    padding: 4px;
   }
 
   :global(.nostalgic-mode) .nostalgic-input {
-    background: #fff;
-    border: 1px solid #999;
-    border-radius: 0;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
     font-family: 'MS Gothic', monospace;
+    border-radius: 0;
+    padding: 2px 4px;
   }
 
   :global(.nostalgic-mode) .nostalgic-input:focus {
-    outline: 1px solid #666;
-    box-shadow: 1px 1px 0 #999;
+    outline: none;
+    border-color: #000080;
   }
 
   :global(.nostalgic-mode) .nostalgic-tag-button {
-    background: #f5f5f5;
-    border: none;
-    border-radius: 0;
+    width: 100%;
+    text-align: left;
+    padding: 2px 4px;
     font-family: 'MS Gothic', monospace;
-    color: #333;
+    color: #000080;
+    background: transparent;
+    border: none;
   }
 
   :global(.nostalgic-mode) .nostalgic-tag-button:hover {
-    background: #e5e5e5;
+    background: #000080;
+    color: #ffffff;
   }
 
   :global(.nostalgic-mode) .nostalgic-tag-button.active {
-    background: #e5e5e5;
-    border: 1px solid #999;
+    background: #000080;
+    color: #ffffff;
   }
 
+  /* Scrollbar retrô */
   :global(.nostalgic-mode) #tag-list {
-    scrollbar-width: thin;
-    scrollbar-color: #999 #f5f5f5;
+    scrollbar-width: 16px;
+    scrollbar-color: #c0c0c0 #dfdfdf;
   }
 
   :global(.nostalgic-mode) #tag-list::-webkit-scrollbar {
-    width: 8px;
+    width: 16px;
+    height: 16px;
   }
 
   :global(.nostalgic-mode) #tag-list::-webkit-scrollbar-track {
-    background: #f5f5f5;
+    background: #dfdfdf;
+    border: 1px solid #808080;
   }
 
   :global(.nostalgic-mode) #tag-list::-webkit-scrollbar-thumb {
-    background-color: #999;
-    border: 1px solid #f5f5f5;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #404040;
   }
 
-  /* Ajustes para os posts */
+  :global(.nostalgic-mode) #tag-list::-webkit-scrollbar-button:single-button {
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #404040;
+  }
+
+  /* Estilo para os cards de post no modo retrô */
   :global(.nostalgic-mode) .post-card {
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    background: #c0c0c0;
   }
 
-  /* Animações removidas no modo retrô */
-  :global(.nostalgic-mode) .transition-all {
-    transition: none;
+  /*  separadores visuais entre os posts */
+  :global(.nostalgic-mode) .post-card:not(:last-child)::after {
+    content: "━━━━━━━━━━━━━━━━━━━━━━";
+    display: block;
+    text-align: center;
+    color: #000080;
+    margin-top: 16px;
+  }
+
+  /* Remove animações no modo retrô */
+  :global(.nostalgic-mode) .transition-all,
+  :global(.nostalgic-mode) .transition-transform {
+    transition: none !important;
   }
 
   :global(.nostalgic-mode) .hover\:scale-105:hover {
-    transform: none;
+    transform: none !important;
+  }
+
+  /*  decoração retrô ao título da página */
+  :global(.nostalgic-mode) .page-title::before,
+  :global(.nostalgic-mode) .page-title::after {
+    content: "◆";
+    color: #000080;
+    margin: 0 8px;
   }
 </style>
 

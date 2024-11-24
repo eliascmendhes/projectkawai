@@ -5,7 +5,10 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Sobre mim - Meu blog cute">
   <div class="max-w-3xl mx-auto">
-    <PageTitle title="Sobre mim ♡" />
+    <PageTitle title="Sobre mim">
+      <span class="kawaii-content">Sobre mim ♡</span>
+      <span class="retro-content">◆ Sobre mim ◆</span>
+    </PageTitle>
 
     <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFC0CB] shadow-lg nostalgic-about">
       <div class="text-center mb-8">
@@ -18,24 +21,41 @@ import Layout from '../layouts/Layout.astro';
           <div class="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-[#FF69B4] transition-all nostalgic-border"></div>
         </div>
         <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-2 mt-4 nostalgic-heading">
-          ✨ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ✨
+          <span class="kawaii-content">
+            ✨ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ✨
+          </span>
+          <span class="retro-content">
+            .:[ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ]:.
+          </span>
         </h2>
       </div>
 
       <div class="font-[Mochiy+Pop+One] space-y-4 text-lg text-[#333] nostalgic-content">
         <p>
-          Esse espaço vai ser minha rede social. ♡
+          <span class="kawaii-content">Esse espaço vai ser minha rede social. ♡</span>
+          <span class="retro-content">Esse espaço vai ser minha rede social.</span>
         </p>
         <p>
-          ✧ Minhas coisas favoritas ✧
+          <span class="kawaii-content">✧ Minhas coisas favoritas ✧</span>
+          <span class="retro-content">▼ Minhas coisas favoritas ▼</span>
         </p>
         <ul class="list-inside space-y-2 pl-4 nostalgic-list">
-          <li class="before:content-['🎵'] before:mr-2">Ouvir música</li>
-          <li class="before:content-['🎮'] before:mr-2">Jogar</li>
-          <li class="before:content-['🎥'] before:mr-2">Assistir filmes</li>
+          <li>
+            <span class="kawaii-content">🎵 Ouvir música</span>
+            <span class="retro-content">► Ouvir música</span>
+          </li>
+          <li>
+            <span class="kawaii-content">🎮 Jogar</span>
+            <span class="retro-content">► Jogar</span>
+          </li>
+          <li>
+            <span class="kawaii-content">🎥 Assistir filmes</span>
+            <span class="retro-content">► Assistir filmes</span>
+          </li>
         </ul>
         <p>
-          Eu criei esse espaço para esvaziar minha mente de muita coisa escura. ♡
+          <span class="kawaii-content">Eu criei esse espaço para esvaziar minha mente de muita coisa escura. ♡</span>
+          <span class="retro-content">Eu criei esse espaço para esvaziar minha mente de muita coisa escura.</span>
         </p>
       </div>
     </div>
@@ -112,11 +132,28 @@ import Layout from '../layouts/Layout.astro';
     transform: none !important;
     border-color: #999 !important;
   }
-  
-  /* Ajustes específicos para emojis */
+
+  /* Estilos para mostrar/esconder conteúdo */
+  .kawaii-content {
+    display: block;
+  }
+
+  .retro-content {
+    display: none;
+  }
+
+  /* Quando o modo retrô está ativo */
+  :global(.nostalgic-mode) .kawaii-content {
+    display: none !important;
+  }
+
+  :global(.nostalgic-mode) .retro-content {
+    display: block !important;
+  }
+
   :global(.nostalgic-mode) .before\:content-\[\'🎵\'\]::before,
   :global(.nostalgic-mode) .before\:content-\[\'🎮\'\]::before,
   :global(.nostalgic-mode) .before\:content-\[\'🎥\'\]::before {
-    filter: grayscale(100%);
+    content: none;
   }
 </style>

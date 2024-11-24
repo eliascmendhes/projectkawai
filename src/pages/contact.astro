@@ -3,21 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 ---
 
-<Layout title="Contato - Meu blog cute">
+<Layout title="Contato">
   <div class="max-w-3xl mx-auto">
-    <PageTitle title="Entre em contato ♡" />
+    <PageTitle title="Contato">
+      <span class="kawaii-content">Entre em contato ♡</span>
+      <span class="retro-content">◆ Entre em contato ◆</span>
+    </PageTitle>
 
     <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFB6C1] shadow-lg nostalgic-container">
       <div class="text-center mb-8">
         <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-4 nostalgic-title">
-          🌸 Sim, vou receber essa mensagem! ✧
+          <span class="kawaii-content">🌸 Sim, vou receber essa mensagem! ✧</span>
+          <span class="retro-content">[ Sim, vou receber essa mensagem! ]</span>
         </h2>
       </div>
 
       <form action={import.meta.env.PUBLIC_FORMSPREE_URL} method="POST" class="space-y-6">
         <div>
           <label for="name" class="block font-[Mochiy+Pop+One] text-lg text-[#FF1493] mb-2 nostalgic-label">
-            🍡 Seu nome ♡
+            <span class="kawaii-content">🍡 Seu nome ♡</span>
+            <span class="retro-content">Nome:</span>
           </label>
           <input
             type="text"
@@ -32,40 +37,37 @@ import PageTitle from '../components/PageTitle.astro';
 
         <div>
           <label for="email" class="block font-[Mochiy+Pop+One] text-lg text-[#FF1493] mb-2 nostalgic-label">
-            📧 Email ♡
+            <span class="kawaii-content">📧 Email ♡</span>
+            <span class="retro-content">Email:</span>
           </label>
           <input
             type="email"
             name="email"
             id="email"
             placeholder="Seu melhor email"
-            class="w-full px-4 py-3 rounded-xl border-2 border-[#FFB6C1] focus:border-[#FF69B4] focus:ring-2 focus:ring-[#FFD1DC]
-            font-[Mochiy+Pop+One] text-[#333] transition-all hover:shadow-md nostalgic-input"
+            class="nostalgic-input"
             required
           />
         </div>
 
         <div>
           <label for="message" class="block font-[Mochiy+Pop+One] text-lg text-[#FF1493] mb-2 nostalgic-label">
-            💌 Sua mensagem ♡
+            <span class="kawaii-content">💌 Sua mensagem ♡</span>
+            <span class="retro-content">Mensagem:</span>
           </label>
           <textarea
             name="message"
             id="message"
             rows="6"
             placeholder="O que gostaria de me dizer?"
-            class="w-full px-4 py-3 rounded-xl border-2 border-[#FFB6C1] focus:border-[#FF69B4] focus:ring-2 focus:ring-[#FFD1DC]
-            font-[Mochiy+Pop+One] text-[#333] transition-all hover:shadow-md nostalgic-input"
+            class="nostalgic-input"
             required
           ></textarea>
         </div>
 
-        <button
-          type="submit"
-          class="w-full bg-[#FFB6C1] hover:bg-[#FF69B4] text-white font-[Mochiy+Pop+One] text-lg py-3 px-6
-          rounded-xl border-2 border-[#FF69B4] transition-all hover:scale-105 hover:shadow-lg nostalgic-button"
-        >
-          ✧ Enviar mensagem ✧
+        <button type="submit" class="nostalgic-button">
+          <span class="kawaii-content">✧ Enviar mensagem ✧</span>
+          <span class="retro-content">[ Enviar mensagem ]</span>
         </button>
       </form>
     </div>
@@ -73,90 +75,151 @@ import PageTitle from '../components/PageTitle.astro';
 </Layout>
 
 <style>
+  /* Estilos base para inputs e botões (modo kawaii) */
+  .nostalgic-input {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-[#FFB6C1]
+    focus:border-[#FF69B4] focus:ring-2 focus:ring-[#FFD1DC]
+    font-[Mochiy+Pop+One] text-[#333] transition-all hover:shadow-md;
+  }
+
+  .nostalgic-button {
+    @apply px-8 py-2.5 rounded-full bg-gradient-to-r from-[#FFB6C1] to-[#FF69B4]
+    text-white font-[Mochiy+Pop+One] text-base mx-auto block
+    transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02]
+    border-2 border-[#FFB6C1] hover:border-[#FF69B4];
+    width: fit-content;
+    min-width: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nostalgic-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .nostalgic-button:hover::before {
+    transform: translateX(100%);
+  }
+
+  .nostalgic-button {
+    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+  }
+
+  .nostalgic-button:hover {
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
+  }
+
+  /* Controle de visibilidade base */
+  .kawaii-content {
+    display: block;
+  }
+
+  .retro-content {
+    display: none;
+  }
+
   /* Estilos para o modo retrô */
   :global(.nostalgic-mode) .nostalgic-container {
-    background: #f5f5f5;
-    border: 1px solid #999;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
     border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
-    padding: 1rem;
+    padding: 16px;
   }
 
   :global(.nostalgic-mode) .nostalgic-title {
     font-family: 'MS Gothic', monospace;
-    color: #333;
+    color: #000080;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    border-bottom: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    padding-bottom: 8px;
   }
 
   :global(.nostalgic-mode) .nostalgic-label {
     font-family: 'MS Gothic', monospace;
-    color: #333;
+    color: #000000;
+    font-size: 0.875rem;
+    margin-bottom: 4px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-input,
-  :global(.nostalgic-mode) textarea {
-    background: #fff;
-    border: 1px solid #999;
-    border-radius: 0;
+  :global(.nostalgic-mode) .nostalgic-input {
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080;
     font-family: 'MS Gothic', monospace;
-    color: #333;
-    padding: 0.5rem;
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    padding: 4px 8px;
+    width: 100%;
+    border-radius: 0;
+    transform: none;
     transition: none;
   }
 
-  :global(.nostalgic-mode) .nostalgic-input:focus,
-  :global(.nostalgic-mode) textarea:focus {
-    border-color: #666;
-    outline: none;
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  :global(.nostalgic-mode) .nostalgic-input:focus {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080;
   }
 
   :global(.nostalgic-mode) .nostalgic-button {
-    background: #e5e5e5;
-    border: 1px solid #999;
-    border-radius: 0;
-    color: #333;
+    background: #c0c0c0;
+    background-image: none;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
     font-family: 'MS Gothic', monospace;
-    box-shadow: 2px 2px 0 #666;
+    padding: 4px 32px;
+    width: 100%;
+    position: relative;
+    transform: none;
     transition: none;
-    transform: none !important;
+    border-radius: 0;
+    min-width: auto;
   }
 
   :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #d5d5d5;
-    box-shadow: 2px 2px 0 #666;
+    background: #d4d0c8;
+    opacity: 1;
+    transform: none;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
   }
 
   :global(.nostalgic-mode) .nostalgic-button:active {
-    background: #ccc;
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+    padding-top: 5px;
+    padding-left: 33px;
   }
 
-  /* Remove todas as animações no modo retrô */
-  :global(.nostalgic-mode) .transition-all {
+  /* Controle de visibilidade */
+  :global(.nostalgic-mode) .kawaii-content {
+    display: none !important;
+  }
+
+  :global(.nostalgic-mode) .retro-content {
+    display: block !important;
+  }
+
+  /* Remove animações apenas no modo retrô */
+  :global(.nostalgic-mode) * {
     transition: none !important;
-  }
-
-  :global(.nostalgic-mode) .hover\:scale-105:hover {
-    transform: none !important;
-  }
-
-  :global(.nostalgic-mode) .hover\:shadow-md:hover,
-  :global(.nostalgic-mode) .hover\:shadow-lg:hover {
-    box-shadow: none !important;
-  }
-
-  /* Ajustes para emojis no modo retrô */
-  :global(.nostalgic-mode) .nostalgic-label::before,
-  :global(.nostalgic-mode) .nostalgic-title span {
-    filter: grayscale(100%);
-  }
-
-  /* Ajustes para o foco no modo retrô */
-  :global(.nostalgic-mode) .focus\:ring-2:focus {
-    box-shadow: none;
-    outline: 1px dotted #666;
   }
 </style>

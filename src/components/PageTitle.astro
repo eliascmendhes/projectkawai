@@ -6,56 +6,123 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<h1 class="font-[Dela+Gothic+One] text-4xl md:text-5xl text-[#FF1493] text-center mb-8 animate-float relative nostalgic-title">
-  {title}
-  <span class="absolute top-0 right-0 text-[#FFD700] opacity-70 sparkle nostalgic-sparkle">✧</span>
-</h1>
+<div class="text-center mb-12 nostalgic-title-container">
+  <h1 class="font-[Dela+Gothic+One] text-4xl md:text-5xl text-[#FF1493] relative nostalgic-title">
+    <slot>
+      <span class="kawaii-content">{title} ♡</span>
+      <span class="retro-content">◆ {title} ◆</span>
+    </slot>
+  </h1>
+  <div class="kawaii-content mt-2">
+    <span class="inline-block animate-sparkle-1 text-[#FFD700] text-2xl">✧</span>
+    <span class="inline-block animate-sparkle-2 text-[#FF69B4] text-xl mx-2">♪</span>
+    <span class="inline-block animate-sparkle-3 text-[#FFD700] text-2xl">✧</span>
+  </div>
+</div>
 
 <style>
-  .animate-float {
-    animation: float 2s ease-in-out infinite;
+  /* Estilos Kawaii */
+  .kawaii-content {
+    display: block;
+  }
+
+  .retro-content {
+    display: none;
+  }
+
+  .nostalgic-title {
+    animation: float 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
   }
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
   }
 
-  .sparkle {
-    animation: sparkle 1.5s infinite;
+  @keyframes sparkle-1 {
+    0%, 100% { opacity: 0.4; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
   }
 
-  @keyframes sparkle {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+  @keyframes sparkle-2 {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  @keyframes sparkle-3 {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  .animate-sparkle-1 {
+    animation: sparkle-1 2s infinite;
+  }
+
+  .animate-sparkle-2 {
+    animation: sparkle-2 2.5s infinite;
+    animation-delay: 0.3s;
+  }
+
+  .animate-sparkle-3 {
+    animation: sparkle-3 2.2s infinite;
+    animation-delay: 0.6s;
   }
 
   /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    animation: none;
-    border-bottom: 2px solid #999;
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 0 #ccc;
+  :global(.nostalgic-mode) .nostalgic-title-container {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    padding: 8px;
+    margin: 16px auto 24px;
+    max-width: fit-content;
   }
 
-  :global(.nostalgic-mode) .nostalgic-sparkle {
-    filter: grayscale(100%);
+  :global(.nostalgic-mode) .nostalgic-title {
+    font-family: 'MS Gothic', monospace;
+    color: #000080;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: none;
     animation: none;
-    opacity: 1;
+    padding: 4px 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #808080;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  /* Controle de visibilidade */
+  :global(.nostalgic-mode) .kawaii-content {
+    display: none !important;
+  }
+
+  :global(.nostalgic-mode) .retro-content {
+    display: block !important;
   }
 
   /* Remove animações no modo retrô */
-  :global(.nostalgic-mode) .animate-float {
-    animation: none;
-  }
-
-  :global(.nostalgic-mode) .sparkle {
-    animation: none;
+  :global(.nostalgic-mode) * {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
   }
 </style>

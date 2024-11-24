@@ -14,14 +14,12 @@ const currentImages = images.slice(startIndex, endIndex);
 
 <Layout title="Galeria">
   <div class="max-w-5xl mx-auto p-4">
-    <PageTitle title="Minha galeria ♡" />
+    <PageTitle title="Galeria">
+      <span class="kawaii-content">Minha galeria ♡</span>
+      <span class="retro-content">◆ Minha galeria ◆</span>
+    </PageTitle>
 
-    <div class="relative mb-8">
-      <span class="absolute -top-4 left-4 text-2xl animate-bounce nostalgic-emoji">🎀</span>
-      <span class="absolute -top-4 right-4 text-2xl animate-bounce delay-75 nostalgic-emoji">✨</span>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 nostalgic-gallery">
       {currentImages.map(img => (
         <ImageCard {...img} />
       ))}
@@ -31,10 +29,10 @@ const currentImages = images.slice(startIndex, endIndex);
       {currentPage > 1 && (
         <a
           href={`?page=${currentPage - 1}`}
-          class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg
-          hover:scale-105 hover:border-[#FF69B4] transition-all duration-300 flex items-center gap-2"
+          class="nostalgic-nav-button"
         >
-          <span class="nostalgic-emoji">🌸</span> Anterior
+          <span class="kawaii-content">🌸 Anterior</span>
+          <span class="retro-content">[←] Anterior</span>
         </a>
       )}
 
@@ -42,10 +40,7 @@ const currentImages = images.slice(startIndex, endIndex);
         {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNumber => (
           <a
             href={`?page=${pageNumber}`}
-            class={`bg-white/90 backdrop-blur-sm w-12 h-12 flex items-center justify-center rounded-full border-4
-            ${pageNumber === currentPage ? 'border-[#FF69B4] bg-pink-50/50' : 'border-[#FFC0CB]'}
-            shadow-lg hover:scale-105 transition-all duration-300
-            ${pageNumber === currentPage ? 'animate-pulse' : ''}`}
+            class={`nostalgic-page-button ${pageNumber === currentPage ? 'active' : ''}`}
           >
             {pageNumber}
           </a>
@@ -55,10 +50,10 @@ const currentImages = images.slice(startIndex, endIndex);
       {currentPage < totalPages && (
         <a
           href={`?page=${currentPage + 1}`}
-          class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg
-          hover:scale-105 hover:border-[#FF69B4] transition-all duration-300 flex items-center gap-2"
+          class="nostalgic-nav-button"
         >
-          Próximo <span class="nostalgic-emoji">🌸</span>
+          <span class="kawaii-content">Próximo 🌸</span>
+          <span class="retro-content">Próximo [→]</span>
         </a>
       )}
     </div>
@@ -68,31 +63,118 @@ const currentImages = images.slice(startIndex, endIndex);
 <style>
   /* Estilos para o modo retrô */
   :global(.nostalgic-mode) .nostalgic-gallery {
-    gap: 1.5rem;
+    gap: 16px;
+    padding: 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
   }
 
-  :global(.nostalgic-mode) .nostalgic-emoji {
-    filter: grayscale(100%);
+  /* Botões de navegação (Anterior/Próximo) */
+  :global(.nostalgic-mode) .nostalgic-nav-button {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
+    font-family: 'MS Gothic', monospace;
+    padding: 4px 12px;
+    text-decoration: none;
+    position: relative;
+    min-width: 100px;
+    text-align: center;
   }
 
-  :global(.nostalgic-mode) .nostalgic-pagination a {
-    background: #f5f5f5;
-    border: 1px solid #999;
-    border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
-    transition: none;
+  :global(.nostalgic-mode) .nostalgic-nav-button:hover {
+    background: #d4d0c8;
   }
 
-  :global(.nostalgic-mode) .nostalgic-pagination a:hover {
-    transform: none;
-    background: #e5e5e5;
+  :global(.nostalgic-mode) .nostalgic-nav-button:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+    padding-top: 5px;
+    padding-left: 13px;
   }
 
-  :global(.nostalgic-mode) .animate-bounce {
-    animation: none;
+  /* Botões de página */
+  :global(.nostalgic-mode) .nostalgic-page-button {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
+    font-family: 'MS Gothic', monospace;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
   }
 
-  :global(.nostalgic-mode) .animate-pulse {
-    animation: none;
+  :global(.nostalgic-mode) .nostalgic-page-button:hover {
+    background: #d4d0c8;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-page-button.active {
+    background: #000080;
+    color: #ffffff;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #000040, inset -1px -1px #0000c0;
+  }
+
+  /* Remove animações */
+  :global(.nostalgic-mode) .animate-bounce,
+  :global(.nostalgic-mode) .animate-pulse,
+  :global(.nostalgic-mode) .transition-all,
+  :global(.nostalgic-mode) .duration-300 {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  :global(.nostalgic-mode) .hover\:scale-105:hover {
+    transform: none !important;
+  }
+
+  /* Classes para mostrar/esconder conteúdo */
+  .kawaii-content {
+    display: block;
+  }
+
+  .retro-content {
+    display: none;
+  }
+
+  :global(.nostalgic-mode) .kawaii-content {
+    display: none !important;
+  }
+
+  :global(.nostalgic-mode) .retro-content {
+    display: block !important;
+  }
+
+  /* Scrollbar retrô */
+  :global(.nostalgic-mode) .nostalgic-gallery {
+    scrollbar-width: 16px;
+    scrollbar-color: #c0c0c0 #dfdfdf;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-track {
+    background: #dfdfdf;
+    border: 1px solid #808080;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #404040;
   }
 </style>

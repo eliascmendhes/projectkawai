@@ -5,20 +5,22 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Meu Espaço Kawaii">
     <div class="max-w-5xl mx-auto p-4">
         <div class="text-center mb-12 bg-white/80 rounded-xl p-6 shadow-lg nostalgic-header">
-            <h1 class="font-cherry text-4xl md:text-6xl text-[#FF69B4] mb-4 animate-float sparkle">
-                こんにちは！ (Olá!) 🍡🍵
+            <h1 class="font-cherry text-4xl md:text-6xl text-[#FF1493] mb-4 animate-float sparkle">
+                <span class="kawaii-content">こんにちは！ (Olá!) 🍡🍵</span>
+                <span class="retro-content">◆ こんにちは！ (Olá!) ◆</span>
             </h1>
             <p class="font-pixel text-xl text-[#8A4FFF]">
-                ♡ Bem-vindo(a) ♡
+                <span class="kawaii-content">♡ Bem-vindo(a) ♡</span>
+                <span class="retro-content">★ Bem-vindo(a) ★</span>
             </p>
-            <div class="nostalgic-divider hidden"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 nostalgic-grid">
             <a href="/about" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FF9CEE] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2 nostalgic-icon">👦</span>Sobre mim ♡
+                        <span class="kawaii-content">👦 Sobre mim ♡</span>
+                        <span class="retro-content">┍ Sobre mim ┑</span>
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Minha introdução</p>
                 </div>
@@ -27,7 +29,8 @@ import Layout from '../layouts/Layout.astro';
             <a href="/blog" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#A2D9CE] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2 nostalgic-icon">📓</span>Postagens ♡
+                        <span class="kawaii-content">📓 Postagens ♡</span>
+                        <span class="retro-content">◈ Postagens ◈</span>
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Meus pensamentos!</p>
                 </div>
@@ -36,7 +39,8 @@ import Layout from '../layouts/Layout.astro';
             <a href="/gallery" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FFDAB9] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2 nostalgic-icon">📸</span>Galeria ♡
+                        <span class="kawaii-content">📸 Galeria ♡</span>
+                        <span class="retro-content">❖ Galeria ❖</span>
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Coisas fofas, divertidas, gifs e por aí vai.</p>
                 </div>
@@ -45,7 +49,8 @@ import Layout from '../layouts/Layout.astro';
             <a href="/recommendations" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#E6E6FA] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2 nostalgic-icon">⭐</span>Meus favoritos ♡
+                        <span class="kawaii-content">⭐ Meus favoritos ♡</span>
+                        <span class="retro-content">☆ Meus favoritos ☆</span>
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Recomendações!</p>
                 </div>
@@ -55,14 +60,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="mt-12 text-center">
             <div class="inline-block bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#DDA0DD] shadow-lg nostalgic-contact">
                 <h2 class="font-cherry text-2xl text-[#FF1493] mb-4">
-                    Vamos conversar? 🌸 ♡
+                    <span class="kawaii-content">Vamos conversar? 🌸 ♡</span>
+                    <span class="retro-content">▌ Vamos conversar? ▐</span>
                 </h2>
                 <div class="flex justify-center space-x-6 font-pixel">
                     <a href="/contact" class="text-[#8A4FFF] hover:text-[#FF69B4] hover:scale-110 transition-all">
-                        Contato 📧
+                        <span class="kawaii-content">Contato 📧</span>
+                        <span class="retro-content">► Contato ◄</span>
                     </a>
                     <a href="/links" class="text-[#8A4FFF] hover:text-[#FF69B4] hover:scale-110 transition-all">
-                        Links 🔗
+                        <span class="kawaii-content">Links 🔗</span>
+                        <span class="retro-content">► Links ◄</span>
                     </a>
                 </div>
             </div>
@@ -104,9 +112,10 @@ import Layout from '../layouts/Layout.astro';
     }
 
     :global(.nostalgic-mode) .nostalgic-header {
-        background: #f5f5f5;
-        border: 2px solid #999;
-        box-shadow: 3px 3px 0 #666;
+        background: #c0c0c0;
+        border: 2px solid;
+        border-color: #ffffff #404040 #404040 #ffffff;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
         border-radius: 0;
     }
 
@@ -126,12 +135,17 @@ import Layout from '../layouts/Layout.astro';
     }
 
     :global(.nostalgic-mode) .nostalgic-card > div {
-        background: #f5f5f5;
-        border: 1px solid #999;
+        background: #c0c0c0;
+        border: 2px solid;
+        border-color: #ffffff #404040 #404040 #ffffff;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
         border-radius: 0;
-        box-shadow: 2px 2px 0 #666;
         transform: none !important;
         transition: none;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-card > div:hover {
+        background: #d4d0c8;
     }
 
     :global(.nostalgic-mode) .nostalgic-icon {
@@ -154,9 +168,36 @@ import Layout from '../layouts/Layout.astro';
     }
 
     :global(.nostalgic-mode) .nostalgic-contact {
-        background: #f5f5f5;
-        border: 1px solid #999;
+        background: #c0c0c0;
+        border: 2px solid;
+        border-color: #ffffff #404040 #404040 #ffffff;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
         border-radius: 0;
-        box-shadow: 2px 2px 0 #666;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-header::after {
+        content: "━━━━━━━━━━━━━━━━━━━━━━";
+        display: block;
+        text-align: center;
+        color: #000080;
+        margin-top: 10px;
+    }
+
+    /* Estilos específicos para mostrar/esconder conteúdo */
+    .kawaii-content {
+        display: block;
+    }
+
+    .retro-content {
+        display: none;
+    }
+
+    /* Quando o modo retrô está ativo */
+    :global(.nostalgic-mode) .kawaii-content {
+        display: none !important;
+    }
+
+    :global(.nostalgic-mode) .retro-content {
+        display: block !important;
     }
 </style>

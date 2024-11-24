@@ -156,95 +156,136 @@ const tagColorMap = {
 </a>
 
 <style>
-  /* Remove o efeito de gradiente no modo normal */
-  article::after {
-    display: none;
-  }
-
   /* Estilos para o modo retrô */
   :global(.nostalgic-mode) .nostalgic-blog-card {
-    background: #f5f5f5;
-    border: 1px solid #999;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
     border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
-    transition: none;
-    padding: 1rem;
-    transform: none !important;
+    padding: 12px;
+    margin-bottom: 16px;
+    cursor: pointer;
   }
 
+  /* Efeito hover no card */
   :global(.nostalgic-mode) .nostalgic-blog-card:hover {
-    background: #f5f5f5;
-    border: 1px solid #666;
+    background: #d4d0c8;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
   }
 
+  /* Efeito de clique */
+  :global(.nostalgic-mode) .nostalgic-blog-card:active {
+    background: #808080;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 2px 2px #404040, inset -1px -1px #ffffff;
+  }
+
+  /* Container da imagem */
   :global(.nostalgic-mode) .nostalgic-image-container {
-    border: 1px solid #999;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080;
     border-radius: 0;
-    box-shadow: none;
+    padding: 2px;
+    background: #ffffff;
   }
 
+  /* Imagem */
   :global(.nostalgic-mode) .nostalgic-image {
-    filter: grayscale(20%);
-    transform: none !important;
-    transition: none;
+    filter: grayscale(30%);
+    image-rendering: pixelated;
   }
 
+  /* Título */
   :global(.nostalgic-mode) .nostalgic-title {
     font-family: 'MS Gothic', monospace;
-    color: #333;
-    font-size: 1.5rem;
+    color: #000080;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 8px;
   }
 
+  :global(.nostalgic-mode) .nostalgic-title:hover {
+    text-decoration: underline;
+  }
+
+  /* Data */
   :global(.nostalgic-mode) .nostalgic-date {
     font-family: 'MS Gothic', monospace;
-    color: #666;
+    color: #000000;
+    font-size: 0.875rem;
+    margin: 4px 0;
   }
 
+  /* Tags */
+  :global(.nostalgic-mode) .nostalgic-tag {
+    background: #000080 !important;
+    color: #ffffff !important;
+    border: 1px solid #404040;
+    border-radius: 0;
+    font-family: 'MS Gothic', monospace;
+    font-size: 0.75rem;
+    padding: 1px 4px;
+    margin-right: 4px;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-tag:hover {
+    background: #0000a0 !important;
+  }
+
+  /* Preview do texto */
   :global(.nostalgic-mode) .nostalgic-preview {
     font-family: 'MS Gothic', monospace;
-    color: #333;
+    color: #000000;
+    line-height: 1.4;
+    margin: 8px 0;
   }
 
-  :global(.nostalgic-mode) .nostalgic-tag {
-    background: #e5e5e5 !important;
-    border: 1px solid #999;
-    border-radius: 0;
-    color: #333 !important;
-    font-family: 'MS Gothic', monospace;
-    padding: 2px 6px;
-    transform: none !important;
-    transition: none;
-  }
-
+  /* Botão Leia mais */
   :global(.nostalgic-mode) .nostalgic-read-more {
-    background: #e5e5e5;
-    border: 1px solid #999;
-    border-radius: 0;
-    color: #333;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
     font-family: 'MS Gothic', monospace;
-    box-shadow: 2px 2px 0 #666;
-    transition: none;
+    padding: 4px 8px;
+    display: inline-block;
+    position: relative;
   }
 
   :global(.nostalgic-mode) .nostalgic-read-more:hover {
-    background: #d5d5d5;
+    background: #d4d0c8;
   }
 
+  :global(.nostalgic-mode) .nostalgic-read-more:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+    top: 1px;
+    left: 1px;
+  }
+
+  /* Remove emojis no modo retrô */
   :global(.nostalgic-mode) .nostalgic-emoji {
-    filter: grayscale(100%);
+    display: none;
   }
 
-  /* animações no modo retrô */
+ 
+  /* Remove todas as animações */
   :global(.nostalgic-mode) .transition-all,
   :global(.nostalgic-mode) .transition-colors,
   :global(.nostalgic-mode) .transition-opacity,
-  :global(.nostalgic-mode) .transition-transform {
+  :global(.nostalgic-mode) .transition-transform,
+  :global(.nostalgic-mode) .duration-300 {
     transition: none !important;
   }
 
-  :global(.nostalgic-mode) .hover\:scale-105:hover,
-  :global(.nostalgic-mode) .hover\:scale-110:hover,
-  :global(.nostalgic-mode) .group-hover\:scale-110 {
+  :global(.nostalgic-mode) .hover\:scale-\[1\.02\]:hover,
+  :global(.nostalgic-mode) .hover\:shadow-xl:hover {
     transform: none !important;
+    box-shadow: none !important;
   }
 </style>
