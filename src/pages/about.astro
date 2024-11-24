@@ -7,29 +7,29 @@ import Layout from '../layouts/Layout.astro';
   <div class="max-w-3xl mx-auto">
     <PageTitle title="Sobre mim ♡" />
 
-    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFC0CB] shadow-lg">
+    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFC0CB] shadow-lg nostalgic-about">
       <div class="text-center mb-8">
-        <div class="w-48 h-48 mx-auto relative group">
+        <div class="w-48 h-48 mx-auto relative group nostalgic-profile">
           <img
             src="/images/gifs/profile.gif"
             alt="Profile Picture"
-            class="w-full h-full object-cover rounded-full border-4 border-[#FFB6C1] transition-transform group-hover:scale-105"
+            class="w-full h-full object-cover rounded-full border-4 border-[#FFB6C1] transition-transform group-hover:scale-105 nostalgic-image"
           />
-          <div class="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-[#FF69B4] transition-all"></div>
+          <div class="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-[#FF69B4] transition-all nostalgic-border"></div>
         </div>
-        <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-2 mt-4">
+        <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-2 mt-4 nostalgic-heading">
           ✨ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ✨
         </h2>
       </div>
 
-      <div class="font-[Mochiy+Pop+One] space-y-4 text-lg text-[#333]">
+      <div class="font-[Mochiy+Pop+One] space-y-4 text-lg text-[#333] nostalgic-content">
         <p>
           Esse espaço vai ser minha rede social. ♡
         </p>
         <p>
           ✧ Minhas coisas favoritas ✧
         </p>
-        <ul class="list-inside space-y-2 pl-4">
+        <ul class="list-inside space-y-2 pl-4 nostalgic-list">
           <li class="before:content-['🎵'] before:mr-2">Ouvir música</li>
           <li class="before:content-['🎮'] before:mr-2">Jogar</li>
           <li class="before:content-['🎥'] before:mr-2">Assistir filmes</li>
@@ -41,3 +41,82 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </Layout>
+
+<style>
+  /* Estilos para o modo retrô */
+  :global(.nostalgic-mode) .nostalgic-about {
+    background: #f5f5f5;
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: 2px 2px 0 #666;
+    padding: 1rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-profile {
+    border: none;
+    padding: 4px;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-image {
+    border: 1px solid #999;
+    border-radius: 0;
+    filter: grayscale(20%);
+    transform: none !important;
+    transition: none;
+    box-shadow: 2px 2px 0 #666;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-border {
+    display: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-heading {
+    font-family: 'MS Gothic', monospace;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 0.5rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-content {
+    font-family: 'MS Gothic', monospace;
+    color: #333;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-content p {
+    margin-bottom: 1rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-list {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-list li::before {
+    filter: grayscale(100%);
+  }
+
+  /* Remove todas as animações no modo retrô */
+  :global(.nostalgic-mode) .transition-all,
+  :global(.nostalgic-mode) .transition-transform {
+    transition: none !important;
+  }
+
+  :global(.nostalgic-mode) .group-hover\:scale-105:hover,
+  :global(.nostalgic-mode) .group-hover\:border-\[\#FF69B4\]:hover {
+    transform: none !important;
+    border-color: #999 !important;
+  }
+  
+  /* Ajustes específicos para emojis */
+  :global(.nostalgic-mode) .before\:content-\[\'🎵\'\]::before,
+  :global(.nostalgic-mode) .before\:content-\[\'🎮\'\]::before,
+  :global(.nostalgic-mode) .before\:content-\[\'🎥\'\]::before {
+    filter: grayscale(100%);
+  }
+</style>

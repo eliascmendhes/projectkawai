@@ -7,34 +7,111 @@ interface Music {
 }
 ---
 
-<div class="fixed bottom-4 right-4 w-[calc(100%-2rem)] md:w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-pink-200 p-2 z-30">
+<div class="fixed bottom-4 right-4 w-[calc(100%-2rem)] md:w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-pink-200 p-2 z-30 nostalgic-player">
   <div class="flex items-center gap-2">
-    <div class="w-12 h-12 rounded-lg overflow-hidden border border-pink-100">
+    <div class="w-12 h-12 rounded-lg overflow-hidden border border-pink-100 nostalgic-cover">
       <img src="/covers/minecraft_music.jpeg" alt="Album cover" class="w-full h-full object-cover" id="musicCover">
     </div>
 
     <div class="flex-1">
       <div class="text-xs">
-        <h3 class="font-[Mochiy+Pop+One] text-pink-600 truncate" id="musicTitle">Nome da Música</h3>
-        <p class="text-purple-500 text-xs truncate" id="musicArtist">Artista</p>
+        <h3 class="font-[Mochiy+Pop+One] text-pink-600 truncate nostalgic-title" id="musicTitle">Nome da Música</h3>
+        <p class="text-purple-500 text-xs truncate nostalgic-artist" id="musicArtist">Artista</p>
       </div>
 
-      <!-- Barra de progresso -->
-      <div class="w-full bg-pink-100 rounded-full h-1 mt-1">
-        <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-1 rounded-full w-0" id="progressBar"></div>
+      <div class="w-full bg-pink-100 rounded-full h-1 mt-1 nostalgic-progress-container">
+        <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-1 rounded-full w-0 nostalgic-progress" id="progressBar"></div>
       </div>
     </div>
 
     <div class="flex items-center gap-1">
-      <button class="hover:scale-110 transition-transform p-1" id="playButton">
+      <button class="hover:scale-110 transition-transform p-1 nostalgic-button" id="playButton">
         <span class="text-xl">▶️</span>
       </button>
-      <button class="hover:scale-110 transition-transform p-1" id="nextButton">
+      <button class="hover:scale-110 transition-transform p-1 nostalgic-button" id="nextButton">
         <span class="text-xl">⏭️</span>
       </button>
     </div>
   </div>
 </div>
+
+<style>
+  /* Estilos para o modo retrô */
+  :global(.nostalgic-mode) .nostalgic-player {
+    background: #f5f5f5;
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: 2px 2px 0 #666;
+    padding: 0.5rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-cover {
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.nostalgic-mode) .nostalgic-title {
+    font-family: 'MS Gothic', monospace;
+    color: #333;
+    font-weight: bold;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-artist {
+    font-family: 'MS Gothic', monospace;
+    color: #666;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-progress-container {
+    background: #ccc;
+    border: 1px solid #999;
+    border-radius: 0;
+    height: 8px;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-progress {
+    background: #666;
+    border-radius: 0;
+    height: 6px;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-button {
+    background: #e5e5e5;
+    border: 1px solid #999;
+    border-radius: 0;
+    padding: 2px 4px;
+    box-shadow: 2px 2px 0 #666;
+    transition: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-button:hover {
+    background: #d5d5d5;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-button:active {
+    background: #ccc;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Remove todas as animações no modo retrô */
+  :global(.nostalgic-mode) .transition-transform {
+    transition: none !important;
+  }
+
+  :global(.nostalgic-mode) .hover\:scale-110:hover {
+    transform: none !important;
+  }
+
+  /* Ajustes para emojis no modo retrô */
+  :global(.nostalgic-mode) .nostalgic-button span {
+    filter: grayscale(100%);
+  }
+
+  /* Ajustes para gradientes no modo retrô */
+  :global(.nostalgic-mode) .bg-gradient-to-r {
+    background: #666;
+  }
+</style>
 
 <script>
   class MusicPlayerState {

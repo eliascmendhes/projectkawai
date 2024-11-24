@@ -17,8 +17,8 @@ const currentImages = images.slice(startIndex, endIndex);
     <PageTitle title="Minha galeria ♡" />
 
     <div class="relative mb-8">
-      <span class="absolute -top-4 left-4 text-2xl animate-bounce">🎀</span>
-      <span class="absolute -top-4 right-4 text-2xl animate-bounce delay-75">✨</span>
+      <span class="absolute -top-4 left-4 text-2xl animate-bounce nostalgic-emoji">🎀</span>
+      <span class="absolute -top-4 right-4 text-2xl animate-bounce delay-75 nostalgic-emoji">✨</span>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -27,14 +27,14 @@ const currentImages = images.slice(startIndex, endIndex);
       ))}
     </div>
 
-    <div class="mt-12 flex flex-wrap justify-center gap-4 font-pixel">
+    <div class="mt-12 flex flex-wrap justify-center gap-4 font-pixel nostalgic-pagination">
       {currentPage > 1 && (
         <a
           href={`?page=${currentPage - 1}`}
           class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg
           hover:scale-105 hover:border-[#FF69B4] transition-all duration-300 flex items-center gap-2"
         >
-          🌸 Anterior
+          <span class="nostalgic-emoji">🌸</span> Anterior
         </a>
       )}
 
@@ -58,9 +58,41 @@ const currentImages = images.slice(startIndex, endIndex);
           class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border-4 border-[#FFC0CB] shadow-lg
           hover:scale-105 hover:border-[#FF69B4] transition-all duration-300 flex items-center gap-2"
         >
-          Próximo 🌸
+          Próximo <span class="nostalgic-emoji">🌸</span>
         </a>
       )}
     </div>
   </div>
 </Layout>
+
+<style>
+  /* Estilos para o modo retrô */
+  :global(.nostalgic-mode) .nostalgic-gallery {
+    gap: 1.5rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-emoji {
+    filter: grayscale(100%);
+  }
+
+  :global(.nostalgic-mode) .nostalgic-pagination a {
+    background: #f5f5f5;
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: 2px 2px 0 #666;
+    transition: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-pagination a:hover {
+    transform: none;
+    background: #e5e5e5;
+  }
+
+  :global(.nostalgic-mode) .animate-bounce {
+    animation: none;
+  }
+
+  :global(.nostalgic-mode) .animate-pulse {
+    animation: none;
+  }
+</style>

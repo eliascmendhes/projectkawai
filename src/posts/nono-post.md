@@ -7,4 +7,4 @@ slug: 'nono-post'
 tags: ['estressante']
 ---
 
-Sabádos são uma merda.
+Sábados são uma merda.

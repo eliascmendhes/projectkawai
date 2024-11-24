@@ -4,57 +4,56 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Meu Espaço Kawaii">
     <div class="max-w-5xl mx-auto p-4">
-        <div class="text-center mb-12 bg-white/80 rounded-xl p-6 shadow-lg">
+        <div class="text-center mb-12 bg-white/80 rounded-xl p-6 shadow-lg nostalgic-header">
             <h1 class="font-cherry text-4xl md:text-6xl text-[#FF69B4] mb-4 animate-float sparkle">
                 こんにちは！ (Olá!) 🍡🍵
             </h1>
             <p class="font-pixel text-xl text-[#8A4FFF]">
                 ♡ Bem-vindo(a) ♡
             </p>
+            <div class="nostalgic-divider hidden"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <a href="/about" class="group">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 nostalgic-grid">
+            <a href="/about" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FF9CEE] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2">👦</span>Sobre mim ♡
+                        <span class="mr-2 nostalgic-icon">👦</span>Sobre mim ♡
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Minha introdução</p>
                 </div>
             </a>
 
-            <a href="/blog" class="group">
+            <a href="/blog" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#A2D9CE] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2">📓</span>Postagens ♡
+                        <span class="mr-2 nostalgic-icon">📓</span>Postagens ♡
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Meus pensamentos!</p>
                 </div>
             </a>
 
-            <a href="/gallery" class="group">
+            <a href="/gallery" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FFDAB9] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2">📸</span>Galeria ♡
+                        <span class="mr-2 nostalgic-icon">📸</span>Galeria ♡
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Coisas fofas, divertidas, gifs e por aí vai.</p>
                 </div>
             </a>
 
-            <a href="/recommendations" class="group">
+            <a href="/recommendations" class="group nostalgic-card">
                 <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#E6E6FA] hover:scale-105 transition-transform shadow-md">
                     <h2 class="font-cherry text-2xl text-[#FF1493] mb-2">
-                        <span class="mr-2">⭐</span>Meus favoritos ♡
+                        <span class="mr-2 nostalgic-icon">⭐</span>Meus favoritos ♡
                     </h2>
                     <p class="font-pixel text-[#8A4FFF]">Recomendações!</p>
                 </div>
             </a>
-
-
         </div>
 
         <div class="mt-12 text-center">
-            <div class="inline-block bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#DDA0DD] shadow-lg">
+            <div class="inline-block bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#DDA0DD] shadow-lg nostalgic-contact">
                 <h2 class="font-cherry text-2xl text-[#FF1493] mb-4">
                     Vamos conversar? 🌸 ♡
                 </h2>
@@ -72,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Cherry+Bomb+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Cherry+Bomb+One&family=MS+Gothic&display=swap');
 
     .font-cherry {
         font-family: 'Cherry Bomb One', cursive;
@@ -102,5 +101,62 @@ import Layout from '../layouts/Layout.astro';
     @keyframes sparkle {
         0%, 100% { opacity: 0; }
         50% { opacity: 1; }
+    }
+
+    :global(.nostalgic-mode) .nostalgic-header {
+        background: #f5f5f5;
+        border: 2px solid #999;
+        box-shadow: 3px 3px 0 #666;
+        border-radius: 0;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-divider {
+        display: block;
+        height: 10px;
+        background: url("data:image/gif;base64,R0lGODlhCgAKAIAAAAAAAP///yH5BAEAAAEALAAAAAAKAAoAAAIRjI+py+0Po5y02ouz3rz7VgAAOw==") repeat-x;
+        margin: 1rem 0;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-grid {
+        display: block;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-card {
+        margin-bottom: 1rem;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-card > div {
+        background: #f5f5f5;
+        border: 1px solid #999;
+        border-radius: 0;
+        box-shadow: 2px 2px 0 #666;
+        transform: none !important;
+        transition: none;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-icon {
+        filter: grayscale(100%);
+    }
+
+    :global(.nostalgic-mode) .font-cherry,
+    :global(.nostalgic-mode) .font-pixel {
+        font-family: 'MS Gothic', monospace;
+    }
+
+    :global(.nostalgic-mode) .animate-float {
+        animation: none;
+    }
+
+    :global(.nostalgic-mode) .sparkle::after {
+        content: "★";
+        color: #666;
+        animation: none;
+    }
+
+    :global(.nostalgic-mode) .nostalgic-contact {
+        background: #f5f5f5;
+        border: 1px solid #999;
+        border-radius: 0;
+        box-shadow: 2px 2px 0 #666;
     }
 </style>

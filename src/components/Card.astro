@@ -8,27 +8,20 @@ interface Props {
 const { href, title, body } = Astro.props;
 ---
 
-<li class="link-card">
+<li class="link-card nostalgic-card">
 	<a href={href}>
-		<h2 class="card-title">
+		<h2 class="card-title nostalgic-title">
 			{title}
 			<span>&rarr;</span>
 		</h2>
-		<p class="card-body">
+		<p class="card-body nostalgic-body">
 			{body}
 		</p>
 	</a>
 </li>
 
 <style>
-	:root {
-		--card-bg: rgba(255, 255, 255, 0.9);
-		--card-shadow: rgba(0, 0, 0, 0.1);
-		--card-hover-bg: rgba(255, 105, 180, 0.9);
-		--card-hover-shadow: rgba(255, 105, 180, 0.5);
-		--card-border: #ffb6c1;
-	}
-
+	/* Estilos base (modo normal) */
 	.link-card {
 		list-style: none;
 		display: flex;
@@ -68,17 +61,62 @@ const { href, title, body } = Astro.props;
 		line-height: 1.5;
 	}
 
-	.link-card:hover {
-		transform: translateY(-5px);
-		background-color: var(--card-hover-bg);
-		box-shadow: 0 6px 12px var(--card-hover-shadow);
+	/* Estilos para o modo retrô */
+	:global(.nostalgic-mode) .nostalgic-card {
+		background: #f5f5f5;
+		border: 1px solid #999;
+		border-radius: 0;
+		box-shadow: 2px 2px 0 #666;
+		padding: 0.75rem;
+		transition: none;
+		transform: none !important;
 	}
 
-	.link-card:hover .card-title {
-		color: white;
+	:global(.nostalgic-mode) .nostalgic-card > a {
+		text-decoration: none;
+		color: #0000EE;
 	}
 
-	.link-card:hover .card-body {
-		color: #ffe4e1;
+	:global(.nostalgic-mode) .nostalgic-card:hover {
+		background: #e5e5e5;
+		transform: none !important;
+		box-shadow: 2px 2px 0 #666;
+	}
+
+	:global(.nostalgic-mode) .nostalgic-title {
+		font-family: 'MS Gothic', monospace;
+		color: #0000EE;
+		text-decoration: underline;
+		font-size: 1.25rem;
+		font-weight: bold;
+		transition: none;
+	}
+
+	:global(.nostalgic-mode) .nostalgic-body {
+		font-family: 'MS Gothic', monospace;
+		color: #333;
+		font-size: 0.875rem;
+		line-height: 1.4;
+	}
+
+	:global(.nostalgic-mode) .nostalgic-card:hover .nostalgic-title {
+		color: #551A8B;
+	}
+
+	:global(.nostalgic-mode) .nostalgic-card:hover .nostalgic-body {
+		color: #333;
+	}
+
+	/* Remove todas as animações no modo retrô */
+	:global(.nostalgic-mode) .nostalgic-card,
+	:global(.nostalgic-mode) .nostalgic-title,
+	:global(.nostalgic-mode) .nostalgic-body {
+		transition: none !important;
+	}
+
+	/* Ajustes para a seta no modo retrô */
+	:global(.nostalgic-mode) .nostalgic-title span {
+		font-family: 'MS Gothic', monospace;
+		color: #666;
 	}
 </style>

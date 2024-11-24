@@ -10,6 +10,19 @@ interface Props {
 
 const { title, date, preview, image, slug, tags = [] } = Astro.props;
 
+// Função para calcular o brilho de uma cor
+function getBrightness(hexColor: string): number {
+  const hex = hexColor.replace('#', '');
+
+  // Converte hex para RGB
+  const r = parseInt(hex.substr(0, 2), 16);
+  const g = parseInt(hex.substr(2, 2), 16);
+  const b = parseInt(hex.substr(4, 2), 16);
+
+  // fórmula YIQ
+  return (r * 299 + g * 587 + b * 114) / 1000;
+}
+
 // Mapa de cores para as tags
 const tagColorMap = {
   // Emoções Básicas
@@ -82,55 +95,40 @@ const tagColorMap = {
 <a href={`/blog/${slug}`} class="block group">
   <article class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FFC0CB]
      hover:scale-[1.02] hover:shadow-xl transition-all duration-300
-     hover:border-[#FF69B4]">
+     hover:border-[#FF69B4] nostalgic-blog-card">
     <div class="flex items-start gap-6">
       <div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden
-         border-2 border-[#FFB6C1] shadow-sm
-         group-hover:shadow-md transition-shadow">
+         border-2 border-[#FFB6C1] shadow-sm nostalgic-image-container">
         <img
           src={image}
           alt={title}
           loading="lazy"
-          class="w-full h-full object-cover object-center
-             transform group-hover:scale-110 transition-transform duration-500"
+          class="w-full h-full object-cover object-center nostalgic-image"
         />
       </div>
 
       <div class="flex-1 space-y-3">
         <div class="relative">
-          <h2 class="font-[Dela+Gothic+One] text-2xl text-[#FF1493]
-             group-hover:text-[#FF69B4] transition-colors">
+          <h2 class="font-[Dela+Gothic+One] text-2xl text-[#FF1493] nostalgic-title">
             {title}
             <span class="absolute -top-1 -right-2 text-[#FFD700] opacity-0
-               group-hover:opacity-100 transition-opacity">🍡</span>
+               group-hover:opacity-100 transition-opacity nostalgic-emoji">🍡</span>
           </h2>
         </div>
 
-        <p class="font-[Mochiy+Pop+One] text-sm text-[#8A4FFF] flex items-center gap-2">
-          <span class="text-xs">🌸</span> {date}
+        <p class="font-[Mochiy+Pop+One] text-sm text-[#8A4FFF] flex items-center gap-2 nostalgic-date">
+          <span class="text-xs nostalgic-emoji">🌸</span> {date}
         </p>
 
         {tags && tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
             {tags.map(tag => {
-
-              const getBrightness = (hexColor) => {
-                const rgb = parseInt(hexColor.slice(1), 16);
-                const r = (rgb >> 16) & 0xff;
-                const g = (rgb >> 8) & 0xff;
-                const b = (rgb & 0xff);
-                return (r * 299 + g * 587 + b * 114) / 1000;
-              };
-
               const bgColor = tagColorMap[tag] || '#FFD1DC';
-
               const textColor = getBrightness(bgColor) > 155 ? '#333333' : '#FFFFFF';
 
               return (
-                <span
-                  class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One]
-                  border-2 border-[#FFD1DC] shadow-sm transform hover:scale-105
-                  transition-all duration-200"
+                <span class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One]
+                  border-2 border-[#FFD1DC] shadow-sm nostalgic-tag"
                   style={`background-color: ${bgColor}; color: ${textColor}`}
                 >
                   ✧ {tag}
@@ -140,15 +138,16 @@ const tagColorMap = {
           </div>
         )}
 
-        <p class="font-[Mochiy+Pop+One] text-[#333] leading-relaxed">{preview}</p>
+        <p class="font-[Mochiy+Pop+One] text-[#333] leading-relaxed nostalgic-preview">
+          {preview}
+        </p>
 
         <div class="pt-2">
           <span class="inline-flex items-center px-4 py-2
              bg-[#FFD1DC] text-[#FF1493] font-[Mochiy+Pop+One] rounded-lg
-             group-hover:bg-[#FFC0CB] transition-colors
-             shadow-sm hover:shadow-md">
+             nostalgic-read-more">
             Leia mais
-            <span class="ml-1 group-hover:ml-2 transition-all duration-300">♡</span>
+            <span class="ml-1">♡</span>
           </span>
         </div>
       </div>
@@ -157,25 +156,95 @@ const tagColorMap = {
 </a>
 
 <style>
-  article {
-    position: relative;
-    overflow: hidden;
-  }
-
+  /* Remove o efeito de gradiente no modo normal */
   article::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,192,203,0.2) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
+    display: none;
   }
 
-  article:hover::after {
-    opacity: 1;
+  /* Estilos para o modo retrô */
+  :global(.nostalgic-mode) .nostalgic-blog-card {
+    background: #f5f5f5;
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: 2px 2px 0 #666;
+    transition: none;
+    padding: 1rem;
+    transform: none !important;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-blog-card:hover {
+    background: #f5f5f5;
+    border: 1px solid #666;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-image-container {
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-image {
+    filter: grayscale(20%);
+    transform: none !important;
+    transition: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-title {
+    font-family: 'MS Gothic', monospace;
+    color: #333;
+    font-size: 1.5rem;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-date {
+    font-family: 'MS Gothic', monospace;
+    color: #666;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-preview {
+    font-family: 'MS Gothic', monospace;
+    color: #333;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-tag {
+    background: #e5e5e5 !important;
+    border: 1px solid #999;
+    border-radius: 0;
+    color: #333 !important;
+    font-family: 'MS Gothic', monospace;
+    padding: 2px 6px;
+    transform: none !important;
+    transition: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-read-more {
+    background: #e5e5e5;
+    border: 1px solid #999;
+    border-radius: 0;
+    color: #333;
+    font-family: 'MS Gothic', monospace;
+    box-shadow: 2px 2px 0 #666;
+    transition: none;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-read-more:hover {
+    background: #d5d5d5;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-emoji {
+    filter: grayscale(100%);
+  }
+
+  /* animações no modo retrô */
+  :global(.nostalgic-mode) .transition-all,
+  :global(.nostalgic-mode) .transition-colors,
+  :global(.nostalgic-mode) .transition-opacity,
+  :global(.nostalgic-mode) .transition-transform {
+    transition: none !important;
+  }
+
+  :global(.nostalgic-mode) .hover\:scale-105:hover,
+  :global(.nostalgic-mode) .hover\:scale-110:hover,
+  :global(.nostalgic-mode) .group-hover\:scale-110 {
+    transform: none !important;
   }
 </style>

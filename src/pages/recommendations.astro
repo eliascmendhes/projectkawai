@@ -4,102 +4,102 @@ import PageTitle from '../components/PageTitle.astro';
 
 const recommendations = {
   music: [
-    { 
-      title: "Minecraft", 
-      artist: "C418", 
-      rating: 5, 
+    {
+      title: "Minecraft",
+      artist: "C418",
+      rating: 5,
       type: "Ambient, Electronic, IDM",
       description: "Música icônica que define a atmosfera do jogo Minecraft",
       image: "/images/musica/minecraft.jpg"
     },
-    { 
-      title: "Is This It", 
-      artist: "The Strokes", 
-      rating: 5, 
+    {
+      title: "Is This It",
+      artist: "The Strokes",
+      rating: 5,
       type: "Rock, Indie",
       description: "Álbum que definiu o indie rock dos anos 2000",
       image: "/images/musica/isthisit.jpg"
     },
-    { 
-      title: "Meat Is Murder", 
-      artist: "The Smiths", 
-      rating: 5, 
+    {
+      title: "Meat Is Murder",
+      artist: "The Smiths",
+      rating: 5,
       type: "Rock, Indie",
       description: "Álbum clássico que captura a essência do indie alternativo",
       image: "/images/musica/meatismurder.jpg"
     },
-    { 
-      title: "The Suburbs", 
-      artist: "Arcade Fire", 
-      rating: 5, 
+    {
+      title: "The Suburbs",
+      artist: "Arcade Fire",
+      rating: 5,
       type: "Rock, Indie",
       description: "Explorando vida suburbana e relembrando dos  velhos tempos.",
       image: "/images/musica/thesuburbs.jpg"
     }
   ],
   movies: [
-    { 
-      title: "Aftersun", 
-      year: 2022, 
-      rating: 5, 
+    {
+      title: "Aftersun",
+      year: 2022,
+      rating: 5,
       genre: "Drama",
       description: "Uma reflexão emocionante sobre memória e relacionamento familiar",
       image: "/images/films/aftersun.jpg",
     },
-    { 
-      title: "Sound of Metal", 
-      year: 2019, 
-      rating: 5, 
+    {
+      title: "Sound of Metal",
+      year: 2019,
+      rating: 5,
       genre: "Drama",
       description: "História poderosa sobre um baterista que perde a audição",
       image: "/images/films/soundofmetal.jpg",
     },
-    { 
-      title: "Manchester by the Sea", 
-      year: 2016, 
-      rating: 5, 
+    {
+      title: "Manchester by the Sea",
+      year: 2016,
+      rating: 5,
       genre: "Drama",
       description: "Drama intenso sobre perda, culpa e redenção",
       image: "/images/films/manchesterbythesea.jpg"
     },
-    { 
-      title: "Se7en", 
-      year: 1995, 
-      rating: 5, 
+    {
+      title: "Se7en",
+      year: 1995,
+      rating: 5,
       genre: "Crime, Mistério, Thriller",
       description: "Thriller psicológico noir.",
       image: "/images/films/seven.jpg"
     }
   ],
   games: [
-    { 
-      title: "Minecraft", 
-      platform: "PC, Xbox", 
-      rating: 5, 
+    {
+      title: "Minecraft",
+      platform: "PC, Xbox",
+      rating: 5,
       type: "Sobrevivência e Construção",
       description: "Jogo que revolucionou os jogos de mundo aberto e criatividade",
       image: "/images/recomendacoes/minecraft.jpg"
     },
-    { 
-      title: "Red Dead Redemption 2", 
-      platform: "PS4, Xbox, PC", 
-      rating: 5, 
+    {
+      title: "Red Dead Redemption 2",
+      platform: "PS4, Xbox, PC",
+      rating: 5,
       type: "Mundo Aberto, Narrativo",
       description: "Épico western com narrativa profunda e mundo imersivo",
       image: "/images/recomendacoes/rdr2.jpg"
     },
-    { 
-      title: "The Sims 2", 
-      platform: "PC", 
-      rating: 5, 
+    {
+      title: "The Sims 2",
+      platform: "PC",
+      rating: 5,
       type: "Simulação de Vida",
       description: "Clássico da simulação que definiu uma geração de jogadores",
       image: "/images/recomendacoes/ts2.jpg"
     },
-    { 
-      title: "The Last of Us (Part 1 & 2)", 
-      platform: "PS4, PS5", 
-      rating: 5, 
+    {
+      title: "The Last of Us (Part 1 & 2)",
+      platform: "PS4, PS5",
+      rating: 5,
       type: "Ação-Aventura, Sobrevivência",
       description: "Série que redefiniu narrativas em jogos de sobrevivência",
       image: "/images/recomendacoes/tlou.jpg"
@@ -114,130 +114,183 @@ function renderStars(rating: number) {
 ---
 
 <Layout title="Recomendações">
-  <div class="max-w-5xl mx-auto space-y-12">
+  <div class="max-w-5xl mx-auto px-4">
     <PageTitle title="Meus favoritos ♡" />
-    
-    <section class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-pink-200 shadow-lg">
-      <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center flex items-center justify-center gap-3">
-        <span>♫ Música ♫</span>
-      </h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        {recommendations.music.map(item => (
-          <div class="bg-pink-50/60 p-6 rounded-2xl flex gap-6 hover:shadow-xl transition-all duration-300 group">
-            <div class="w-32 h-32 flex-shrink-0">
-              <img 
-                src={item.image} 
-                alt={`Capa de ${item.title}`}
-                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
-                loading="lazy"
-              />
-            </div>
-            <div class="flex flex-col justify-between flex-grow">
-              <div>
-                <h3 class="font-cherry text-2xl text-pink-500 mb-2">{item.title}</h3>
-                <p class="font-pixel text-sm text-gray-600 mb-1">Artista: {item.artist}</p>
-                <p class="font-pixel text-sm text-gray-600 mb-2">Gênero: {item.type}</p>
-                <p class="text-sm text-gray-700 mb-3">{item.description}</p>
-              </div>
-              <div class="flex justify-between items-center">
-                <p class="text-pink-400 text-xl">{renderStars(item.rating)}</p>
-                <a 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="text-green-500 hover:text-green-600 transition-colors"
-                >
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
 
-    <section class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-blue-200 shadow-lg">
-      <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center flex items-center justify-center gap-3">
-        <span>🎬 Filmes 🎬</span>
-      </h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        {recommendations.movies.map(item => (
-          <div class="bg-blue-50/60 p-6 rounded-2xl flex gap-6 hover:shadow-xl transition-all duration-300 group">
-            <div class="w-32 h-48 flex-shrink-0">
-              <img 
-                src={item.image} 
-                alt={`Poster de ${item.title}`}
-                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
-                loading="lazy"
-              />
-            </div>
-            <div class="flex flex-col justify-between flex-grow">
-              <div>
-                <h3 class="font-cherry text-2xl text-pink-500 mb-2">{item.title}</h3>
-                <p class="font-pixel text-sm text-gray-600 mb-1">Ano: {item.year}</p>
-                <p class="font-pixel text-sm text-gray-600 mb-2">Gênero: {item.genre}</p>
-                <p class="text-sm text-gray-700 mb-3">{item.description}</p>
-              </div>
-              <div class="flex justify-between items-center">
-                <p class="text-pink-400 text-xl">{renderStars(item.rating)}</p>
-                <a 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="text-yellow-600 hover:text-yellow-700 transition-colors"
-                >
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+    <!-- Navegação -->
+    <div class="flex justify-center gap-4 mb-6 nostalgic-nav">
+      <button class="category-btn active px-3 py-1.5 rounded-full text-sm" data-category="music">
+        ♫ Música
+      </button>
+      <button class="category-btn px-3 py-1.5 rounded-full text-sm" data-category="movies">
+        🎬 Filmes
+      </button>
+      <button class="category-btn px-3 py-1.5 rounded-full text-sm" data-category="games">
+        🎮 Jogos
+      </button>
+    </div>
 
-    
-    <section class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-green-200 shadow-lg">
-      <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center flex items-center justify-center gap-3">
-        <span>🎮 Jogos 🎮</span>
-      </h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        {recommendations.games.map(item => (
-          <div class="bg-green-50/60 p-6 rounded-2xl flex gap-6 hover:shadow-xl transition-all duration-300 group">
-            <div class="w-32 h-32 flex-shrink-0">
-              <img 
-                src={item.image} 
-                alt={`Capa de ${item.title}`}
-                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
-                loading="lazy"
-              />
-            </div>
-            <div class="flex flex-col justify-between flex-grow">
-              <div>
-                <h3 class="font-cherry text-2xl text-pink-500 mb-2">{item.title}</h3>
-                <p class="font-pixel text-sm text-gray-600 mb-1">Plataforma: {item.platform}</p>
-                <p class="font-pixel text-sm text-gray-600 mb-2">Tipo: {item.type}</p>
-                <p class="text-sm text-gray-700 mb-3">{item.description}</p>
+    <!-- Container das recomendações -->
+    <div class="recommendations-container">
+      <!-- Seção Música -->
+      <section id="music" class="recommendation-section active">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+          {recommendations.music.map(item => (
+            <div class="recommendation-card bg-white/90 rounded-lg overflow-hidden">
+              <div class="card-image relative w-full pt-[100%]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="absolute top-0 left-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
-              <div class="flex justify-between items-center">
-                <p class="text-pink-400 text-xl">{renderStars(item.rating)}</p>
-                <a 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="text-purple-500 hover:text-purple-600 transition-colors"
-                >
-                </a>
+              <div class="card-content p-2">
+                <h3 class="font-[Mochiy+Pop+One] text-xs text-pink-600 truncate">{item.title}</h3>
+                <p class="artist text-xs text-gray-600 truncate">{item.artist}</p>
+                <div class="rating text-pink-400 text-xs mt-1">{renderStars(item.rating)}</div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+
+      <!-- Seção Filmes -->
+      <section id="movies" class="recommendation-section">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+          {recommendations.movies.map(item => (
+            <div class="recommendation-card bg-white/90 rounded-lg overflow-hidden">
+              <div class="card-image relative w-full pt-[100%]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="absolute top-0 left-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content p-2">
+                <h3 class="font-[Mochiy+Pop+One] text-xs text-pink-600 truncate">{item.title}</h3>
+                <p class="artist text-xs text-gray-600 truncate">{item.year}</p>
+                <div class="rating text-pink-400 text-xs mt-1">{renderStars(item.rating)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Seção Jogos -->
+      <section id="games" class="recommendation-section">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+          {recommendations.games.map(item => (
+            <div class="recommendation-card bg-white/90 rounded-lg overflow-hidden">
+              <div class="card-image relative w-full pt-[100%]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="absolute top-0 left-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content p-2">
+                <h3 class="font-[Mochiy+Pop+One] text-xs text-pink-600 truncate">{item.title}</h3>
+                <p class="artist text-xs text-gray-600 truncate">{item.platform}</p>
+                <div class="rating text-pink-400 text-xs mt-1">{renderStars(item.rating)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   </div>
 </Layout>
 
 <style>
- 
-  body {
-    background-image: 
-      radial-gradient(rgba(255,182,193,0.1) 8%, transparent 8%),
-      radial-gradient(rgba(255,182,193,0.1) 8%, transparent 8%);
-    background-position: 0 0, 25px 25px;
-    background-size: 50px 50px;
+  /* Estilos Kawaii */
+  .category-btn {
+    background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+    color: white;
+    box-shadow: 0 1px 4px rgba(255, 105, 180, 0.3);
+  }
+
+  .category-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .category-btn.active {
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+  }
+
+  .recommendation-card {
+    box-shadow: 0 2px 4px rgba(255, 182, 193, 0.2);
+  }
+
+  /* Estilos Retrô */
+  :global(.nostalgic-mode) .category-btn {
+    background: #d4d0c8;
+    border: 1px outset #fff;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: 'MS Gothic', monospace;
+    color: #000;
+    padding: 1px 4px;
+  }
+
+  :global(.nostalgic-mode) .recommendation-card {
+    background: #fff;
+    border: 1px solid #999;
+    border-radius: 0;
+    box-shadow: 1px 1px 0 #666;
+  }
+
+  :global(.nostalgic-mode) .card-content {
+    font-family: 'MS Gothic', monospace;
+  }
+
+  :global(.nostalgic-mode) .card-content h3 {
+    color: #0000EE;
+    text-decoration: underline;
+  }
+
+  /* Controle de visibilidade */
+  .recommendation-section {
+    display: none;
+  }
+
+  .recommendation-section.active {
+    display: block;
+  }
+
+  .recommendation-card:hover {
+    cursor: pointer;
+  }
+
+  :global(.nostalgic-mode) .recommendation-card:hover {
+    background: #f0f0f0;
   }
 </style>
+
+<script>
+  // Aguarda o DOM estar completamente carregado
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const sections = document.querySelectorAll('.recommendation-section');
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+
+        // Remove active de todos os botões e adiciona ao clicado
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Esconde todas as seções e mostra a selecionada
+        sections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === category) {
+            section.classList.add('active');
+          }
+        });
+      });
+    });
+  });
+</script>

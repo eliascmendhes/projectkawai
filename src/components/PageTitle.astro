@@ -6,9 +6,9 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<h1 class="font-[Dela+Gothic+One] text-4xl md:text-5xl text-[#FF1493] text-center mb-8 animate-float relative">
+<h1 class="font-[Dela+Gothic+One] text-4xl md:text-5xl text-[#FF1493] text-center mb-8 animate-float relative nostalgic-title">
   {title}
-  <span class="absolute top-0 right-0 text-[#FFD700] opacity-70 sparkle">✧</span>
+  <span class="absolute top-0 right-0 text-[#FFD700] opacity-70 sparkle nostalgic-sparkle">✧</span>
 </h1>
 
 <style>
@@ -28,5 +28,34 @@ const { title } = Astro.props;
   @keyframes sparkle {
     0%, 100% { opacity: 0; }
     50% { opacity: 1; }
+  }
+
+  /* Estilos para o modo retrô */
+  :global(.nostalgic-mode) .nostalgic-title {
+    font-family: 'MS Gothic', monospace;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    animation: none;
+    border-bottom: 2px solid #999;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0 #ccc;
+  }
+
+  :global(.nostalgic-mode) .nostalgic-sparkle {
+    filter: grayscale(100%);
+    animation: none;
+    opacity: 1;
+  }
+
+  /* Remove animações no modo retrô */
+  :global(.nostalgic-mode) .animate-float {
+    animation: none;
+  }
+
+  :global(.nostalgic-mode) .sparkle {
+    animation: none;
   }
 </style>
