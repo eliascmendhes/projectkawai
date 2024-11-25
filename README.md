@@ -1,8 +1,8 @@
-# 🌸️ Blog Retrô
+# 💾 Blog Retrô
 
 Um blog pessoal desenvolvido com Astro, inspirado na interface do Windows XP, focado em compartilhar pensamentos, recomendações e momentos especiais.
 
-## ✨ Características
+## 🖥️ Características
 
 - Design retrô inspirado no Windows XP
 - Player de música estilo Winamp
@@ -11,27 +11,27 @@ Um blog pessoal desenvolvido com Astro, inspirado na interface do Windows XP, fo
 - Seção de recomendações
 - Página de contato
 
-## 🛠️ Tecnologias
+## 🛠 Tecnologias
 
 - Astro
 - TailwindCSS
 - TypeScript
 - Markdown
 
-## 🌈️ Seções
+## 📂 Seções
 
-- 📝 Blog
-- 📸 Galeria
-- ⭐ Recomendações
+- 📰 Blog
+- 🖼️ Galeria
+- 📌 Recomendações
 - 👤 Sobre
-- 📬 Contato
+- ✉️ Contato
 - 🔗 Links
 
 ## 📝 Nota sobre o Design
 
 O design kawaii original foi descontinuado em favor de uma interface retrô inspirada no Windows XP. Esta mudança visa criar uma experiência nostálgica e única, mantendo a funcionalidade e usabilidade do site.
 
-## 🚀 Em Desenvolvimento
+## ⚙️ Em Desenvolvimento
 
 Este projeto está em constante evolução.
 
