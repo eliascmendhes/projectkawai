@@ -83,7 +83,7 @@ const menuItems = [
         background-color: var(--bg-color);
         color: var(--text-color);
         font-family: 'MS Gothic', monospace;
-        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAAVElEQVRoQ+3SMQoAIAzF0Nz/0K4OQhyKhXd4kBR+FskYERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERkYNVuqzsBJ5eLbCrAAAAAElFTkSuQmCC");
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAAVElEQVRoQ+3SMQoAIAzF0Nz/0K4OQhyKhXd4kBR+FskYERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERkYNVuqzsBJ5eLbCrAAAAAElFTkSuQmCC");
       }
 
       .nostalgic-mode nav {
@@ -276,6 +276,253 @@ const menuItems = [
 
       .nostalgic-mode .retro-title {
         display: inline;
+      }
+
+      body:not(.nostalgic-mode) nav a {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      body:not(.nostalgic-mode) nav a:hover {
+        color: #FF69B4;
+        transform: scale(1.05);
+      }
+
+      body:not(.nostalgic-mode) nav a::after {
+        content: none;
+      }
+
+      body:not(.nostalgic-mode) {
+        background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e3f2fd 100%);
+        font-family: 'Bubblegum Sans', cursive;
+      }
+
+      body:not(.nostalgic-mode) nav {
+        background: rgba(255, 255, 255, 0.85);
+        border-bottom: 3px solid #ffb7dc;
+        box-shadow: 0 4px 15px rgba(255, 183, 220, 0.2);
+      }
+
+      body:not(.nostalgic-mode) nav a {
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+
+      body:not(.nostalgic-mode) nav a:hover {
+        background: #fce4ec;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 183, 220, 0.3);
+      }
+
+      body:not(.nostalgic-mode) .kawaii-title {
+        background: linear-gradient(45deg, #ff6b9c, #da77f2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+
+      body:not(.nostalgic-mode) button {
+        background: linear-gradient(45deg, #ffb7dc, #fce4ec);
+        border: none;
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+        color: #d81b60;
+        font-family: 'Bubblegum Sans', cursive;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 183, 220, 0.2);
+      }
+
+      body:not(.nostalgic-mode) button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 183, 220, 0.4);
+        background: linear-gradient(45deg, #ff9ec7, #f8bbd0);
+      }
+
+      body:not(.nostalgic-mode)::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      body:not(.nostalgic-mode)::-webkit-scrollbar-track {
+        background: #fce4ec;
+        border-radius: 10px;
+      }
+
+      body:not(.nostalgic-mode)::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #ffb7dc, #da77f2);
+        border-radius: 10px;
+        border: 2px solid #fce4ec;
+      }
+
+      body:not(.nostalgic-mode) footer {
+        background: rgba(255, 255, 255, 0.85);
+        border-top: 3px solid #ffb7dc;
+        box-shadow: 0 -4px 15px rgba(255, 183, 220, 0.2);
+      }
+
+      /* Ajuste global das fontes e tamanhos */
+      body:not(.nostalgic-mode) {
+        /* Títulos principais */
+        .main-title, h1 {
+          font-family: 'Dela Gothic One', cursive;
+          font-size: clamp(1.5rem, 4vw, 2.5rem); /* Tamanho responsivo */
+        }
+
+        /* Subtítulos e títulos de seção */
+        h2, h3, h4 {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: clamp(1.2rem, 3vw, 1.8rem);
+        }
+
+        /* Navegação */
+        nav a {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: clamp(0.875rem, 2vw, 1rem);
+          padding: 0.5rem 0.75rem;
+          white-space: nowrap;
+        }
+
+        /* Texto do corpo */
+        p, span, div {
+          font-family: 'Quicksand', sans-serif;
+          font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+
+        /* Botões */
+        button, .button, a.nostalgic-button {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+
+        /* Cards */
+        .card-title {
+          font-family: 'Dela Gothic One', cursive;
+          font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        }
+
+        .card-body {
+          font-family: 'Quicksand', sans-serif;
+          font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+      }
+
+      /* Ajustes específicos para navbar */
+      .navbar {
+        @apply flex items-center justify-between px-4 py-2;
+      }
+
+      .nav-links {
+        @apply flex gap-2 md:gap-4;
+
+        a {
+          @apply px-2 md:px-3 py-1 rounded-lg transition-colors;
+        }
+      }
+
+      /* Ajustes para o blog no modo retrô */
+      :global(.nostalgic-mode) {
+        .blog-container {
+          width: 100%;
+          max-width: 1200px;
+          padding: 1rem;
+        }
+
+        .blog-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 1rem;
+        }
+
+        .blog-card {
+          width: 100%;
+          margin: 0;
+        }
+      }
+
+      :global(.nostalgic-mode) {
+        * {
+          font-family: 'MS Gothic', monospace;
+        }
+
+        .nostalgic-title {
+          font-size: 1rem;
+        }
+
+        .nostalgic-body {
+          font-size: 0.875rem;
+        }
+
+      }
+
+      /* Media queries para responsividade */
+      @media (max-width: 768px) {
+        .nav-links {
+          @apply flex-wrap justify-center;
+        }
+
+        body:not(.nostalgic-mode) {
+          .nav-links a {
+            font-size: 0.875rem;
+            padding: 0.375rem 0.625rem;
+          }
+        }
+      }
+
+      @media (max-width: 480px) {
+        body:not(.nostalgic-mode) {
+          .main-title {
+            font-size: 1.5rem;
+          }
+
+          .card-title {
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      /* Ajustes globais para tamanhos específicos */
+      body:not(.nostalgic-mode) {
+        /* Posts do blog */
+        .blog-post-title {
+          font-family: 'Dela Gothic One', cursive;
+          font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+
+        /* Player de música */
+        .nostalgic-title#musicTitle {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: 0.875rem;
+        }
+
+        #musicArtist {
+          font-size: 0.75rem;
+        }
+
+        /* Tags no menu */
+        .tag-filter,
+        .filter-all {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: 0.75rem;
+        }
+
+        /* Links de redes sociais */
+        .nostalgic-link-title {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: 0.875rem;
+        }
+
+        /* Títulos de imagens na galeria */
+        .nostalgic-image-card .nostalgic-title {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: 0.875rem;
+        }
+
+        /* Recomendações */
+        .recommendation-title {
+          font-family: 'Mochiy Pop One', sans-serif;
+          font-size: 0.875rem;
+        }
       }
     </style>
   </head>

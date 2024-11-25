@@ -147,7 +147,7 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
     color: #ffffff;
   }
 
-  /* Scrollbar retrô */
+  /* Scrollbar retrô - PRECISO DE MAIS TEMPO*/
   :global(.nostalgic-mode) #tag-list {
     scrollbar-width: 16px;
     scrollbar-color: #c0c0c0 #dfdfdf;
@@ -186,7 +186,6 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
     background: #c0c0c0;
   }
 
-  /*  separadores visuais entre os posts */
   :global(.nostalgic-mode) .post-card:not(:last-child)::after {
     content: "━━━━━━━━━━━━━━━━━━━━━━";
     display: block;
@@ -205,12 +204,35 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
     transform: none !important;
   }
 
-  /*  decoração retrô ao título da página */
+  /* Adiciona decoração retrô ao título da página */
   :global(.nostalgic-mode) .page-title::before,
   :global(.nostalgic-mode) .page-title::after {
     content: "◆";
     color: #000080;
     margin: 0 8px;
+  }
+
+  /* Ajustes para o modo kawaii */
+  body:not(.nostalgic-mode) {
+    /* Botão de filtro e menu de tags */
+    #dropdown-button,
+    .nostalgic-button,
+    .nostalgic-input,
+    .nostalgic-tag-button {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+    }
+
+    /* Container das tags */
+    #tag-list button {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.4rem;
+    }
+
+    /* Input de busca */
+    .nostalgic-input {
+      padding: 0.25rem 0.5rem;
+    }
   }
 </style>
 

@@ -114,10 +114,12 @@ function renderStars(rating: number) {
 ---
 
 <Layout title="Recomendações">
-  <div class="max-w-5xl mx-auto px-4">
+  <div class="max-w-5xl mx-auto px-4 overflow-hidden">
     <PageTitle title="Meus favoritos">
-      <span class="kawaii-content">Meus favoritos ♡</span>
-      <span class="retro-content">◆ Meus favoritos ◆</span>
+      <div class="text-center">
+        <span class="kawaii-content block">Meus favoritos ♡</span>
+        <span class="retro-content block">◆ Meus favoritos ◆</span>
+      </div>
     </PageTitle>
 
     <!-- Navegação -->
@@ -183,14 +185,14 @@ function renderStars(rating: number) {
 </Layout>
 
 <style>
-  /* Estilos Kawaii atualizados */
+  /* Estilos Kawaii atualizados - Estilo Japonês */
   .category-btn {
     background: rgba(255, 255, 255, 0.9);
     border: 3px solid #FFC0CB;
-    border-radius: 1.5rem;
+    border-radius: 25px;
     padding: 0.5rem 1.2rem;
     color: #FF1493;
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Mochiy Pop One', sans-serif;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -213,22 +215,63 @@ function renderStars(rating: number) {
     font-size: 1rem;
   }
 
+  /* Efeito mochi apenas em hover */
   .category-btn:hover {
     background: #FFE4E1;
     border-color: #FF69B4;
-    transform: scale(1.05);
+    transform: scale(1.03) translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
   }
 
   .category-btn:hover .kawaii-icon {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.1) rotate(5deg);
   }
 
+  /* Estilo ativo */
   .category-btn.active {
     background: #FF69B4;
     color: white;
     border-color: #FF1493;
     box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+  }
+
+  /* Cards com estilo kawaii japonês */
+  .recommendation-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid #FFB6C1;
+    border-radius: 15px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  /* Animações mais sutis nos cards */
+  .recommendation-card:hover {
+    transform: translateY(-2px);
+    border-color: #FF69B4;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+  }
+
+  /* Decoração com sakura apenas em hover */
+  .recommendation-card:hover::before {
+    content: '🌸';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    animation: appear-rotate 0.3s ease-in-out forwards;
+  }
+
+  @keyframes appear-rotate {
+    from {
+      opacity: 0;
+      transform: rotate(-15deg) scale(0.8);
+    }
+    to {
+      opacity: 0.7;
+      transform: rotate(0) scale(1);
+    }
   }
 
   /* Controle de visibilidade */
@@ -404,6 +447,44 @@ function renderStars(rating: number) {
 
   .recommendation-section.active {
     display: block;
+  }
+
+  /* Garantir que o título fique centralizado em ambos os modos */
+  :global(.nostalgic-mode) h1,
+  :global(.nostalgic-mode) .nostalgic-title {
+    text-align: center;
+  }
+
+  /* Ajuste para o modo kawaii */
+  body:not(.nostalgic-mode) h1 {
+    text-align: center;
+  }
+
+  /* Ajuste específico para centralização do título */
+  .page-title,
+  .page-title h1 {
+    text-align: center !important;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  /* Remover margens/paddings que causam scroll */
+  .kawaii-content,
+  .retro-content {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ajuste para evitar scroll horizontal */
+  .max-w-5xl {
+    max-width: 100%;
+  }
+
+  /* Centralizar conteúdo no modo Kawaii */
+  .kawaii-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
 

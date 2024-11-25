@@ -273,7 +273,7 @@ const tagColorMap = {
     display: none;
   }
 
- 
+
   /* Remove todas as animações */
   :global(.nostalgic-mode) .transition-all,
   :global(.nostalgic-mode) .transition-colors,
@@ -287,5 +287,35 @@ const tagColorMap = {
   :global(.nostalgic-mode) .hover\:shadow-xl:hover {
     transform: none !important;
     box-shadow: none !important;
+  }
+
+  /* Ajustes para o modo kawaii */
+  body:not(.nostalgic-mode) {
+    .nostalgic-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .nostalgic-date {
+      font-size: 0.7rem;
+    }
+
+    .nostalgic-tag {
+      font-size: 0.6rem;
+      padding: 0.15rem 0.4rem;
+    }
+
+    .nostalgic-preview {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .nostalgic-read-more {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+    }
   }
 </style>

@@ -15,7 +15,7 @@ const currentImages = images.slice(startIndex, endIndex);
 <Layout title="Galeria">
   <div class="max-w-5xl mx-auto p-4">
     <PageTitle title="Galeria">
-      <span class="kawaii-content">Minha galeria ♡</span>
+      <span class="kawaii-content">Minha galeria ✧</span>
       <span class="retro-content">◆ Minha galeria ◆</span>
     </PageTitle>
 
@@ -29,9 +29,9 @@ const currentImages = images.slice(startIndex, endIndex);
       {currentPage > 1 && (
         <a
           href={`?page=${currentPage - 1}`}
-          class="nostalgic-nav-button"
+          class="nostalgic-nav-button pagination-link"
         >
-          <span class="kawaii-content">🌸 Anterior</span>
+          <span class="kawaii-content">← Anterior</span>
           <span class="retro-content">[←] Anterior</span>
         </a>
       )}
@@ -40,7 +40,7 @@ const currentImages = images.slice(startIndex, endIndex);
         {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNumber => (
           <a
             href={`?page=${pageNumber}`}
-            class={`nostalgic-page-button ${pageNumber === currentPage ? 'active' : ''}`}
+            class={`nostalgic-page-button pagination-number ${pageNumber === currentPage ? 'active' : ''}`}
           >
             {pageNumber}
           </a>
@@ -50,9 +50,9 @@ const currentImages = images.slice(startIndex, endIndex);
       {currentPage < totalPages && (
         <a
           href={`?page=${currentPage + 1}`}
-          class="nostalgic-nav-button"
+          class="nostalgic-nav-button pagination-link"
         >
-          <span class="kawaii-content">Próximo 🌸</span>
+          <span class="kawaii-content">Próximo →</span>
           <span class="retro-content">Próximo [→]</span>
         </a>
       )}
@@ -138,6 +138,85 @@ const currentImages = images.slice(startIndex, endIndex);
     transform: none !important;
   }
 
+  body:not(.nostalgic-mode) .nostalgic-gallery {
+    gap: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  }
+
+  body:not(.nostalgic-mode) .pagination-link {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    color: #805ad5;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  body:not(.nostalgic-mode) .pagination-link:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  }
+
+  body:not(.nostalgic-mode) .pagination-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    color: #805ad5;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  body:not(.nostalgic-mode) .pagination-number:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  }
+
+  body:not(.nostalgic-mode) .pagination-number.active {
+    background: linear-gradient(135deg, #9f7aea, #667eea);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  }
+
+  /* Scrollbar    PRECISO DE MAIS TEMPO*/
+  body:not(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  body:not(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  body:not(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #9f7aea, #667eea);
+    border-radius: 4px;
+  }
+
+  /* Animações suaves */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  body:not(.nostalgic-mode) .nostalgic-gallery > * {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
   /* Classes para mostrar/esconder conteúdo */
   .kawaii-content {
     display: block;
@@ -153,28 +232,5 @@ const currentImages = images.slice(startIndex, endIndex);
 
   :global(.nostalgic-mode) .retro-content {
     display: block !important;
-  }
-
-  /* Scrollbar retrô */
-  :global(.nostalgic-mode) .nostalgic-gallery {
-    scrollbar-width: 16px;
-    scrollbar-color: #c0c0c0 #dfdfdf;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-track {
-    background: #dfdfdf;
-    border: 1px solid #808080;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-thumb {
-    background: #c0c0c0;
-    border: 1px solid;
-    border-color: #dfdfdf #808080 #808080 #dfdfdf;
-    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #404040;
   }
 </style>

@@ -53,23 +53,28 @@ const links = [
               rel="noopener noreferrer"
               class="group block nostalgic-link"
             >
-              <div class="bg-pink-50/60 p-6 rounded-2xl flex items-center gap-6 hover:shadow-xl
-                transition-all duration-300 transform hover:-translate-y-2 nostalgic-link-card">
-                <span class="text-4xl opacity-80 group-hover:opacity-100 transition-opacity">
+              <div class="bg-pink-50/60 p-6 rounded-3xl flex items-center gap-6
+                hover:shadow-[0_0_20px_rgba(255,182,193,0.5)]
+                transition-all duration-300 transform hover:-translate-y-2
+                hover:bg-gradient-to-r hover:from-pink-50/80 hover:to-pink-100/80
+                border-2 border-pink-200 nostalgic-link-card">
+                <span class="text-4xl opacity-90 group-hover:opacity-100
+                  transition-all duration-300 group-hover:scale-110">
                   <span class="kawaii-content">{link.icon}</span>
                   <span class="retro-content">►</span>
                 </span>
                 <div>
-                  <h3 class="font-cherry text-2xl text-pink-500 mb-1 group-hover:text-pink-600
-                    transition-colors nostalgic-link-title">
+                  <h3 class="font-cherry text-2xl text-pink-500 mb-1
+                    group-hover:text-pink-600 transition-colors nostalgic-link-title">
                     {link.title}
                   </h3>
                   <p class="font-pixel text-sm text-gray-600 nostalgic-description">
                     {link.description}
                   </p>
                 </div>
-                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span class="kawaii-content">→</span>
+                <div class="ml-auto opacity-0 group-hover:opacity-100
+                  transition-all duration-300 group-hover:translate-x-2">
+                  <span class="kawaii-content">✧</span>
                   <span class="retro-content">[→]</span>
                 </div>
               </div>
@@ -79,16 +84,17 @@ const links = [
       </div>
     ))}
 
-    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-purple-200
-      shadow-lg text-center nostalgic-contact">
+    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4
+      border-pink-200 shadow-lg text-center nostalgic-contact
+      hover:shadow-[0_0_30px_rgba(255,182,193,0.6)] transition-all duration-300">
       <h3 class="font-cherry text-2xl text-pink-600 mb-4 nostalgic-subtitle">
-        <span class="kawaii-content">💌 Entre em contato</span>
+        <span class="kawaii-content">✧ Entre em contato ✧</span>
         <span class="retro-content">◆ Entre em contato ◆</span>
       </h3>
-      <p class="font-pixel text-gray-600 mb-4 nostalgic-text">
-        Sim, vou receber essa mensagem.
+      <p class="font-pixel text-gray-600 mb-6 nostalgic-text">
+        Sim, vou receber essa mensagem! 💌
       </p>
-      <a href="/contact" class="nostalgic-button">
+      <a href="/contact" class="nostalgic-button inline-block">
         <span class="kawaii-content">Formulário de Contato ♡</span>
         <span class="retro-content">[ Formulário de Contato ]</span>
       </a>

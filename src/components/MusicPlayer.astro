@@ -25,57 +25,55 @@ interface Music {
     </div>
 
     <div class="flex items-center gap-1">
-      <button class="hover:scale-110 transition-transform p-1.5 nostalgic-button" id="playButton">
-        <span class="kawaii-content">▶️</span>
-        <span class="retro-content">►</span>
-      </button>
-      <button class="hover:scale-110 transition-transform p-1.5 nostalgic-button" id="nextButton">
-        <span class="kawaii-content">⏭️</span>
-        <span class="retro-content">»</span>
-      </button>
+      <button class="kawaii-button nostalgic-button" id="playButton">▶</button>
+      <button class="kawaii-button nostalgic-button" id="nextButton">⏭</button>
     </div>
   </div>
 </div>
 
 <style>
   /* Estilos Kawaii */
-  .kawaii-content {
-    display: block;
-  }
-
-  .retro-content {
-    display: none;
-  }
-
-  .nostalgic-player {
-    transition: all 0.3s ease;
-  }
-
-  .nostalgic-cover {
-    transition: transform 0.3s ease;
-  }
-
-  .nostalgic-cover:hover {
-    transform: scale(1.05);
-  }
-
-  .nostalgic-button {
+  .kawaii-button {
+    font-size: 1.2rem;
     background: transparent;
     border: none;
+    color: #FF69B4;
+    padding: 4px 8px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
-  .nostalgic-button:hover {
+  .kawaii-button:hover {
+    color: #FF1493;
     transform: scale(1.1);
-    opacity: 0.8;
-  }
-
-  .nostalgic-progress {
-    transition: width 0.1s linear;
   }
 
   /* Estilos para o modo retrô */
+  :global(.nostalgic-mode) .kawaii-button {
+    font-size: 1rem;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    color: #000000;
+    padding: 2px 6px;
+    min-width: 24px;
+    text-align: center;
+    transform: none;
+  }
+
+  :global(.nostalgic-mode) .kawaii-button:hover {
+    background: #d4d0c8;
+    color: #000000;
+  }
+
+  :global(.nostalgic-mode) .kawaii-button:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+    padding-top: 3px;
+    padding-left: 7px;
+  }
+
   :global(.nostalgic-mode) .nostalgic-player {
     background: #c0c0c0;
     border: 2px solid;
@@ -305,10 +303,10 @@ interface Music {
   function togglePlay() {
     if (isPlaying) {
       audio.pause();
-      playButton!.innerHTML = '<span class="text-xl">▶️</span>';
+      if (playButton) playButton.textContent = '▶';
     } else {
       audio.play();
-      playButton!.innerHTML = '<span class="text-xl">⏸️</span>';
+      if (playButton) playButton.textContent = '⏸';
     }
     isPlaying = !isPlaying;
   }
@@ -326,15 +324,15 @@ interface Music {
   // Próxima música quando acabar
   audio.addEventListener('ended', nextSong);
 
-  // Atualizar botão play/pause quando o estado mudar
+  // Atualizar listeners de play/pause
   audio.addEventListener('play', () => {
     isPlaying = true;
-    playButton!.innerHTML = '<span class="text-xl">⏸️</span>';
+    if (playButton) playButton.textContent = '⏸';
   });
 
   audio.addEventListener('pause', () => {
     isPlaying = false;
-    playButton!.innerHTML = '<span class="text-xl">▶️</span>';
+    if (playButton) playButton.textContent = '▶';
   });
 
   // Carregar música atual
@@ -342,6 +340,6 @@ interface Music {
 
   // Atualizar UI com estado atual
   if (isPlaying) {
-    playButton!.innerHTML = '<span class="text-xl">⏸️</span>';
+    playButton!.textContent = '⏸';
   }
 </script>

@@ -1,159 +1,419 @@
 ---
 import PageTitle from '../components/PageTitle.astro';
 import Layout from '../layouts/Layout.astro';
+
+const interests = [
+  { icon: "🎵", kawaii: "♪ Música", retro: "Música", desc: "Country, Rock, Indie" },
+  { icon: "🎮", kawaii: "Gaming", retro: "Games", desc: "Modo campanha" },
+  { icon: "🎥", kawaii: "Filmes", retro: "Filmes", desc: "Drama, Sci-fi" },
+  { icon: "💻", kawaii: "Programação", retro: "Coding", desc: "Web" },
+  { icon: "🌏", kawaii: "Idiomas", retro: "Línguas", desc: "Chinês, Inglês" }
+];
 ---
 
 <Layout title="Sobre mim - Meu blog cute">
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-4xl mx-auto px-4">
     <PageTitle title="Sobre mim">
       <span class="kawaii-content">Sobre mim ♡</span>
-      <span class="retro-content">◆ Sobre mim ◆</span>
+      <span class="retro-content">.:[ Sobre mim ]:</span>
     </PageTitle>
 
-    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFC0CB] shadow-lg nostalgic-about">
-      <div class="text-center mb-8">
-        <div class="w-48 h-48 mx-auto relative group nostalgic-profile">
-          <img
-            src="/images/gifs/profile.gif"
-            alt="Profile Picture"
-            class="w-full h-full object-cover rounded-full border-4 border-[#FFB6C1] transition-transform group-hover:scale-105 nostalgic-image"
-          />
-          <div class="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-[#FF69B4] transition-all nostalgic-border"></div>
-        </div>
-        <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-2 mt-4 nostalgic-heading">
-          <span class="kawaii-content">
-            ✨ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ✨
-          </span>
-          <span class="retro-content">
-            .:[ Olá! Eu sou homem, tenho 22 anos e estou criando este site como hobby. Atualmente estou estudando chinês (mentira, só vou nas aulas) e tentando me tornar engenheiro da computação. ]:.
-          </span>
-        </h2>
-      </div>
+    <!-- Layout Kawaii -->
+    <div class="kawaii-content">
+      <div class="kawaii-profile">
+        <div class="profile-card">
+          <div class="profile-header">
+            <img
+              src="/images/gifs/profile.gif"
+              alt="Profile Picture"
+              class="profile-image"
+            />
+            <div class="profile-decoration">
+              <span class="star-left">✦</span>
+              <span class="star-right">✦</span>
+            </div>
+          </div>
 
-      <div class="font-[Mochiy+Pop+One] space-y-4 text-lg text-[#333] nostalgic-content">
-        <p>
-          <span class="kawaii-content">Esse espaço vai ser minha rede social. ♡</span>
-          <span class="retro-content">Esse espaço vai ser minha rede social.</span>
-        </p>
-        <p>
-          <span class="kawaii-content">✧ Minhas coisas favoritas ✧</span>
-          <span class="retro-content">▼ Minhas coisas favoritas ▼</span>
-        </p>
-        <ul class="list-inside space-y-2 pl-4 nostalgic-list">
-          <li>
-            <span class="kawaii-content">🎵 Ouvir música</span>
-            <span class="retro-content">► Ouvir música</span>
-          </li>
-          <li>
-            <span class="kawaii-content">🎮 Jogar</span>
-            <span class="retro-content">► Jogar</span>
-          </li>
-          <li>
-            <span class="kawaii-content">🎥 Assistir filmes</span>
-            <span class="retro-content">► Assistir filmes</span>
-          </li>
-        </ul>
-        <p>
-          <span class="kawaii-content">Eu criei esse espaço para esvaziar minha mente de muita coisa escura. ♡</span>
-          <span class="retro-content">Eu criei esse espaço para esvaziar minha mente de muita coisa escura.</span>
-        </p>
+          <div class="profile-info">
+            <h2 class="name">✧ blé blé ✧</h2>
+            <div class="stats">
+              <span class="stat-item">🌸 22 anos</span>
+              <span class="stat-item">🌟 Brasil</span>
+              <span class="stat-item">💫 ♂️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <p class="about-text">
+            ✨ Estudante de Engenharia da Computação.
+            Atualmente estudando chinês (ou tentando...) e desenvolvendo este projeto. ✨
+          </p>
+        </div>
+
+        <div class="interests-container">
+          <h3 class="interests-title">✧ Coisas que eu amo ✧</h3>
+          <div class="interests-list">
+            {interests.map(item => (
+              <div class="interest-bubble">
+                <span class="interest-icon">{item.icon}</span>
+                <div class="interest-text">
+                  <strong>{item.kawaii}</strong>
+                  <span>{item.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="retro-content">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Coluna da Esquerda: Foto e Info Básica -->
+        <div class="profile-section">
+          <div class="profile-container">
+            <img
+              src="/images/gifs/profile.gif"
+              alt="Profile Picture"
+              class="profile-image"
+            />
+            <div class="profile-info">
+              <h2 class="profile-name">
+                <span class="kawaii-content">✧ blé blé ✧</span>
+                <span class="retro-content">-= blé blé =-</span>
+              </h2>
+              <div class="profile-stats">
+                <span>22 anos</span>
+                <span>♂️</span>
+                <span>Brasil</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna da Direita: Sobre e Interesses -->
+        <div class="content-section">
+          <div class="about-text">
+            <p class="mb-4">
+              <span class="kawaii-content">
+                ✨ Estudante de Engenharia da Computação que ama criar coisas fofas!
+                Atualmente estudando chinês (ou tentando...) e desenvolvendo este cantinho na web. ✨
+              </span>
+              <span class="retro-content">
+                > Estudante de Engenharia da Computação que ama criar coisas fofas!
+                > Atualmente estudando chinês (ou tentando...) e desenvolvendo este cantinho na web.
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Seção de Interesses (Span Full) -->
+        <div class="interests-section md:col-span-2">
+          <h3 class="interests-title">
+            <span class="kawaii-content">✧ Coisas que eu amo ✧</span>
+            <span class="retro-content">::[ Interesses ]::</span>
+          </h3>
+          <div class="interests-grid">
+            {interests.map(item => (
+              <div class="interest-item">
+                <span class="interest-icon">{item.icon}</span>
+                <div class="interest-content">
+                  <strong>
+                    <span class="kawaii-content">{item.kawaii}</span>
+                    <span class="retro-content">{item.retro}</span>
+                  </strong>
+                  <span class="interest-desc">{item.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-about {
-    background: #f5f5f5;
-    border: 1px solid #999;
-    border-radius: 0;
-    box-shadow: 2px 2px 0 #666;
-    padding: 1rem;
+  /* Estilos Kawaii */
+  body:not(.nostalgic-mode) {
+    .kawaii-profile {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow:
+        0 10px 30px rgba(255, 182, 193, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-header {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 8px solid rgba(255, 182, 193, 0.6);
+      margin: 0 auto;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .profile-decoration {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+
+    .star-left, .star-right {
+      position: absolute;
+      font-size: 2rem;
+      color: #FFB7B2;
+      animation: twinkle 2s infinite;
+    }
+
+    .star-left { left: 15%; animation-delay: 0.5s; }
+    .star-right { right: 15%; animation-delay: 1s; }
+
+    .name {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #FF69B4, #8A4FFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .stat-item {
+      background: rgba(255, 182, 193, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      color: #FF69B4;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: scale(1.1);
+      background: rgba(255, 182, 193, 0.4);
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      padding: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #8A4FFF;
+      box-shadow: 0 5px 20px rgba(255, 182, 193, 0.2);
+    }
+
+    .interests-container {
+      margin-top: 2rem;
+    }
+
+    .interests-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #FF69B4;
+      margin-bottom: 2rem;
+    }
+
+    .interests-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .interest-bubble {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2);
+    }
+
+    .interest-bubble:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .interest-icon {
+      font-size: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .interest-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .interest-text strong {
+      color: #FF69B4;
+      font-size: 1.2rem;
+    }
+
+    .interest-text span {
+      color: #8A4FFF;
+      font-size: 0.9rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
   }
 
-  :global(.nostalgic-mode) .nostalgic-profile {
-    border: none;
-    padding: 4px;
+  /* Estilos Retrô */
+  :global(.nostalgic-mode) {
+    .profile-container {
+      background: #d4d0c8;
+      border: 2px solid #808080;
+      padding: 1rem;
+      box-shadow: inset 1px 1px #fff, inset -1px -1px #404040;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #000;
+      margin: 0 auto;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .profile-name {
+      font-family: 'MS Gothic', monospace;
+      text-align: center;
+      margin: 1rem 0;
+      color: #000080;
+    }
+
+    .profile-stats {
+      text-align: center;
+      font-family: 'MS Gothic', monospace;
+      color: #000;
+    }
+
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .interest-item {
+      background: #fff;
+      border: 1px solid #808080;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .interest-icon {
+      filter: grayscale(100%);
+    }
+
+    .interest-content {
+      font-family: 'MS Gothic', monospace;
+    }
+
+    .interest-desc {
+      font-size: 0.9rem;
+      color: #404040;
+    }
   }
 
-  :global(.nostalgic-mode) .nostalgic-image {
-    border: 1px solid #999;
-    border-radius: 0;
-    filter: grayscale(20%);
-    transform: none !important;
-    transition: none;
-    box-shadow: 2px 2px 0 #666;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-border {
-    display: none;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-heading {
-    font-family: 'MS Gothic', monospace;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #999;
-    padding-bottom: 0.5rem;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-content {
-    font-family: 'MS Gothic', monospace;
-    color: #333;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-content p {
-    margin-bottom: 1rem;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-list {
-    list-style-type: none;
-    padding-left: 1rem;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-list li {
-    margin-bottom: 0.5rem;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-list li::before {
-    filter: grayscale(100%);
-  }
-
-  /* Remove todas as animações no modo retrô */
-  :global(.nostalgic-mode) .transition-all,
-  :global(.nostalgic-mode) .transition-transform {
-    transition: none !important;
-  }
-
-  :global(.nostalgic-mode) .group-hover\:scale-105:hover,
-  :global(.nostalgic-mode) .group-hover\:border-\[\#FF69B4\]:hover {
-    transform: none !important;
-    border-color: #999 !important;
-  }
-
-  /* Estilos para mostrar/esconder conteúdo */
+  /* Controle de visibilidade do conteúdo */
   .kawaii-content {
-    display: block;
+    display: none;
   }
 
   .retro-content {
     display: none;
   }
 
-  /* Quando o modo retrô está ativo */
+  /* Mostrar apenas conteúdo kawaii quando NÃO estiver em modo retrô */
+  body:not(.nostalgic-mode) .kawaii-content {
+    display: inline-block;
+  }
+
+  /* Mostrar apenas conteúdo retrô quando estiver em modo retrô */
+  :global(.nostalgic-mode) .retro-content {
+    display: inline-block;
+  }
+
+  /* Garantir que os conteúdos não apareçam simultaneamente */
   :global(.nostalgic-mode) .kawaii-content {
     display: none !important;
   }
 
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
+  body:not(.nostalgic-mode) .retro-content {
+    display: none !important;
   }
 
-  :global(.nostalgic-mode) .before\:content-\[\'🎵\'\]::before,
-  :global(.nostalgic-mode) .before\:content-\[\'🎮\'\]::before,
-  :global(.nostalgic-mode) .before\:content-\[\'🎥\'\]::before {
-    content: none;
+  /* Background Kawaii */
+  body:not(.nostalgic-mode) {
+    /* Remover o background anterior */
+    background: none;
+
+    /* Novo background com padrão suave */
+    background:
+      linear-gradient(
+        120deg,
+        rgba(255, 209, 220, 0.7),
+        rgba(220, 208, 255, 0.7),
+        rgba(181, 230, 230, 0.7)
+      ),
+      url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff69b4' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    /* Animação suave do background */
+    animation: bg-shift 15s ease infinite;
+  }
+
+  @keyframes bg-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Ajuste na opacidade dos cards para melhor contraste */
+  body:not(.nostalgic-mode) .profile-card,
+  body:not(.nostalgic-mode) .about-card,
+  body:not(.nostalgic-mode) .interest-bubble {
+    background: rgba(255, 255, 255, 0.95);
   }
 </style>
