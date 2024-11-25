@@ -2,32 +2,34 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Página não encontrada - 404">
-  <div class="window max-w-3xl mx-auto">
-    <div class="window-header">
-      <div class="window-title">Erro 404</div>
-      <div class="window-controls">
-        <span class="minimize">_</span>
-        <span class="maximize">□</span>
-        <span class="close">×</span>
+<Layout title="Erro Fatal - 404">
+  <div class="bsod-container">
+    <div class="bsod-content">
+      <div class="bsod-header">
+        <h1>Erro Fatal</h1>
       </div>
-    </div>
 
-    <div class="window-content">
-      <div class="error-container">
-        <h1 class="error-title">[ 404 ]</h1>
-        <p class="error-message">◆ Página não encontrada ◆</p>
-        <p class="error-description">
-          A página que você está procurando não existe ou foi movida.
+      <div class="bsod-body">
+        <p class="error-code">ERROR 404_PAGE_NOT_FOUND</p>
+
+        <p class="error-details">
+          Uma condição de erro fatal ocorreu em 0x0000000F na página solicitada.<br>
+          O sistema encontrou um problema e precisa ser redirecionado.
         </p>
 
-        <div class="button-container">
-          <a href="/" class="xp-button">
-            [ Voltar para a página inicial ]
-          </a>
-          <a href="/blog" class="xp-button secondary">
-            [ Ir para o blog ]
-          </a>
+        <div class="technical-info">
+          * Pressione qualquer link para continuar<br>
+          * Se é a primeira vez que você vê esta tela de erro,<br>
+            tente voltar para a página inicial ou acessar o blog.<br>
+          <br>
+        </div>
+
+        <div class="error-actions">
+          <p class="action-info">Opções de recuperação do sistema:</p>
+          <div class="button-container">
+            <a href="/" class="bsod-button">Voltar para o início</a>
+            <a href="/blog" class="bsod-button">Acessar o blog</a>
+          </div>
         </div>
       </div>
     </div>
@@ -35,120 +37,92 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .window {
-    background: #ECE9D8;
-    border: 1px solid #0054E3;
-    border-radius: 8px 8px 0 0;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    margin: 20px auto;
-  }
-
-  .window-header {
-    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
-    padding: 5px 10px;
-    border-radius: 7px 7px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-  }
-
-  .window-controls {
-    display: flex;
-    gap: 4px;
-  }
-
-  .window-controls span {
-    width: 16px;
-    height: 16px;
+  .bsod-container {
+    background-color: #0000AA;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #FFF, #DFDFDF);
-    border: 1px solid #0054E3;
-    border-radius: 2px;
-    color: #000;
-    font-size: 0.7rem;
-    cursor: pointer;
+    font-family: "Lucida Console", Monaco, monospace;
+    padding: 20px;
   }
 
-  .window-content {
-    padding: 24px;
+  .bsod-content {
+    width: 100%;
+    max-width: 800px;
+    color: #FFFFFF;
   }
 
-  .error-container {
-    background: #FFFFFF;
-    border: 2px solid;
-    border-color: #FFFFFF #808080 #808080 #FFFFFF;
-    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
-    padding: 24px;
-    text-align: center;
+  .bsod-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
   }
 
-  .error-title {
-    font-family: 'Tahoma', sans-serif;
-    color: #003399;
-    font-size: 3rem;
-    margin-bottom: 16px;
-  }
-
-  .error-message {
-    font-family: 'Tahoma', sans-serif;
-    color: #000080;
+  .error-code {
     font-size: 1.5rem;
-    margin-bottom: 8px;
+    margin-bottom: 2rem;
   }
 
-  .error-description {
-    font-family: 'Tahoma', sans-serif;
-    color: #000000;
-    font-size: 1rem;
-    margin-bottom: 24px;
+  .error-details {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .technical-info {
+    background-color: #0000AA;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .error-actions {
+    margin-top: 2rem;
+  }
+
+  .action-info {
+    margin-bottom: 1rem;
   }
 
   .button-container {
     display: flex;
-    gap: 16px;
-    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
-  .xp-button {
-    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
-    border: 2px solid;
-    border-color: #FFFFFF #808080 #808080 #FFFFFF;
-    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
-    color: #000000;
-    font-family: 'Tahoma', sans-serif;
-    padding: 6px 16px;
+  .bsod-button {
+    background-color: #0000AA;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    padding: 0.5rem 1rem;
     text-decoration: none;
-    min-width: 180px;
+    font-family: "Lucida Console", Monaco, monospace;
+    transition: background-color 0.3s;
   }
 
-  .xp-button.secondary {
-    background: linear-gradient(to bottom, #ECE9D8, #E3E1D5);
-  }
-
-  .xp-button:hover {
-    background: linear-gradient(to bottom, #FFF, #E9E9E9);
-  }
-
-  .xp-button:active {
-    border-color: #808080 #FFFFFF #FFFFFF #808080;
-    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
-    padding-top: 7px;
-    padding-left: 17px;
+  .bsod-button:hover {
+    background-color: #000088;
   }
 
   @media (max-width: 640px) {
-    .button-container {
-      flex-direction: column;
-      align-items: center;
+    .bsod-content {
+      font-size: 0.9rem;
     }
 
-    .xp-button {
+    .bsod-header h1 {
+      font-size: 2rem;
+    }
+
+    .error-code {
+      font-size: 1.2rem;
+    }
+
+    .button-container {
+      flex-direction: column;
+    }
+
+    .bsod-button {
       width: 100%;
-      max-width: 300px;
+      text-align: center;
     }
   }
 </style>
