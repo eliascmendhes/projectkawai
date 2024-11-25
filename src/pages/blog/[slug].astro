@@ -11,184 +11,250 @@ if (!post) {
 ---
 
 <Layout title={post.frontmatter.title}>
-  <article class="max-w-4xl mx-auto p-6">
-    <div class="bg-white/90 backdrop-blur-sm rounded-3xl border-4 border-[#FFC0CB] p-8 shadow-lg nostalgic-post">
-      <header class="mb-8 text-center">
-        <h1 class="font-[Dela+Gothic+One] text-4xl text-[#FF1493] mb-3 nostalgic-title">
-          <span class="kawaii-content">{post.frontmatter.title}</span>
-          <span class="retro-content">◆ {post.frontmatter.title} ◆</span>
-        </h1>
-        <p class="font-[Mochiy+Pop+One] text-sm text-[#8A4FFF] nostalgic-date">
-          <span class="kawaii-content">🌸 Publicado em {post.frontmatter.date} 🍡</span>
-          <span class="retro-content">[ Publicado em {post.frontmatter.date} ]</span>
-        </p>
-      </header>
+  <div class="window max-w-4xl mx-auto">
+    <div class="window-header">
+      <div class="window-title">{post.frontmatter.title}</div>
+      <div class="window-controls">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close">×</span>
+      </div>
+    </div>
 
-      <div class="flex flex-col md:flex-row gap-8">
-        <div class="md:w-1/3 flex-shrink-0 group nostalgic-image-container">
-          <img
-            src={post.frontmatter.image}
-            alt={post.frontmatter.title}
-            class="w-full aspect-square object-cover rounded-2xl border-2 border-[#FFB6C1] shadow-md nostalgic-image"
-          />
-        </div>
+    <div class="window-content">
+      <article class="post-content">
+        <header class="post-header">
+          <h1 class="post-title">◆ {post.frontmatter.title} ◆</h1>
+          <p class="post-date">[ Publicado em {post.frontmatter.date} ]</p>
+        </header>
 
-        <div class="md:w-2/3">
-          <div class="prose prose-pink max-w-none nostalgic-content">
-            <div class="font-[Mochiy+Pop+One] text-[#333] leading-relaxed space-y-4">
+        <div class="post-body">
+          <div class="image-container">
+            <img
+              src={post.frontmatter.image}
+              alt={post.frontmatter.title}
+              class="post-image"
+            />
+          </div>
+
+          <div class="content-container">
+            <div class="post-text">
               <Fragment set:html={post.compiledContent()} />
             </div>
           </div>
         </div>
-      </div>
 
-      <footer class="mt-8 pt-6 border-t-2 border-[#FFD1DC] nostalgic-footer">
-        <div class="flex justify-between items-center">
-          <a href="/blog" class="nostalgic-back-link">
-            <span class="kawaii-content">← Voltar para o blog</span>
-            <span class="retro-content">[←] Voltar para o blog</span>
+        <footer class="post-footer">
+          <a href="/blog" class="xp-button">
+            [←] Voltar para o blog
           </a>
-          <span class="kawaii-content">🍡 🌸 ♡ 🍰 ✧</span>
-        </div>
-      </footer>
+        </footer>
+      </article>
     </div>
-  </article>
+  </div>
 </Layout>
 
 <style>
-  .prose {
-    --tw-prose-body: theme('colors.gray.700');
-    --tw-prose-headings: theme('colors.pink.600');
-    --tw-prose-links: theme('colors.pink.500');
-    --tw-prose-bold: theme('colors.pink.600');
+  /* Janela Principal */
+  .window {
+    background: #ECE9D8;
+    border: 1px solid #0054E3;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin: 20px;
   }
 
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-post {
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 16px;
+  .window-header {
+    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
+    padding: 5px 10px;
+    border-radius: 7px 7px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
   }
 
-  /* Container da imagem */
-  :global(.nostalgic-mode) .nostalgic-image-container {
-    border: 2px solid;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
-    border-radius: 0;
-    padding: 4px;
-    background: #ffffff;
+  .window-controls {
+    display: flex;
+    gap: 4px;
   }
 
-  /* Imagem */
-  :global(.nostalgic-mode) .nostalgic-image {
-    border: none;
-    border-radius: 0;
-    filter: grayscale(30%);
-    image-rendering: pixelated;
+  .window-controls span {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF, #DFDFDF);
+    border: 1px solid #0054E3;
+    border-radius: 3px;
+    color: #000;
+    cursor: pointer;
   }
 
-  /* Título e data */
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #000080;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .window-content {
+    padding: 20px;
+    background: #fff;
+  }
+
+  /* Conteúdo do Post */
+  .post-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
     border-bottom: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    padding-bottom: 8px;
-    margin-bottom: 16px;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
   }
 
-  :global(.nostalgic-mode) .nostalgic-date {
-    font-family: 'MS Gothic', monospace;
-    color: #000000;
-    background: #d4d0c8;
+  .post-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .post-date {
+    font-family: 'Tahoma', sans-serif;
+    color: #666666;
+    font-size: 0.9rem;
+    background: #F0F0F0;
     padding: 4px 8px;
-    border: 1px solid #808080;
     display: inline-block;
+    border: 1px solid #D4D0C8;
   }
 
-  /* Conteúdo */
-  :global(.nostalgic-mode) .nostalgic-content {
-    font-family: 'MS Gothic', monospace;
+  .post-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .content-container {
+    flex: 1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .post-text {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
+    line-height: 1.6;
+    font-size: 1rem;
   }
 
-  :global(.nostalgic-mode) .nostalgic-content h1,
-  :global(.nostalgic-mode) .nostalgic-content h2,
-  :global(.nostalgic-mode) .nostalgic-content h3 {
-    color: #000080;
-    border-bottom: 1px solid #808080;
-    padding-bottom: 4px;
-    margin-top: 24px;
+  .post-text :global(p) {
+    margin-bottom: 1em;
   }
 
-  :global(.nostalgic-mode) .nostalgic-content a {
+  .post-text :global(img) {
+    max-width: 100%;
+    height: auto;
+    margin: 1em 0;
+    border: 2px solid;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    padding: 3px;
+  }
+
+  /* Responsividade melhorada */
+  @media (min-width: 768px) {
+    .post-body {
+      flex-direction: row;
+    }
+
+    .image-container {
+      flex: 0 0 300px;
+      margin: 0;
+    }
+
+    .content-container {
+      padding-left: 20px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .window {
+      margin: 10px;
+    }
+
+    .post-title {
+      font-size: 1.5rem;
+    }
+
+    .image-container {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .post-text {
+      font-size: 0.95rem;
+    }
+  }
+
+  .image-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .post-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    padding: 3px;
+    background: #FFFFFF;
+  }
+
+  .post-text :global(h1),
+  .post-text :global(h2),
+  .post-text :global(h3) {
+    color: #003399;
+    margin: 1.5em 0 0.5em;
+    font-family: 'Tahoma', sans-serif;
+  }
+
+  .post-text :global(a) {
     color: #0000EE;
     text-decoration: underline;
   }
 
-  :global(.nostalgic-mode) .nostalgic-content a:visited {
+  .post-text :global(a:visited) {
     color: #551A8B;
   }
 
-  /* Footer e link de voltar */
-  :global(.nostalgic-mode) .nostalgic-footer {
+  .post-footer {
+    margin-top: 30px;
+    padding-top: 15px;
     border-top: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080;
-    margin-top: 24px;
-    padding-top: 16px;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
   }
 
-  :global(.nostalgic-mode) .nostalgic-back-link {
-    background: #c0c0c0;
+  /* Botão estilo Windows XP */
+  .xp-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
-    padding: 4px 8px;
-    text-decoration: none;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 0.9rem;
+    padding: 4px 12px;
+    cursor: pointer;
     display: inline-block;
-    position: relative;
   }
 
-  :global(.nostalgic-mode) .nostalgic-back-link:hover {
-    background: #d4d0c8;
+  .xp-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  :global(.nostalgic-mode) .nostalgic-back-link:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    top: 1px;
-    left: 1px;
-  }
-
-  /* Classes para mostrar/esconder conteúdo */
-  .kawaii-content {
-    display: block;
-  }
-
-  .retro-content {
-    display: none;
-  }
-
-  :global(.nostalgic-mode) .kawaii-content {
-    display: none !important;
-  }
-
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
-  }
-
-  /* Remove animações */
-  :global(.nostalgic-mode) * {
-    transition: none !important;
-    transform: none !important;
+  .xp-button:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
+    padding-top: 5px;
+    padding-left: 13px;
   }
 </style>
 

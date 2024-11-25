@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageTitle from '../components/PageTitle.astro';
 import ImageCard from '../components/ImageCard.astro';
 import { images } from '../data/images';
 
@@ -13,224 +12,189 @@ const currentImages = images.slice(startIndex, endIndex);
 ---
 
 <Layout title="Galeria">
-  <div class="max-w-5xl mx-auto p-4">
-    <PageTitle title="Galeria">
-      <span class="kawaii-content">Minha galeria ✧</span>
-      <span class="retro-content">◆ Minha galeria ◆</span>
-    </PageTitle>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 nostalgic-gallery">
-      {currentImages.map(img => (
-        <ImageCard {...img} />
-      ))}
+  <div class="window max-w-5xl mx-auto">
+    <div class="window-header">
+      <div class="window-title">Galeria de Imagens</div>
+      <div class="window-controls">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close">×</span>
+      </div>
     </div>
 
-    <div class="mt-12 flex flex-wrap justify-center gap-4 font-pixel nostalgic-pagination">
-      {currentPage > 1 && (
-        <a
-          href={`?page=${currentPage - 1}`}
-          class="nostalgic-nav-button pagination-link"
-        >
-          <span class="kawaii-content">← Anterior</span>
-          <span class="retro-content">[←] Anterior</span>
-        </a>
-      )}
-
-      <div class="flex gap-2 flex-wrap justify-center">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNumber => (
-          <a
-            href={`?page=${pageNumber}`}
-            class={`nostalgic-page-button pagination-number ${pageNumber === currentPage ? 'active' : ''}`}
-          >
-            {pageNumber}
-          </a>
+    <div class="window-content">
+      <div class="xp-gallery">
+        {currentImages.map(img => (
+          <ImageCard {...img} />
         ))}
       </div>
 
-      {currentPage < totalPages && (
-        <a
-          href={`?page=${currentPage + 1}`}
-          class="nostalgic-nav-button pagination-link"
-        >
-          <span class="kawaii-content">Próximo →</span>
-          <span class="retro-content">Próximo [→]</span>
-        </a>
-      )}
+      <div class="xp-pagination">
+        {currentPage > 1 && (
+          <a href={`?page=${currentPage - 1}`} class="xp-button">
+            [←] Anterior
+          </a>
+        )}
+
+        <div class="page-numbers">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNumber => (
+            <a
+              href={`?page=${pageNumber}`}
+              class={`xp-page-button ${pageNumber === currentPage ? 'active' : ''}`}
+            >
+              {pageNumber}
+            </a>
+          ))}
+        </div>
+
+        {currentPage < totalPages && (
+          <a href={`?page=${currentPage + 1}`} class="xp-button">
+            Próximo [→]
+          </a>
+        )}
+      </div>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-gallery {
+  /* Janela Principal */
+  .window {
+    background: #ECE9D8;
+    border: 1px solid #0054E3;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin: 20px;
+  }
+
+  .window-header {
+    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
+    padding: 5px 10px;
+    border-radius: 7px 7px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 4px;
+  }
+
+  .window-controls span {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF, #DFDFDF);
+    border: 1px solid #0054E3;
+    border-radius: 3px;
+    color: #000;
+    cursor: pointer;
+  }
+
+  .window-content {
+    padding: 20px;
+    background: #fff;
+  }
+
+  /* Galeria */
+  .xp-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 16px;
-    padding: 8px;
-    background: #c0c0c0;
+    padding: 16px;
+    background: #F0F0F0;
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset -1px -1px #404040, inset 1px 1px #FFFFFF;
   }
 
-  /* Botões de navegação (Anterior/Próximo) */
-  :global(.nostalgic-mode) .nostalgic-nav-button {
-    background: #c0c0c0;
+  /* Paginação */
+  .xp-pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #ECE9D8;
+    border-top: 1px solid #D4D0C8;
+  }
+
+  .page-numbers {
+    display: flex;
+    gap: 4px;
+  }
+
+  /* Botões */
+  .xp-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 0.9rem;
     padding: 4px 12px;
+    cursor: pointer;
     text-decoration: none;
-    position: relative;
-    min-width: 100px;
-    text-align: center;
   }
 
-  :global(.nostalgic-mode) .nostalgic-nav-button:hover {
-    background: #d4d0c8;
+  .xp-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  :global(.nostalgic-mode) .nostalgic-nav-button:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+  .xp-button:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
     padding-top: 5px;
     padding-left: 13px;
   }
 
-  /* Botões de página */
-  :global(.nostalgic-mode) .nostalgic-page-button {
-    background: #c0c0c0;
+  .xp-page-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
+    font-family: 'Tahoma', sans-serif;
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    position: relative;
   }
 
-  :global(.nostalgic-mode) .nostalgic-page-button:hover {
-    background: #d4d0c8;
+  .xp-page-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  :global(.nostalgic-mode) .nostalgic-page-button.active {
-    background: #000080;
-    color: #ffffff;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #000040, inset -1px -1px #0000c0;
+  .xp-page-button.active {
+    background: #0054E3;
+    color: #FFFFFF;
+    border-color: #003399;
+    box-shadow: inset 1px 1px #003399, inset -1px -1px #0066FF;
   }
 
-  /* Remove animações */
-  :global(.nostalgic-mode) .animate-bounce,
-  :global(.nostalgic-mode) .animate-pulse,
-  :global(.nostalgic-mode) .transition-all,
-  :global(.nostalgic-mode) .duration-300 {
-    animation: none !important;
-    transition: none !important;
-  }
+  /* Responsividade */
+  @media (max-width: 640px) {
+    .xp-gallery {
+      grid-template-columns: 1fr;
+    }
 
-  :global(.nostalgic-mode) .hover\:scale-105:hover {
-    transform: none !important;
-  }
+    .xp-pagination {
+      flex-direction: column;
+      gap: 15px;
+    }
 
-  body:not(.nostalgic-mode) .nostalgic-gallery {
-    gap: 2rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-  }
-
-  body:not(.nostalgic-mode) .pagination-link {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
-    color: #805ad5;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  body:not(.nostalgic-mode) .pagination-link:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
-  }
-
-  body:not(.nostalgic-mode) .pagination-number {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
-    border-radius: 50%;
-    color: #805ad5;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  body:not(.nostalgic-mode) .pagination-number:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
-  }
-
-  body:not(.nostalgic-mode) .pagination-number.active {
-    background: linear-gradient(135deg, #9f7aea, #667eea);
-    color: white;
-    border: none;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-  }
-
-  /* Scrollbar    PRECISO DE MAIS TEMPO*/
-  body:not(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  body:not(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-  }
-
-  body:not(.nostalgic-mode) .nostalgic-gallery::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #9f7aea, #667eea);
-    border-radius: 4px;
-  }
-
-  /* Animações suaves */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  body:not(.nostalgic-mode) .nostalgic-gallery > * {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-
-  /* Classes para mostrar/esconder conteúdo */
-  .kawaii-content {
-    display: block;
-  }
-
-  .retro-content {
-    display: none;
-  }
-
-  :global(.nostalgic-mode) .kawaii-content {
-    display: none !important;
-  }
-
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
+    .page-numbers {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 </style>

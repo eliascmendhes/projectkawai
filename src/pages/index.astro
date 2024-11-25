@@ -2,75 +2,60 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Meu Espaço Kawaii">
+<Layout title="Meu Espaço">
     <div class="max-w-5xl mx-auto p-4">
-        <div class="text-center mb-12 glass-card p-8 rounded-3xl shadow-xl nostalgic-header">
-            <h1 class="font-kawaii text-4xl md:text-6xl mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent animate-float">
-                <span class="kawaii-content">こんにちは！(Olá!) ✨</span>
-                <span class="retro-content text-[#FF1493]">◆ こんにちは！(Olá!) ◆</span>
+        <div class="retro-header text-center mb-12 p-8">
+            <h1 class="text-4xl md:text-6xl mb-4">
+                Olá!
             </h1>
-            <p class="font-kawaii text-xl text-purple-600">
-                <span class="kawaii-content">Bem-vindo(a) ao meu cantinho digital ✧</span>
-                <span class="retro-content">★ Bem-vindo(a) ★</span>
+            <p class="text-xl">
+                Bem-vindo(a) ao meu espaço digital
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 nostalgic-grid">
-            <a href="/about" class="group nostalgic-card">
-                <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300 border-l-4 border-pink-400">
-                    <h2 class="font-kawaii text-2xl bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                        <span class="kawaii-content">Sobre mim ✧</span>
-                        <span class="retro-content">┍ Sobre mim ┑</span>
-                    </h2>
-                    <p class="font-kawaii text-purple-600">Minha introdução</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="/about" class="retro-card">
+                <div class="p-6">
+                    <h2 class="text-2xl mb-3">┍ Sobre mim ┑</h2>
+                    <p>Minha introdução</p>
                 </div>
             </a>
 
-            <a href="/blog" class="group nostalgic-card">
-                <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300 border-l-4 border-pink-400">
-                    <h2 class="font-kawaii text-2xl bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                        <span class="kawaii-content">Postagens ✧</span>
-                        <span class="retro-content">◈ Postagens ◈</span>
-                    </h2>
-                    <p class="font-kawaii text-purple-600">Meus pensamentos!</p>
+            <a href="/blog" class="retro-card">
+                <div class="p-6">
+                    <h2 class="text-2xl mb-3">◈ Postagens ◈</h2>
+                    <p>Meus pensamentos</p>
                 </div>
             </a>
 
-            <a href="/gallery" class="group nostalgic-card">
-                <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300 border-l-4 border-pink-400">
-                    <h2 class="font-kawaii text-2xl bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                        <span class="kawaii-content">Galeria ✧</span>
-                        <span class="retro-content">❖ Galeria ❖</span>
-                    </h2>
-                    <p class="font-kawaii text-purple-600">Coisas fofas, divertidas, gifs e por aí vai.</p>
+            <a href="/gallery" class="retro-card">
+                <div class="p-6">
+                    <h2 class="text-2xl mb-3">❖ Galeria ❖</h2>
+                    <p>Fotos e memórias</p>
                 </div>
             </a>
 
-            <a href="/recommendations" class="group nostalgic-card">
-                <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300 border-l-4 border-pink-400">
-                    <h2 class="font-kawaii text-2xl bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                        <span class="kawaii-content">Meus favoritos ✧</span>
-                        <span class="retro-content">☆ Meus favoritos ☆</span>
-                    </h2>
-                    <p class="font-kawaii text-purple-600">Recomendações!</p>
+            <a href="/recommendations" class="retro-card">
+                <div class="p-6">
+                    <h2 class="text-2xl mb-3">☆ Favoritos ☆</h2>
+                    <p>Recomendações</p>
                 </div>
             </a>
         </div>
 
         <div class="mt-12 text-center">
-            <div class="inline-block glass-card p-8 rounded-3xl shadow-xl nostalgic-contact">
-                <h2 class="font-kawaii text-2xl bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                    <span class="kawaii-content">Vamos conversar? ✧</span>
-                    <span class="retro-content">▌ Vamos conversar? ▐</span>
-                </h2>
-                <div class="flex justify-center space-x-8 font-kawaii">
-                    <a href="/contact" class="contact-link">
-                        <span class="kawaii-content">Contato ✉️</span>
-                        <span class="retro-content">► Contato ◄</span>
+            <div class="retro-contact inline-block p-6">
+                <h2 class="text-2xl mb-4">▌ Vamos conversar? ▐</h2>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-8">
+                    <a href="/contact" class="retro-button">
+                        <span class="arrow-icon hidden sm:inline">►</span>
+                        Contato
+                        <span class="arrow-icon hidden sm:inline">◄</span>
                     </a>
-                    <a href="/links" class="contact-link">
-                        <span class="kawaii-content">Links 🔗</span>
-                        <span class="retro-content">► Links ◄</span>
+                    <a href="/links" class="retro-button">
+                        <span class="arrow-icon hidden sm:inline">►</span>
+                        Links
+                        <span class="arrow-icon hidden sm:inline">◄</span>
                     </a>
                 </div>
             </div>
@@ -79,183 +64,93 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Cherry+Bomb+One&family=MS+Gothic&display=swap');
-
-    .font-cherry {
-        font-family: 'Cherry Bomb One', cursive;
-    }
-
-    .font-pixel {
-        font-family: 'Mochiy Pop One', sans-serif;
-    }
-
-    .animate-float {
-        animation: float 2s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-
-    :global(.nostalgic-mode) .nostalgic-header {
-        background: #c0c0c0;
+    /* Estilos base */
+    .retro-header, .retro-card, .retro-contact {
+        background: var(--primary);
         border: 2px solid;
-        border-color: #ffffff #404040 #404040 #ffffff;
-        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-        border-radius: 0;
+        border-color: var(--highlight) var(--border) var(--border) var(--highlight);
+        box-shadow:
+            inset 1px 1px rgba(255,255,255,0.1),
+            inset -1px -1px rgba(0,0,0,0.3),
+            0 2px 4px rgba(0,0,0,0.3);
     }
 
-    :global(.nostalgic-mode) .nostalgic-divider {
+    /* Cards */
+    .retro-card {
         display: block;
-        height: 10px;
-        background: url("data:image/gif;base64,R0lGODlhCgAKAIAAAAAAAP///yH5BAEAAAEALAAAAAAKAAoAAAIRjI+py+0Po5y02ouz3rz7VgAAOw==") repeat-x;
-        margin: 1rem 0;
+        transition: transform 0.2s, background-color 0.2s;
     }
 
-    :global(.nostalgic-mode) .nostalgic-grid {
-        display: block;
-    }
-
-    :global(.nostalgic-mode) .nostalgic-card {
-        margin-bottom: 1rem;
-    }
-
-    :global(.nostalgic-mode) .nostalgic-card > div {
-        background: #c0c0c0;
-        border: 2px solid;
-        border-color: #ffffff #404040 #404040 #ffffff;
-        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-        border-radius: 0;
-        transform: none !important;
-        transition: none;
-    }
-
-    :global(.nostalgic-mode) .nostalgic-card > div:hover {
-        background: #d4d0c8;
-    }
-
-    :global(.nostalgic-mode) .nostalgic-icon {
-        filter: grayscale(100%);
-    }
-
-    :global(.nostalgic-mode) .font-cherry,
-    :global(.nostalgic-mode) .font-pixel {
-        font-family: 'MS Gothic', monospace;
-    }
-
-    :global(.nostalgic-mode) .animate-float {
-        animation: none;
-    }
-
-    :global(.nostalgic-mode) .nostalgic-contact {
-        background: #c0c0c0;
-        border: 2px solid;
-        border-color: #ffffff #404040 #404040 #ffffff;
-        box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-        border-radius: 0;
-    }
-
-    :global(.nostalgic-mode) .nostalgic-header::after {
-        content: "━━━━━━━━━━━━━━━━━━━━━━";
-        display: block;
-        text-align: center;
-        color: #000080;
-        margin-top: 10px;
-    }
-
-    /* Estilos específicos para mostrar/esconder conteúdo */
-    .kawaii-content {
-        display: block;
-    }
-
-    .retro-content {
-        display: none;
-    }
-
-    /* Quando o modo retrô está ativo */
-    :global(.nostalgic-mode) .kawaii-content {
-        display: none !important;
-    }
-
-    :global(.nostalgic-mode) .retro-content {
-        display: block !important;
-    }
-
-    /* Estilos Kawaii específicos */
-    body:not(.nostalgic-mode) .group > div {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
-        transition: all 0.3s ease;
-    }
-
-    body:not(.nostalgic-mode) .group:hover > div {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
-    }
-
-    body:not(.nostalgic-mode) h1 {
-        text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
-    }
-
-    body:not(.nostalgic-mode) .font-pixel {
-        text-shadow: 1px 1px 3px rgba(255, 182, 193, 0.2);
-    }
-
-    /* Garantir que os estilos retrô não sejam afetados */
-    .nostalgic-mode .group > div,
-    .nostalgic-mode h1,
-    .nostalgic-mode .font-pixel {
-        background: initial;
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
-        text-shadow: none;
-        transform: none !important;
-        transition: none !important;
-        animation: none !important;
-    }
-
-    .nostalgic-mode h1::after {
-        display: none;
-    }
-
-    /* Novos estilos Kawaii */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-    }
-
-    body:not(.nostalgic-mode) .contact-link {
-        color: #805ad5;
-        transition: all 0.3s ease;
-        padding: 0.5rem 1.5rem;
-        border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.5);
-    }
-
-    body:not(.nostalgic-mode) .contact-link:hover {
-        background: rgba(255, 255, 255, 0.8);
+    .retro-card:hover {
         transform: translateY(-2px);
-        color: #6b46c1;
-        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+        background: var(--accent);
+        border-color: var(--highlight) var(--border) var(--border) var(--highlight);
     }
 
-    @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(-1deg); }
-        50% { transform: translateY(-10px) rotate(1deg); }
+    .retro-card h2 {
+        color: var(--title-color);
+        border-bottom: 2px solid;
+        border-color: var(--highlight) var(--border) var(--border) var(--highlight);
+        padding-bottom: 0.5rem;
     }
 
-    /* Novo estilo para animação de hover nos cards */
-    body:not(.nostalgic-mode) .glass-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Botões */
+    .retro-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        width: 100%;
+        max-width: 200px;
+        background: var(--button-gradient);
+        border: 2px solid;
+        border-color: var(--highlight) var(--border) var(--border) var(--highlight);
+        box-shadow:
+            inset 1px 1px rgba(255,255,255,0.1),
+            inset -1px -1px rgba(0,0,0,0.3);
+        transition: all 0.2s;
     }
 
-    body:not(.nostalgic-mode) .glass-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
-        border-color: rgba(255, 255, 255, 0.5);
+    @media (max-width: 640px) {
+        .retro-button {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
     }
+
+    .retro-button:hover {
+        background: var(--button-hover);
+    }
+
+    .retro-button:active {
+        transform: translateY(1px);
+        border-color: var(--border) var(--highlight) var(--highlight) var(--border);
+        box-shadow:
+            inset 1px 1px rgba(0,0,0,0.3),
+            inset -1px -1px rgba(255,255,255,0.1);
+        padding-top: 9px;
+        padding-left: 17px;
+    }
+
+    /* Header especial */
+    .retro-header h1 {
+        text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+        letter-spacing: 2px;
+        color: var(--title-color);
+    }
+
+    /* Animação sutil ao carregar */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .retro-card {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .retro-card:nth-child(2) { animation-delay: 0.1s; }
+    .retro-card:nth-child(3) { animation-delay: 0.2s; }
+    .retro-card:nth-child(4) { animation-delay: 0.3s; }
 </style>

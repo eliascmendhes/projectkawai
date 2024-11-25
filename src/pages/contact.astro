@@ -1,225 +1,226 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageTitle from '../components/PageTitle.astro';
 ---
 
 <Layout title="Contato">
-  <div class="max-w-3xl mx-auto">
-    <PageTitle title="Contato">
-      <span class="kawaii-content">Entre em contato ♡</span>
-      <span class="retro-content">◆ Entre em contato ◆</span>
-    </PageTitle>
-
-    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFB6C1] shadow-lg nostalgic-container">
-      <div class="text-center mb-8">
-        <h2 class="font-[Mochiy+Pop+One] text-xl text-[#FF1493] mb-4 nostalgic-title">
-          <span class="kawaii-content">🌸 Sim, vou receber essa mensagem! ✧</span>
-          <span class="retro-content">[ Sim, vou receber essa mensagem! ]</span>
-        </h2>
+  <div class="window max-w-3xl mx-auto">
+    <div class="window-header">
+      <div class="window-title">Formulário de Contato</div>
+      <div class="window-controls">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close">×</span>
       </div>
+    </div>
 
-      <form action={import.meta.env.PUBLIC_FORMSPREE_URL} method="POST" class="space-y-6">
-        <div>
-          <label for="name" class="block font-[Mochiy+Pop+One] text-lg text-[#FF1493] mb-2 nostalgic-label">
-            <span class="kawaii-content">🍡 Seu nome ♡</span>
-            <span class="retro-content">Nome:</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Como posso te chamar?"
-            class="w-full px-4 py-3 rounded-xl border-2 border-[#FFB6C1] focus:border-[#FF69B4] focus:ring-2 focus:ring-[#FFD1DC]
-            font-[Mochiy+Pop+One] text-[#333] transition-all hover:shadow-md nostalgic-input"
-            required
-          />
-        </div>
+    <div class="window-content">
+      <form action={import.meta.env.PUBLIC_FORMSPREE_URL} method="POST" class="xp-form">
+        <fieldset class="xp-fieldset">
+          <legend class="xp-legend">Informações de Contato</legend>
 
-        <div>
-          <label for="email" class="block font-[Mochiy+Pop+One] text-lg text-[#FF1493] mb-2 nostalgic-label">
-            <span class="kawaii-content">📧 Email ♡</span>
-            <span class="retro-content">Email:</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Seu melhor email"
-            class="nostalgic-input"
-            required
-          />
-        </div>
+          <div class="form-group">
+            <label for="name" class="xp-label">Nome:</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Como posso te chamar?"
+              class="xp-input"
+              required
+            />
+          </div>
 
-        <div>
-          <label for="message" class="block font-[Mochiy+Pop+One] text-lg text-[#FF1493] mb-2 nostalgic-label">
-            <span class="kawaii-content">💌 Sua mensagem ♡</span>
-            <span class="retro-content">Mensagem:</span>
-          </label>
-          <textarea
-            name="message"
-            id="message"
-            rows="6"
-            placeholder="O que gostaria de me dizer?"
-            class="nostalgic-input"
-            required
-          ></textarea>
-        </div>
+          <div class="form-group">
+            <label for="email" class="xp-label">Email:</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Seu melhor email"
+              class="xp-input"
+              required
+            />
+          </div>
 
-        <button type="submit" class="nostalgic-button">
-          <span class="kawaii-content">✧ Enviar mensagem ✧</span>
-          <span class="retro-content">[ Enviar mensagem ]</span>
-        </button>
+          <div class="form-group">
+            <label for="message" class="xp-label">Mensagem:</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="6"
+              placeholder="O que gostaria de me dizer?"
+              class="xp-input"
+              required
+            ></textarea>
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="xp-button">
+              Enviar mensagem
+            </button>
+            <button type="reset" class="xp-button secondary">
+              Limpar campos
+            </button>
+          </div>
+        </fieldset>
       </form>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Estilos base para inputs e botões (modo kawaii) */
-  .nostalgic-input {
-    @apply w-full px-4 py-3 rounded-xl border-2 border-[#FFB6C1]
-    focus:border-[#FF69B4] focus:ring-2 focus:ring-[#FFD1DC]
-    font-[Mochiy+Pop+One] text-[#333] transition-all hover:shadow-md;
+  /* Janela Principal */
+  .window {
+    background: #ECE9D8;
+    border: 1px solid #0054E3;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin: 20px auto;
+    width: 95%;
+    max-width: 600px;
   }
 
-  .nostalgic-button {
-    @apply px-8 py-2.5 rounded-full bg-gradient-to-r from-[#FFB6C1] to-[#FF69B4]
-    text-white font-[Mochiy+Pop+One] text-base mx-auto block
-    transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02]
-    border-2 border-[#FFB6C1] hover:border-[#FF69B4];
-    width: fit-content;
-    min-width: 200px;
-    position: relative;
-    overflow: hidden;
+  .window-header {
+    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
+    padding: 5px 10px;
+    border-radius: 7px 7px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
   }
 
-  .nostalgic-button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s;
+  .window-controls {
+    display: flex;
+    gap: 4px;
   }
 
-  .nostalgic-button:hover::before {
-    transform: translateX(100%);
+  .window-controls span {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF, #DFDFDF);
+    border: 1px solid #0054E3;
+    border-radius: 3px;
+    color: #000;
+    cursor: pointer;
   }
 
-  .nostalgic-button {
-    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+  .window-content {
+    padding: 20px;
+    background: #fff;
   }
 
-  .nostalgic-button:hover {
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
-  }
-
-  /* Controle de visibilidade base */
-  .kawaii-content {
-    display: block;
-  }
-
-  .retro-content {
-    display: none;
-  }
-
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-container {
-    background: #c0c0c0;
+  /* Formulário */
+  .xp-fieldset {
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 16px;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    padding: 20px;
+    background: #ECE9D8;
+    margin: 0;
   }
 
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #000080;
-    text-transform: uppercase;
-    border-bottom: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080;
-    padding-bottom: 8px;
+  .xp-legend {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0 10px;
+    background: #ECE9D8;
   }
 
-  :global(.nostalgic-mode) .nostalgic-label {
-    font-family: 'MS Gothic', monospace;
+  .xp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .xp-label {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
-    font-size: 0.875rem;
-    margin-bottom: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
   }
 
-  :global(.nostalgic-mode) .nostalgic-input {
-    background: #ffffff;
+  .xp-input {
+    background: #FFFFFF;
     border: 2px solid;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
-    font-family: 'MS Gothic', monospace;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
+    padding: 6px 8px;
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
-    padding: 4px 8px;
     width: 100%;
-    border-radius: 0;
-    transform: none;
-    transition: none;
   }
 
-  :global(.nostalgic-mode) .nostalgic-input:focus {
+  .xp-input:focus {
     outline: 1px dotted #000000;
     outline-offset: -4px;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button {
-    background: #c0c0c0;
-    background-image: none;
+  /* Botões */
+  .button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .xp-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
-    padding: 4px 32px;
-    width: 100%;
-    position: relative;
-    transform: none;
-    transition: none;
-    border-radius: 0;
-    min-width: auto;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 0.9rem;
+    padding: 6px 16px;
+    cursor: pointer;
+    min-width: 120px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #d4d0c8;
-    opacity: 1;
-    transform: none;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+  .xp-button.secondary {
+    background: linear-gradient(to bottom, #ECE9D8, #E3E1D5);
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 5px;
-    padding-left: 33px;
+  .xp-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  /* Controle de visibilidade */
-  :global(.nostalgic-mode) .kawaii-content {
-    display: none !important;
+  .xp-button:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
+    padding-top: 7px;
+    padding-left: 17px;
   }
 
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
-  }
+  /* Responsividade */
+  @media (max-width: 640px) {
+    .window {
+      margin: 10px auto;
+      width: 95%;
+    }
 
-  /* Remove animações apenas no modo retrô */
-  :global(.nostalgic-mode) * {
-    transition: none !important;
+    .window-content {
+      padding: 15px;
+    }
+
+    .button-container {
+      flex-direction: column;
+    }
+
+    .xp-button {
+      width: 100%;
+    }
   }
 </style>

@@ -10,145 +10,75 @@ interface Props {
 
 const { title, date, preview, image, slug, tags = [] } = Astro.props;
 
-// Função para calcular o brilho de uma cor
-function getBrightness(hexColor: string): number {
-  const hex = hexColor.replace('#', '');
-
-  // Converte hex para RGB
-  const r = parseInt(hex.substr(0, 2), 16);
-  const g = parseInt(hex.substr(2, 2), 16);
-  const b = parseInt(hex.substr(4, 2), 16);
-
-  // fórmula YIQ
-  return (r * 299 + g * 587 + b * 114) / 1000;
-}
-
-// Mapa de cores para as tags
 const tagColorMap = {
-  // Emoções Básicas
-  "feliz": "#FFD700",
-  "triste": "#87CEEB",
-  "estressante": "#FF69B4",
-  "animado": "#FFA500",
-  "ansioso": "#9370DB",
-  "tranquilo": "#98FB98",
-  "frustrado": "#FF4500",
-  "orgulhoso": "#DDA0DD",
-  "sobrecarregado": "#FF6B6B",
+  // Tags de Desenvolvimento
+  "desenvolvimento": "#1E4F9E",
+  "feature": "#4FA019",
+  "bug": "#CC0000",
+  "design": "#9B4F96",
+  "performance": "#003CD2",
+  "refactor": "#008081",
+  "teste": "#465ACC",
+  "deploy": "#2A8A00",
 
-  // Emoções Adicionais
-  "pensativo": "#B0C4DE",    // Azul suave
-  "solitário": "#E6E6FA",    // Lavanda claro
-  "sonolento": "#DEB887",    // Marrom suave
-  "nostálgico": "#FFE4B5",   // Pêssego
-  "apaixonado": "#FFB6C1",   // Rosa claro
-  "determinado": "#98FB98",  // Verde pastel
-  "sonhador": "#E0FFFF",     // Ciano claro
-  "tímido": "#FFC0CB",       // Rosa bebê
-
-  // Tags Kawaii/Fofas
-  "kawaii": "#FFC0CB",       // Rosa suave
-  "mochi": "#FFE4E1",        // Rosa misty
-  "pastel": "#F0FFF0",       // Verde honeydew
-  "chibi": "#FFE4B5",        // Moccasin
-  "fluffy": "#F0F8FF",       // Azul alice
-  "sparkly": "#FFE4E1",      // Rosa misty
-  "melody": "#E6E6FA",       // Lavanda
-  "dreamy": "#F8F8FF",       // Branco fantasma
-
-  // Tags Técnicas
-  "desenvolvimento": "#8A4FFF",
-  "feature": "#32CD32",
-  "bug": "#FF6347",
-  "design": "#FF1493",
-  "performance": "#4169E1",
-  "refactor": "#20B2AA",
-  "teste": "#BA55D3",
-  "deploy": "#32CD32",
-
-  // Tags de Rotina de Estudos
-  "estudos": "#4682B4",      // Azul aço
-  "produtivo": "#90EE90",    // Verde claro
-  "foco": "#9370DB",         // Roxo médio
-  "pomodoro": "#FF6B6B",     // Vermelho suave
-  "revisão": "#87CEFA",      // Azul claro
-  "anotações": "#FFB347",    // Laranja suave
-  "biblioteca": "#DEB887",   // Marrom claro
-  "deadline": "#FF69B4",     // Rosa quente
-  "leitura": "#98FB98",      // Verde pastel
-  "organização": "#B19CD9",  // Lavanda
+  // Tags de Estudos
+  "estudos": "#1C5180",
+  "produtivo": "#2D8C39",
+  "foco": "#6A1B9A",
+  "revisão": "#0066CC",
+  "anotações": "#8B4513",
+  "biblioteca": "#996515",
+  "deadline": "#D81B60",
+  "leitura": "#1B5E20",
+  "organização": "#2F4F81",
 
   // Tags de Música
-  "rock": "#1A1A1A",         // Preto suave para rock clássico
-  "indie-rock": "#4B0082",   // Índigo para indie
-  "country": "#CD853F",      // Marrom peru para country
-  "folk": "#8B4513",         // Marrom sela para folk
-  "metal": "#2F4F4F",        // Cinza ardósia escuro
-  "jazz": "#4682B4",         // Azul aço para jazz
-  "blues": "#483D8B",        // Azul ardósia escuro
-  "pop": "#FF69B4",          // Rosa quente para pop
-  "eletrônica": "#9400D3",   // Violeta escuro
-  "clássica": "#DEB887",     // Marrom madeira
+  "rock": "#1A1A3A",
+  "indie-rock": "#4A154B",
+  "country": "#8B4513",
+  "folk": "#795548",
+  "metal": "#212121",
+  "jazz": "#1A237E",
+  "blues": "#0D47A1",
+  "pop": "#880E4F",
+  "eletrônica": "#4A148C",
+  "clássica": "#4E342E",
 };
 ---
 
-<a href={`/blog/${slug}`} class="block group">
-  <article class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border-4 border-[#FFC0CB]
-     hover:scale-[1.02] hover:shadow-xl transition-all duration-300
-     hover:border-[#FF69B4] nostalgic-blog-card">
+<a href={`/blog/${slug}`} class="block">
+  <article class="xp-card">
     <div class="flex items-start gap-6">
-      <div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden
-         border-2 border-[#FFB6C1] shadow-sm nostalgic-image-container">
+      <div class="xp-image-container">
         <img
           src={image}
           alt={title}
           loading="lazy"
-          class="w-full h-full object-cover object-center nostalgic-image"
+          class="xp-image"
         />
       </div>
 
       <div class="flex-1 space-y-3">
-        <div class="relative">
-          <h2 class="font-[Dela+Gothic+One] text-2xl text-[#FF1493] nostalgic-title">
-            {title}
-            <span class="absolute -top-1 -right-2 text-[#FFD700] opacity-0
-               group-hover:opacity-100 transition-opacity nostalgic-emoji">🍡</span>
-          </h2>
-        </div>
+        <h2 class="xp-title">{title}</h2>
 
-        <p class="font-[Mochiy+Pop+One] text-sm text-[#8A4FFF] flex items-center gap-2 nostalgic-date">
-          <span class="text-xs nostalgic-emoji">🌸</span> {date}
-        </p>
+        <p class="xp-date">{date}</p>
 
         {tags && tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
-            {tags.map(tag => {
-              const bgColor = tagColorMap[tag] || '#FFD1DC';
-              const textColor = getBrightness(bgColor) > 155 ? '#333333' : '#FFFFFF';
-
-              return (
-                <span class="px-3 py-1 rounded-full text-xs font-[Mochiy+Pop+One]
-                  border-2 border-[#FFD1DC] shadow-sm nostalgic-tag"
-                  style={`background-color: ${bgColor}; color: ${textColor}`}
-                >
-                  ✧ {tag}
-                </span>
-              );
-            })}
+            {tags.map(tag => (
+              <span class="xp-tag" style={`background-color: ${tagColorMap[tag] || '#003366'}`}>
+                {tag}
+              </span>
+            ))}
           </div>
         )}
 
-        <p class="font-[Mochiy+Pop+One] text-[#333] leading-relaxed nostalgic-preview">
-          {preview}
-        </p>
+        <p class="xp-preview">{preview}</p>
 
         <div class="pt-2">
-          <span class="inline-flex items-center px-4 py-2
-             bg-[#FFD1DC] text-[#FF1493] font-[Mochiy+Pop+One] rounded-lg
-             nostalgic-read-more">
+          <button class="xp-button">
             Leia mais
-            <span class="ml-1">♡</span>
-          </span>
+          </button>
         </div>
       </div>
     </div>
@@ -156,166 +86,136 @@ const tagColorMap = {
 </a>
 
 <style>
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-blog-card {
-    background: #c0c0c0;
+  /* Card Principal */
+  .xp-card {
+    background: #ECE9D8;
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 12px;
-    margin-bottom: 16px;
-    cursor: pointer;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: none;
   }
 
-  /* Efeito hover no card */
-  :global(.nostalgic-mode) .nostalgic-blog-card:hover {
-    background: #d4d0c8;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+  .xp-card:hover {
+    background: #F5F5F5;
   }
 
-  /* Efeito de clique */
-  :global(.nostalgic-mode) .nostalgic-blog-card:active {
-    background: #808080;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 2px 2px #404040, inset -1px -1px #ffffff;
+  .xp-card:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
   }
 
-  /* Container da imagem */
-  :global(.nostalgic-mode) .nostalgic-image-container {
+  /* Container da Imagem */
+  .xp-image-container {
+    width: 120px;
+    height: 120px;
     border: 2px solid;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
-    border-radius: 0;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
     padding: 2px;
-    background: #ffffff;
+    background: #FFFFFF;
   }
 
-  /* Imagem */
-  :global(.nostalgic-mode) .nostalgic-image {
-    filter: grayscale(30%);
-    image-rendering: pixelated;
+  .xp-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* Título */
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #000080;
-    font-size: 1.25rem;
+  .xp-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
+    font-size: 1.2rem;
     font-weight: bold;
-    text-decoration: none;
     margin-bottom: 8px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-title:hover {
-    text-decoration: underline;
-  }
-
   /* Data */
-  :global(.nostalgic-mode) .nostalgic-date {
-    font-family: 'MS Gothic', monospace;
-    color: #000000;
-    font-size: 0.875rem;
-    margin: 4px 0;
+  .xp-date {
+    font-family: 'Tahoma', sans-serif;
+    color: #666666;
+    font-size: 0.9rem;
   }
 
   /* Tags */
-  :global(.nostalgic-mode) .nostalgic-tag {
-    background: #000080 !important;
-    color: #ffffff !important;
-    border: 1px solid #404040;
-    border-radius: 0;
-    font-family: 'MS Gothic', monospace;
-    font-size: 0.75rem;
-    padding: 1px 4px;
-    margin-right: 4px;
+  .xp-tag {
+    color: #FFFFFF;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow:
+      inset 1px 1px rgba(255,255,255,0.3),
+      inset -1px -1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+    text-shadow: 1px 1px rgba(0,0,0,0.2);
+    transition: all 0.1s ease;
   }
 
-  :global(.nostalgic-mode) .nostalgic-tag:hover {
-    background: #0000a0 !important;
+  .xp-tag:hover {
+    filter: brightness(110%);
+    box-shadow:
+      inset 1px 1px rgba(255,255,255,0.4),
+      inset -1px -1px rgba(0,0,0,0.1);
   }
 
-  /* Preview do texto */
-  :global(.nostalgic-mode) .nostalgic-preview {
-    font-family: 'MS Gothic', monospace;
+  /* Preview */
+  .xp-preview {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
-    line-height: 1.4;
-    margin: 8px 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    max-height: 4.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
-  /* Botão Leia mais */
-  :global(.nostalgic-mode) .nostalgic-read-more {
-    background: #c0c0c0;
+  /* Botão */
+  .xp-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
-    padding: 4px 8px;
-    display: inline-block;
-    position: relative;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 0.9rem;
+    padding: 4px 12px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-read-more:hover {
-    background: #d4d0c8;
+  .xp-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  :global(.nostalgic-mode) .nostalgic-read-more:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    top: 1px;
-    left: 1px;
+  .xp-button:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
+    padding-top: 5px;
+    padding-left: 13px;
   }
 
-  /* Remove emojis no modo retrô */
-  :global(.nostalgic-mode) .nostalgic-emoji {
-    display: none;
-  }
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .flex {
+      flex-direction: column;
+    }
 
+    .xp-image-container {
+      width: 100%;
+      height: 180px;
+      margin-bottom: 15px;
+    }
 
-  /* Remove todas as animações */
-  :global(.nostalgic-mode) .transition-all,
-  :global(.nostalgic-mode) .transition-colors,
-  :global(.nostalgic-mode) .transition-opacity,
-  :global(.nostalgic-mode) .transition-transform,
-  :global(.nostalgic-mode) .duration-300 {
-    transition: none !important;
-  }
-
-  :global(.nostalgic-mode) .hover\:scale-\[1\.02\]:hover,
-  :global(.nostalgic-mode) .hover\:shadow-xl:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
-  /* Ajustes para o modo kawaii */
-  body:not(.nostalgic-mode) {
-    .nostalgic-title {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
+    .xp-title {
+      font-size: 1.1rem;
       line-height: 1.3;
-      letter-spacing: -0.01em;
     }
 
-    .nostalgic-date {
-      font-size: 0.7rem;
-    }
-
-    .nostalgic-tag {
-      font-size: 0.6rem;
-      padding: 0.15rem 0.4rem;
-    }
-
-    .nostalgic-preview {
-      font-size: 0.8rem;
-      line-height: 1.4;
-    }
-
-    .nostalgic-read-more {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.5rem;
+    .xp-preview {
+      max-height: none;
+      -webkit-line-clamp: 4;
     }
   }
 </style>

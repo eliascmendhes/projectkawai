@@ -1,12 +1,28 @@
 ---
-title: 'Modo Retrô Adicionado!'
-date: '2024-11-23'
-preview: 'Novo tema adicionado ao site.'
-image: 'https://dl.glitter-graphics.com/pub/3603/3603206nqvhcjoh2k.gif'
+title: 'Mudanças no Design: Windows XP Style'
+date: '2024-11-25'
+preview: 'Adotando permanentemente o estilo Windows XP para o blog.'
+image: 'https://i9.glitter-graphics.org/pub/2096/2096849jntsygzrur.jpg'
 slug: 'new-post01'
-tags: ['design', 'desenvolvimento', 'nostálgico', feliz]
+tags: ['design', 'desenvolvimento', 'windows-xp']
 ---
 
-Adicionei um novo modo retrô ao site! 🎮✨
+# Mudanças no Design: Windows XP Style 🖥️
 
-Não gosto muito de layouts modernos, então adicionei um modo retrô ao site.
+Depois de muito pensar sobre a direção visual do blog, decidi fazer uma mudança significativa: adotar permanentemente o estilo Windows XP!
+
+## O que mudou?
+
+- Interface completamente redesenhada no estilo Windows XP
+- Janelas com bordas e sombras características
+- Botões com efeito 3D clássico
+- Sistema de tags estilo Windows
+- Menus dropdown nostálgicos
+- Scrollbars personalizadas
+
+## Próximos Passos
+
+Continuarei aprimorando a experiência, adicionando mais elementos nostálgicos e melhorando a usabilidade, sempre mantendo a essência do Windows XP.
+
+
+*Melhor visualizado em 800x600* 😉

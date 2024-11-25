@@ -7,155 +7,287 @@ interface Music {
 }
 ---
 
-<div class="fixed bottom-4 right-4 w-[calc(100%-2rem)] md:w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-pink-200 p-2 z-30 nostalgic-player">
-  <div class="flex items-center gap-2">
-    <div class="w-12 h-12 rounded-lg overflow-hidden border border-pink-100 nostalgic-cover">
-      <img src="/covers/minecraft_music.jpeg" alt="Album cover" class="w-full h-full object-cover" id="musicCover">
-    </div>
+<!-- Player Minimizado -->
+<div id="minimizedPlayer" class="fixed bottom-4 right-4 hidden">
+  <button class="minimized-button" id="expandButton">
+    <div class="playing-indicator"></div>
+  </button>
+</div>
 
-    <div class="flex-1">
-      <div class="text-xs">
-        <h3 class="font-[Mochiy+Pop+One] text-pink-600 truncate nostalgic-title" id="musicTitle">Nome da Música</h3>
-        <p class="text-purple-500 text-xs truncate nostalgic-artist" id="musicArtist">Artista</p>
+<!-- Player Principal -->
+<div id="mainPlayer" class="fixed bottom-4 right-4 w-[calc(100%-2rem)] sm:w-[300px] winamp-player">
+  <div class="winamp-header">
+    <div class="winamp-title">
+      <span class="winamp-logo">WINAMP</span>
+      <span class="winamp-version">[2.91]</span>
+    </div>
+    <div class="winamp-controls">
+      <button class="winamp-button minimize" id="minimizeButton">_</button>
+      <button class="winamp-button maximize">□</button>
+      <button class="winamp-button close" id="closeButton">×</button>
+    </div>
+  </div>
+
+  <div class="winamp-main">
+    <div class="winamp-info">
+      <div class="winamp-display">
+        <div class="song-info">
+          <marquee scrollamount="2" id="musicTitle">Nome da Música</marquee>
+          <small id="musicArtist">Artista</small>
+        </div>
+        <div class="time-display">00:00</div>
       </div>
 
-      <div class="w-full bg-pink-100 rounded-full h-1.5 mt-1.5 nostalgic-progress-container">
-        <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-1.5 rounded-full w-0 nostalgic-progress" id="progressBar"></div>
+      <div class="winamp-visualizer">
+        <div class="visualizer-bar" style="height: 15px"></div>
+        <div class="visualizer-bar" style="height: 8px"></div>
+        <div class="visualizer-bar" style="height: 20px"></div>
+        <div class="visualizer-bar" style="height: 12px"></div>
+        <div class="visualizer-bar" style="height: 18px"></div>
       </div>
     </div>
 
-    <div class="flex items-center gap-1">
-      <button class="kawaii-button nostalgic-button" id="playButton">▶</button>
-      <button class="kawaii-button nostalgic-button" id="nextButton">⏭</button>
+    <div class="winamp-controls-main">
+      <div class="winamp-progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="playback-controls">
+        <button class="control-button prev">⏮</button>
+        <button class="control-button play" id="playButton">▶</button>
+        <button class="control-button stop">⏹</button>
+        <button class="control-button next" id="nextButton">⏭</button>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-  /* Estilos Kawaii */
-  .kawaii-button {
-    font-size: 1.2rem;
-    background: transparent;
-    border: none;
-    color: #FF69B4;
+  .winamp-player {
+    background: #282828;
+    border: 2px solid #535353;
+    border-radius: 2px;
+    font-family: 'Tahoma', sans-serif;
+    z-index: 30;
+  }
+
+  .winamp-header {
+    background: linear-gradient(90deg, #1A1A1A, #333);
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .winamp-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .winamp-logo {
+    color: #20B2AA;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  .winamp-version {
+    color: #666;
+    font-size: 0.65rem;
+  }
+
+  .winamp-main {
+    padding: 8px;
+    background: #282828;
+  }
+
+  .winamp-info {
+    background: #000;
+    padding: 4px;
+    margin-bottom: 8px;
+  }
+
+  .winamp-display {
+    background: #000;
+    color: #00FF00;
+    font-family: 'LCD', monospace;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+  }
+
+  .song-info {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .winamp-visualizer {
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 25px;
+    background: #000;
+    margin-top: 4px;
+  }
+
+  .visualizer-bar {
+    width: 3px;
+    background: linear-gradient(to top, #00FF00, #008000);
+    transition: height 0.1s ease;
+  }
+
+  .winamp-progress {
+    background: #000;
+    height: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #444;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #20B2AA;
+    width: 0%;
+  }
+
+  .playback-controls {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .control-button {
+    background: #282828;
+    border: 1px solid #535353;
+    color: #20B2AA;
     padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .control-button:hover {
+    background: #333;
+  }
+
+  .control-button:active {
+    background: #1A1A1A;
+    transform: translateY(1px);
+  }
+
+  @media (max-width: 768px) {
+    .winamp-player {
+      padding: 4px;
+    }
+
+    .control-button {
+      padding: 4px 6px;
+    }
+  }
+
+  /* Animação para o visualizador */
+  @keyframes visualize {
+    0% { height: 5px; }
+    50% { height: 20px; }
+    100% { height: 5px; }
+  }
+
+  .visualizer-bar {
+    animation: visualize 0.5s infinite;
+    animation-delay: calc(var(--bar-index) * 0.1s);
+  }
+
+  @media (max-width: 640px) {
+    .winamp-player {
+      width: 250px;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 0.9rem;
+    }
+
+    .winamp-main {
+      padding: 4px;
+    }
+
+    .winamp-display {
+      font-size: 0.7rem;
+    }
+
+    .control-button {
+      padding: 3px 6px;
+      font-size: 0.7rem;
+    }
+
+    .winamp-progress {
+      height: 8px;
+      margin-bottom: 6px;
+    }
+
+    .playback-controls {
+      gap: 2px;
+    }
+
+    .winamp-visualizer {
+      height: 20px;
+    }
+
+    .visualizer-bar {
+      width: 2px;
+    }
+
+    .winamp-logo {
+      font-size: 0.7rem;
+    }
+
+    .winamp-version {
+      font-size: 0.6rem;
+    }
+  }
+
+  /* Ajuste específico para telas muito pequenas */
+  @media (max-width: 360px) {
+    .winamp-player {
+      width: 220px;
+    }
+  }
+
+  /* Estilos do Player Minimizado */
+  .minimized-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #282828;
+    border: 2px solid #535353;
+    position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
-  .kawaii-button:hover {
-    color: #FF1493;
+  .minimized-button:hover {
     transform: scale(1.1);
   }
 
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .kawaii-button {
-    font-size: 1rem;
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    color: #000000;
-    padding: 2px 6px;
-    min-width: 24px;
-    text-align: center;
-    transform: none;
+  .playing-indicator {
+    width: 12px;
+    height: 12px;
+    background: #20B2AA;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s infinite;
   }
 
-  :global(.nostalgic-mode) .kawaii-button:hover {
-    background: #d4d0c8;
-    color: #000000;
+  @keyframes pulse {
+    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
   }
 
-  :global(.nostalgic-mode) .kawaii-button:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 3px;
-    padding-left: 7px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-player {
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 8px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-cover {
-    border: 2px solid;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
-    border-radius: 0;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #000080;
-    font-weight: bold;
-    font-size: 0.75rem;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-artist {
-    font-family: 'MS Gothic', monospace;
-    color: #000000;
-    font-size: 0.7rem;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-progress-container {
-    background: #ffffff;
-    border: 2px solid;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
-    border-radius: 0;
-    height: 10px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-progress {
-    background: #000080;
-    border-radius: 0;
-    height: 6px;
-    margin: 1px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-button {
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    color: #000000;
-    font-family: 'MS Gothic', monospace;
-    padding: 2px 6px;
-    font-size: 0.875rem;
-    min-width: 24px;
-    text-align: center;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #d4d0c8;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-button:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 3px;
-    padding-left: 7px;
-  }
-
-  /* Controle de visibilidade */
-  :global(.nostalgic-mode) .kawaii-content {
-    display: none !important;
-  }
-
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
-  }
-
-  /* Remove animações no modo retrô */
-  :global(.nostalgic-mode) * {
-    transition: none !important;
-    transform: none !important;
+  /* Estado Oculto */
+  .hidden {
+    display: none;
   }
 </style>
 
@@ -166,19 +298,24 @@ interface Music {
 
     private constructor() {
       this.audio = new Audio();
-      // Recuperar estado anterior se existir
+      this.audio.volume = 0.5; // Volume padrão
+
+      // Recuperar estado anterior
       const savedTime = localStorage.getItem('musicTime');
       const savedIndex = localStorage.getItem('currentSongIndex');
-      const savedIsPlaying = localStorage.getItem('isPlaying');
+      const savedVolume = localStorage.getItem('volume');
 
       if (savedTime) this.audio.currentTime = parseFloat(savedTime);
-      if (savedIsPlaying === 'true') this.audio.play();
+      if (savedVolume) this.audio.volume = parseFloat(savedVolume);
 
       // Salvar estado periodicamente
-      setInterval(() => {
-        localStorage.setItem('musicTime', this.audio.currentTime.toString());
-        localStorage.setItem('isPlaying', (!this.audio.paused).toString());
-      }, 1000);
+      setInterval(() => this.saveState(), 1000);
+    }
+
+    private saveState() {
+      localStorage.setItem('musicTime', this.audio.currentTime.toString());
+      localStorage.setItem('isPlaying', (!this.audio.paused).toString());
+      localStorage.setItem('volume', this.audio.volume.toString());
     }
 
     static getInstance(): MusicPlayerState {
@@ -193,127 +330,117 @@ interface Music {
     }
   }
 
-  // Usar uma única instância do audio
+  // Player setup
   const playerState = MusicPlayerState.getInstance();
   const audio = playerState.getAudio();
+  let currentSongIndex = parseInt(localStorage.getItem('currentSongIndex') || '0');
+  let isPlaying = false;
 
-  // Função para obter nome da música do arquivo
+  // Elementos do DOM
+  const playButton = document.getElementById('playButton') as HTMLButtonElement;
+  const nextButton = document.getElementById('nextButton') as HTMLButtonElement;
+  const prevButton = document.querySelector('.prev') as HTMLButtonElement;
+  const stopButton = document.querySelector('.stop') as HTMLButtonElement;
+  const progressBar = document.getElementById('progressBar') as HTMLDivElement;
+  const musicTitle = document.getElementById('musicTitle') as HTMLElement;
+  const musicArtist = document.getElementById('musicArtist') as HTMLElement;
+
+  // Elementos do DOM para controle de visualização
+  const mainPlayer = document.getElementById('mainPlayer');
+  const minimizedPlayer = document.getElementById('minimizedPlayer');
+  const minimizeButton = document.getElementById('minimizeButton');
+  const expandButton = document.getElementById('expandButton');
+  const closeButton = document.getElementById('closeButton');
+
+  // Estado do player
+  let isMinimized = localStorage.getItem('playerMinimized') === 'true';
+  let isClosed = localStorage.getItem('playerClosed') === 'true';
+
+  // Playlist
+  const playlist = [
+    { file: "/music/key.mp3", artist: "C418" },
+    { file: "/music/cat.mp3", artist: "C418" },
+    { file: "/music/dry_hands.mp3", artist: "C418" },
+    { file: "/music/minecraft.mp3", artist: "C418" },
+    { file: "/music/sweden.mp3", artist: "C418" },
+    { file: "/music/laintheme.mp3", artist: "Cyberia Mix" },
+    { file: "/music/familyportrait.mp3", artist: "Serial Experiments" },
+  ].map(song => ({
+    ...song,
+    title: getNameFromFile(song.file)
+  }));
+
+  // Funções auxiliares
   function getNameFromFile(file: string): string {
-    const fileName = file.split('/').pop()?.split('.')[0] || '';
-    return fileName
+    return file.split('/').pop()?.split('.')[0]
       .replace(/-/g, ' ')
       .replace(/_/g, ' ')
       .split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+      .join(' ') || '';
   }
 
-  const playlist = [
-    {
-      file: "/music/key.mp3",
-      cover: "/covers/minecraft_music.jpeg"
-    },
-    {
-      file: "/music/cat.mp3",
-      cover: "/covers/minecraft_music.jpeg"
-    },
-     {
-      file: "/music/dry_hands.mp3",
-      cover: "/covers/minecraft_music.jpeg"
-    },
-    {
-      file: "/music/minecraft.mp3",
-      cover: "/covers/minecraft_music.jpeg"
-    },
-    {
-      file: "/music/sweden.mp3",
-      cover: "/covers/minecraft_music.jpeg"
-    },
-    {
-      file: "/music/laintheme.mp3",
-      cover: "/covers/laintheme.png"
-    },
-    {
-      file: "/music/familyportrait.mp3",
-      cover: "/covers/laintheme.png"
-    },
-    {
-      file: "/music/creditsound.mp3",
-      cover: "",
-    },
-    {
-      file: "/music/introduction.mp3",
-      cover: "",
-    },
-    {
-      file: "/music/RdyS.mp3",
-      cover: "",
-    },
-    {
-      file: "/music/lainmaintheme.mp3",
-      cover: "",
-    },
-    {
-      file: "/music/kids.mp3",
-      cover: "",
-    },
-    {
-      file: "/music/KirbysDreamCourse.mp3",
-      cover: "",
-    }
-
-  ].map(song => ({
-    ...song,
-    title: getNameFromFile(song.file),
-    artist: "Unknown Artist"
-  }));
-
-  let currentSongIndex = parseInt(localStorage.getItem('currentSongIndex') || '0');
-  let isPlaying = !audio.paused;
-
-  const playButton = document.getElementById('playButton');
-  const nextButton = document.getElementById('nextButton');
-  const progressBar = document.getElementById('progressBar');
-  const musicTitle = document.getElementById('musicTitle');
-  const musicArtist = document.getElementById('musicArtist');
-  const musicCover = document.getElementById('musicCover');
-
-  // Função para carregar música
-  function loadSong(index: number) {
-    const song = playlist[index];
-    if (audio.src !== new URL(song.file, window.location.href).href) {
-      audio.src = song.file;
-      musicTitle!.textContent = song.title;
-      musicArtist!.textContent = song.artist;
-      musicCover!.setAttribute('src', song.cover);
-    }
-    localStorage.setItem('currentSongIndex', index.toString());
-  }
-
-  // Função para próxima música
-  function nextSong() {
-    currentSongIndex = (currentSongIndex + 1) % playlist.length;
-    loadSong(currentSongIndex);
-    if (isPlaying) {
-      audio.play();
-    }
+  function updatePlayerUI() {
+    const song = playlist[currentSongIndex];
+    musicTitle.textContent = song.title;
+    musicArtist.textContent = song.artist;
+    playButton.textContent = isPlaying ? '⏸' : '▶';
+    updatePlayingIndicator();
   }
 
   // Funções de controle
-  function togglePlay() {
+  function loadAndPlaySong(index: number) {
+    currentSongIndex = index;
+    const song = playlist[index];
+
+    audio.src = song.file;
+    audio.load();
+
     if (isPlaying) {
-      audio.pause();
-      if (playButton) playButton.textContent = '▶';
-    } else {
-      audio.play();
-      if (playButton) playButton.textContent = '⏸';
+      audio.play().catch(console.error);
     }
-    isPlaying = !isPlaying;
+
+    localStorage.setItem('currentSongIndex', index.toString());
+    updatePlayerUI();
   }
 
-  // Event listeners
+  function togglePlay() {
+    if (!audio.src) {
+      loadAndPlaySong(currentSongIndex);
+    }
+
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch(console.error);
+    }
+
+    isPlaying = !isPlaying;
+    updatePlayerUI();
+  }
+
+  function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+    loadAndPlaySong(currentSongIndex);
+  }
+
+  function nextSong() {
+    currentSongIndex = (currentSongIndex + 1) % playlist.length;
+    loadAndPlaySong(currentSongIndex);
+  }
+
+  function stopSong() {
+    audio.pause();
+    audio.currentTime = 0;
+    isPlaying = false;
+    updatePlayerUI();
+  }
+
+  // Event Listeners
   playButton?.addEventListener('click', togglePlay);
   nextButton?.addEventListener('click', nextSong);
+  prevButton?.addEventListener('click', prevSong);
+  stopButton?.addEventListener('click', stopSong);
 
   // Atualizar barra de progresso
   audio.addEventListener('timeupdate', () => {
@@ -324,22 +451,67 @@ interface Music {
   // Próxima música quando acabar
   audio.addEventListener('ended', nextSong);
 
-  // Atualizar listeners de play/pause
-  audio.addEventListener('play', () => {
-    isPlaying = true;
-    if (playButton) playButton.textContent = '⏸';
-  });
-
-  audio.addEventListener('pause', () => {
-    isPlaying = false;
-    if (playButton) playButton.textContent = '▶';
-  });
-
-  // Carregar música atual
-  loadSong(currentSongIndex);
-
-  // Atualizar UI com estado atual
-  if (isPlaying) {
-    playButton!.textContent = '⏸';
+  // Funções de controle de visualização
+  function minimizePlayer() {
+    mainPlayer?.classList.add('hidden');
+    minimizedPlayer?.classList.remove('hidden');
+    localStorage.setItem('playerMinimized', 'true');
+    isMinimized = true;
   }
+
+  function expandPlayer() {
+    mainPlayer?.classList.remove('hidden');
+    minimizedPlayer?.classList.add('hidden');
+    localStorage.setItem('playerMinimized', 'false');
+    isMinimized = false;
+  }
+
+  function closePlayer() {
+    // Para a música
+    audio.pause();
+    audio.currentTime = 0;
+    isPlaying = false;
+
+    // Atualiza UI e estado
+    updatePlayerUI();
+    mainPlayer?.classList.add('hidden');
+    minimizedPlayer?.classList.add('hidden');
+    localStorage.setItem('playerClosed', 'true');
+    isClosed = true;
+  }
+
+  // Event Listeners
+  minimizeButton?.addEventListener('click', minimizePlayer);
+  expandButton?.addEventListener('click', expandPlayer);
+  closeButton?.addEventListener('click', closePlayer);
+
+  // Inicialização do estado visual
+  document.addEventListener('DOMContentLoaded', () => {
+    if (isClosed) {
+      mainPlayer?.classList.add('hidden');
+      minimizedPlayer?.classList.add('hidden');
+    } else if (isMinimized) {
+      minimizePlayer();
+    }
+  });
+
+  // Atualizar indicador de reprodução
+  function updatePlayingIndicator() {
+    const indicator = document.querySelector('.playing-indicator') as HTMLElement;
+    if (indicator) {
+      indicator.style.backgroundColor = isPlaying ? '#20B2AA' : '#666';
+    }
+  }
+
+  // Restaurar player ao navegar para nova página
+  window.addEventListener('pageshow', () => {
+    if (isClosed) {
+      mainPlayer?.classList.add('hidden');
+      minimizedPlayer?.classList.remove('hidden');
+      localStorage.setItem('playerClosed', 'false');
+      localStorage.setItem('playerMinimized', 'true');
+      isClosed = false;
+      isMinimized = true;
+    }
+  });
 </script>

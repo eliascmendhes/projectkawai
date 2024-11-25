@@ -1,173 +1,154 @@
 ---
-import PageTitle from '../components/PageTitle.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Página não encontrada - 404">
-  <div class="max-w-3xl mx-auto text-center py-20">
-    <PageTitle title="Página não encontrada">
-      <span class="kawaii-content">Oops! Página não encontrada ♡</span>
-      <span class="retro-content">◆ Página não encontrada ◆</span>
-    </PageTitle>
+  <div class="window max-w-3xl mx-auto">
+    <div class="window-header">
+      <div class="window-title">Erro 404</div>
+      <div class="window-controls">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close">×</span>
+      </div>
+    </div>
 
-    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-4 border-[#FFB6C1] shadow-lg nostalgic-container">
-      <h1 class="font-[Dela+Gothic+One] text-6xl text-[#FF1493] mb-6 nostalgic-title">
-        <span class="kawaii-content">404 😱</span>
-        <span class="retro-content">[ 404 ]</span>
-      </h1>
+    <div class="window-content">
+      <div class="error-container">
+        <h1 class="error-title">[ 404 ]</h1>
+        <p class="error-message">◆ Página não encontrada ◆</p>
+        <p class="error-description">
+          A página que você está procurando não existe ou foi movida.
+        </p>
 
-      <p class="font-[Mochiy+Pop+One] text-xl text-[#8A4FFF] mb-8 nostalgic-text">
-        <span class="kawaii-content">Parece que você se perdeu :(</span>
-        <span class="retro-content">Página não encontrada.</span>
-      </p>
-
-      <div class="space-y-4">
-        <a
-          href="/"
-          class="nostalgic-button"
-        >
-          <span class="kawaii-content">✧ Voltar para a página inicial ✧</span>
-          <span class="retro-content">[ Voltar para a página inicial ]</span>
-        </a>
-
-        <a
-          href="/blog"
-          class="block mt-4 font-[Mochiy+Pop+One] text-[#8A4FFF] hover:text-[#FF69B4] hover:underline nostalgic-link"
-        >
-          <span class="kawaii-content">Ou ir para o blog 📓</span>
-          <span class="retro-content">[ Ir para o blog ]</span>
-        </a>
+        <div class="button-container">
+          <a href="/" class="xp-button">
+            [ Voltar para a página inicial ]
+          </a>
+          <a href="/blog" class="xp-button secondary">
+            [ Ir para o blog ]
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Estilos Kawaii */
-  .kawaii-content {
-    display: block;
+  .window {
+    background: #ECE9D8;
+    border: 1px solid #0054E3;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin: 20px auto;
   }
 
-  .retro-content {
-    display: none;
+  .window-header {
+    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
+    padding: 5px 10px;
+    border-radius: 7px 7px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
   }
 
-  /* Botão Kawaii */
-  .nostalgic-button {
-    @apply px-8 py-2.5 rounded-full bg-gradient-to-r from-[#FFB6C1] to-[#FF69B4]
-    text-white font-[Mochiy+Pop+One] text-base mx-auto block
-    transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02]
-    border-2 border-[#FFB6C1] hover:border-[#FF69B4];
-    width: fit-content;
-    min-width: 200px;
-    position: relative;
-    overflow: hidden;
+  .window-controls {
+    display: flex;
+    gap: 4px;
   }
 
-  .nostalgic-button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s;
+  .window-controls span {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF, #DFDFDF);
+    border: 1px solid #0054E3;
+    border-radius: 2px;
+    color: #000;
+    font-size: 0.7rem;
+    cursor: pointer;
   }
 
-  .nostalgic-button:hover::before {
-    transform: translateX(100%);
+  .window-content {
+    padding: 24px;
   }
 
-  .nostalgic-button {
-    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
-  }
-
-  .nostalgic-button:hover {
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
-  }
-
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-container {
-    background: #c0c0c0;
+  .error-container {
+    background: #FFFFFF;
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 16px;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
+    padding: 24px;
+    text-align: center;
   }
 
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
+  .error-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .error-message {
+    font-family: 'Tahoma', sans-serif;
     color: #000080;
-    text-transform: uppercase;
-    border-bottom: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080;
-    padding-bottom: 8px;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-text {
-    font-family: 'MS Gothic', monospace;
+  .error-description {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
     font-size: 1rem;
+    margin-bottom: 24px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button {
-    background: #c0c0c0;
-    background-image: none;
+  .button-container {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .xp-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
-    padding: 4px 32px;
-    width: auto;
-    min-width: 200px;
-    position: relative;
-    transform: none;
-    transition: none;
-    border-radius: 0;
+    font-family: 'Tahoma', sans-serif;
+    padding: 6px 16px;
+    text-decoration: none;
+    min-width: 180px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #d4d0c8;
+  .xp-button.secondary {
+    background: linear-gradient(to bottom, #ECE9D8, #E3E1D5);
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 5px;
-    padding-left: 33px;
+  .xp-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  :global(.nostalgic-mode) .nostalgic-link {
-    font-family: 'MS Gothic', monospace;
-    color: #0000EE;
-    text-decoration: underline;
+  .xp-button:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
+    padding-top: 7px;
+    padding-left: 17px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-link:hover {
-    color: #551A8B;
-  }
+  @media (max-width: 640px) {
+    .button-container {
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* Controle de visibilidade */
-  :global(.nostalgic-mode) .kawaii-content {
-    display: none !important;
-  }
-
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
-  }
-
-  /* Remove animações no modo retrô */
-  :global(.nostalgic-mode) * {
-    transition: none !important;
-    transform: none !important;
+    .xp-button {
+      width: 100%;
+      max-width: 300px;
+    }
   }
 </style>

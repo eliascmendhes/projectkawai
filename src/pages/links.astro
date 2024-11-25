@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageTitle from '../components/PageTitle.astro';
 
 const links = [
   {
@@ -9,22 +8,18 @@ const links = [
       {
         title: "Letterboxd",
         url: "https://letterboxd.com/amitysideral/",
-        icon: "🎬",
+        icon: "►",
         description: "Meu diário de filmes e séries"
       }
     ]
   },
-  // {
-  //   category: "Redes Sociais",
-  //   items: []
-  // },
   {
     category: "Música e Entretenimento",
     items: [
       {
         title: "Steam",
         url: "https://steamcommunity.com/profiles/76561198421883604/",
-        icon: "🎮",
+        icon: "►",
         description: "Perfil de jogos e biblioteca"
       }
     ]
@@ -33,182 +28,226 @@ const links = [
 ---
 
 <Layout title="Links">
-  <div class="max-w-4xl mx-auto space-y-10">
-    <PageTitle title="Links">
-      <span class="kawaii-content">Links ♡</span>
-      <span class="retro-content">◆ Links ◆</span>
-    </PageTitle>
-
-    {links.map(section => (
-      <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4 border-pink-200 shadow-lg nostalgic-section">
-        <h2 class="font-cherry text-3xl text-pink-600 mb-6 text-center nostalgic-title">
-          <span class="kawaii-content">{section.category} ✧</span>
-          <span class="retro-content">[ {section.category} ]</span>
-        </h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          {section.items.map(link => (
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group block nostalgic-link"
-            >
-              <div class="bg-pink-50/60 p-6 rounded-3xl flex items-center gap-6
-                hover:shadow-[0_0_20px_rgba(255,182,193,0.5)]
-                transition-all duration-300 transform hover:-translate-y-2
-                hover:bg-gradient-to-r hover:from-pink-50/80 hover:to-pink-100/80
-                border-2 border-pink-200 nostalgic-link-card">
-                <span class="text-4xl opacity-90 group-hover:opacity-100
-                  transition-all duration-300 group-hover:scale-110">
-                  <span class="kawaii-content">{link.icon}</span>
-                  <span class="retro-content">►</span>
-                </span>
-                <div>
-                  <h3 class="font-cherry text-2xl text-pink-500 mb-1
-                    group-hover:text-pink-600 transition-colors nostalgic-link-title">
-                    {link.title}
-                  </h3>
-                  <p class="font-pixel text-sm text-gray-600 nostalgic-description">
-                    {link.description}
-                  </p>
-                </div>
-                <div class="ml-auto opacity-0 group-hover:opacity-100
-                  transition-all duration-300 group-hover:translate-x-2">
-                  <span class="kawaii-content">✧</span>
-                  <span class="retro-content">[→]</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+  <div class="window max-w-4xl mx-auto">
+    <div class="window-header">
+      <div class="window-title">Links Úteis</div>
+      <div class="window-controls">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close">×</span>
       </div>
-    ))}
+    </div>
 
-    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border-4
-      border-pink-200 shadow-lg text-center nostalgic-contact
-      hover:shadow-[0_0_30px_rgba(255,182,193,0.6)] transition-all duration-300">
-      <h3 class="font-cherry text-2xl text-pink-600 mb-4 nostalgic-subtitle">
-        <span class="kawaii-content">✧ Entre em contato ✧</span>
-        <span class="retro-content">◆ Entre em contato ◆</span>
-      </h3>
-      <p class="font-pixel text-gray-600 mb-6 nostalgic-text">
-        Sim, vou receber essa mensagem! 💌
-      </p>
-      <a href="/contact" class="nostalgic-button inline-block">
-        <span class="kawaii-content">Formulário de Contato ♡</span>
-        <span class="retro-content">[ Formulário de Contato ]</span>
-      </a>
+    <div class="window-content">
+      {links.map(section => (
+        <div class="xp-section">
+          <div class="xp-section-header">
+            <h2 class="xp-section-title">[ {section.category} ]</h2>
+          </div>
+          <div class="xp-grid">
+            {section.items.map(link => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="xp-link-card"
+              >
+                <div class="xp-card-content">
+                  <span class="xp-icon">{link.icon}</span>
+                  <div class="xp-text-content">
+                    <h3 class="xp-link-title">{link.title}</h3>
+                    <p class="xp-description">{link.description}</p>
+                  </div>
+                  <span class="xp-arrow">[→]</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="xp-contact-section">
+        <h3 class="xp-contact-title">◆ Entre em contato ◆</h3>
+        <p class="xp-contact-text">Sim, vou receber essa mensagem!</p>
+        <a href="/contact" class="xp-button">
+          [ Formulário de Contato ]
+        </a>
+      </div>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Estilos Kawaii atualizados */
-  .kawaii-content {
-    display: block;
+  .window {
+    background: #ECE9D8;
+    border: 1px solid #0054E3;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin: 20px auto;
   }
 
-  .retro-content {
-    display: none;
+  .window-header {
+    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
+    padding: 5px 10px;
+    border-radius: 7px 7px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
   }
 
-  /* Estilos para o modo retrô */
-  :global(.nostalgic-mode) .nostalgic-section {
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
+  .window-controls {
+    display: flex;
+    gap: 4px;
+  }
+
+  .window-controls span {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF, #DFDFDF);
+    border: 1px solid #0054E3;
+    border-radius: 2px;
+    color: #000;
+    font-size: 0.7rem;
+    cursor: pointer;
+  }
+
+  .window-content {
     padding: 16px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #000080;
-    text-transform: uppercase;
+  .xp-section {
+    margin-bottom: 24px;
+  }
+
+  .xp-section-header {
     border-bottom: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080;
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    margin-bottom: 16px;
+  }
+
+  .xp-section-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
+    font-size: 1.2rem;
     padding-bottom: 8px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-link-card {
-    background: #c0c0c0;
+  .xp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .xp-link-card {
+    background: #FFFFFF;
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 8px;
-    transform: none !important;
-    transition: none;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
+    text-decoration: none;
   }
 
-  :global(.nostalgic-mode) .nostalgic-link-card:hover {
-    background: #d4d0c8;
+  .xp-card-content {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-link-card:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 9px;
-    padding-left: 9px;
+  .xp-icon {
+    color: #003399;
+    font-size: 1.2rem;
   }
 
-  :global(.nostalgic-mode) .nostalgic-link-title {
-    font-family: 'MS Gothic', monospace;
-    color: #0000EE;
+  .xp-text-content {
+    flex: 1;
+  }
+
+  .xp-link-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #0054E3;
     font-size: 1rem;
-    text-decoration: underline;
+    margin-bottom: 4px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-description {
-    font-family: 'MS Gothic', monospace;
+  .xp-description {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
 
-  :global(.nostalgic-mode) .nostalgic-contact {
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
+  .xp-arrow {
+    color: #003399;
+    opacity: 0;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button {
-    background: #c0c0c0;
+  .xp-link-card:hover .xp-arrow {
+    opacity: 1;
+  }
+
+  .xp-link-card:hover {
+    background: #F0F0F0;
+  }
+
+  .xp-link-card:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    padding-top: 1px;
+    padding-left: 1px;
+  }
+
+  .xp-contact-section {
+    background: #FFFFFF;
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
+    padding: 16px;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .xp-contact-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .xp-contact-text {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
-    font-family: 'MS Gothic', monospace;
-    padding: 4px 12px;
+    margin-bottom: 16px;
+  }
+
+  .xp-button {
+    background: linear-gradient(to bottom, #F6F6F6, #DCDBDB);
+    border: 2px solid;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
+    color: #000000;
+    font-family: 'Tahoma', sans-serif;
+    padding: 6px 16px;
     text-decoration: none;
     display: inline-block;
-    position: relative;
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:hover {
-    background: #d4d0c8;
+  .xp-button:hover {
+    background: linear-gradient(to bottom, #FFF, #E9E9E9);
   }
 
-  :global(.nostalgic-mode) .nostalgic-button:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 5px;
-    padding-left: 13px;
+  .xp-button:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
+    padding-top: 7px;
+    padding-left: 17px;
   }
 
-  /* Controle de visibilidade */
-  :global(.nostalgic-mode) .kawaii-content {
-    display: none !important;
-  }
-
-  :global(.nostalgic-mode) .retro-content {
-    display: block !important;
-  }
-
-  :global(.nostalgic-mode) * {
-    transition: none !important;
-    transform: none !important;
+  @media (max-width: 640px) {
+    .xp-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

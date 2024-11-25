@@ -9,162 +9,125 @@ interface Props {
 const { src, alt, title, description } = Astro.props;
 ---
 
-<div class="group relative nostalgic-image-card">
-  <!-- Elementos kawaii -->
-  <div class="kawaii-content m-4">
-    <div class="absolute -rotate-2 top-0 right-4 w-8 h-6 bg-yellow-200/80 shadow-sm z-10"></div>
-
-    <div class="relative bg-white shadow-lg p-4 rotate-1 hover:rotate-0 transition-all duration-500
-      before:absolute before:inset-0 before:bg-gradient-to-b before:from-gray-50 before:to-white/80
-      before:backdrop-blur-sm">
-      <div class="relative w-full h-48 mb-4 overflow-hidden">
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          class="w-full h-full object-cover"
-        />
+<div class="xp-image-card">
+  <div class="xp-image-container">
+    <div class="xp-image-header">
+      <span class="xp-image-title">Visualizar Imagem</span>
+      <div class="window-controls">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close">×</span>
       </div>
-
-      <div class="relative z-10">
-        <h3 class="font-handwriting text-xl text-gray-800 mb-2">{title}</h3>
-        <p class="font-handwriting text-gray-600 text-sm">{description}</p>
-      </div>
-
-      <div class="absolute -bottom-2 -right-2 w-full h-full -z-10 bg-white/90 rotate-3"></div>
-      <div class="absolute -bottom-4 -right-4 w-full h-full -z-20 bg-white/80 rotate-6"></div>
     </div>
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      class="xp-image"
+    />
   </div>
-
-  <!-- Elementos retrô -->
-  <div class="retro-content">
-    <div class="nostalgic-image-container">
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        class="nostalgic-image"
-      />
-    </div>
-    <h3 class="nostalgic-title">► {title}</h3>
-    <p class="nostalgic-description">{description}</p>
+  <div class="xp-content">
+    <h3 class="xp-title">► {title}</h3>
+    <p class="xp-description">{description}</p>
   </div>
 </div>
 
 <style>
-  /* Estilos retrô */
-  :global(.nostalgic-mode) .nostalgic-image-card {
-    background: #c0c0c0;
+  .xp-image-card {
+    background: #ECE9D8;
     border: 2px solid;
-    border-color: #ffffff #404040 #404040 #ffffff;
-    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-    border-radius: 0;
-    padding: 8px;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #404040;
+    padding: 3px;
+    transition: background-color 0.1s;
+  }
+
+  .xp-image-card:hover {
+    background: #F0F0F0;
+  }
+
+  /* Container da Imagem */
+  .xp-image-container {
+    border: 1px solid #0054E3;
+    background: #FFFFFF;
+  }
+
+  /* Header do Container */
+  .xp-image-header {
+    background: linear-gradient(to right, #0054E3, #2787E9, #0054E3);
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 0.8rem;
+    font-family: 'Tahoma', sans-serif;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 4px;
+  }
+
+  .window-controls span {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF, #DFDFDF);
+    border: 1px solid #0054E3;
+    border-radius: 2px;
+    color: #000;
+    font-size: 0.7rem;
     cursor: pointer;
+  }
+
+  /* Imagem */
+  .xp-image {
     width: 100%;
-    margin: 0;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-image-card:hover {
-    background: #d4d0c8;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-image-card:active {
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
-    padding-top: 9px;
-    padding-left: 9px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-image-container {
-    border: 2px solid;
-    border-color: #404040 #ffffff #ffffff #404040;
-    box-shadow: inset 1px 1px #808080;
-    border-radius: 0;
-    padding: 4px;
-    background: #ffffff;
-    margin-bottom: 8px;
-    overflow: hidden;
     height: 200px;
-  }
-
-  :global(.nostalgic-mode) .nostalgic-image {
-    border: none;
-    border-radius: 0;
-    filter: grayscale(30%);
-    image-rendering: pixelated;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    display: block;
+    border: 1px solid #D4D0C8;
+    padding: 2px;
   }
 
-  :global(.nostalgic-mode) .nostalgic-title {
-    font-family: 'MS Gothic', monospace;
-    color: #000080;
+  /* Conteúdo */
+  .xp-content {
+    padding: 8px;
+    background: #FFFFFF;
+    border: 1px solid #D4D0C8;
+    margin-top: 3px;
+  }
+
+  /* Título */
+  .xp-title {
+    font-family: 'Tahoma', sans-serif;
+    color: #003399;
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 4px;
-    padding: 2px 0;
   }
 
-  :global(.nostalgic-mode) .nostalgic-description {
-    font-family: 'MS Gothic', monospace;
+  /* Descrição */
+  .xp-description {
+    font-family: 'Tahoma', sans-serif;
     color: #000000;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     line-height: 1.4;
   }
 
-  :global(.nostalgic-mode) .nostalgic-image-container::before {
-    content: "[ IMG ]";
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    background: #000080;
-    color: #ffffff;
-    font-family: 'MS Gothic', monospace;
-    font-size: 0.75rem;
-    padding: 1px 4px;
-    z-index: 1;
+  /* Efeito de Clique */
+  .xp-image-card:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+    box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
   }
 
-  /* Estilos kawaii (apenas para modo não-retrô) */
-  body:not(.nostalgic-mode) .nostalgic-image-card {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-
-  /* Controle de visibilidade */
-  .kawaii-content {
-    display: none;
-  }
-
-  .retro-content {
-    display: none;
-  }
-
-  body:not(.nostalgic-mode) .kawaii-content {
-    display: block;
-  }
-
-  :global(.nostalgic-mode) .retro-content {
-    display: block;
-  }
-
-  /* Desabilitar todas as classes Tailwind de animação no modo retrô */
-  :global(.nostalgic-mode) .transition-all,
-  :global(.nostalgic-mode) .duration-300,
-  :global(.nostalgic-mode) .duration-500,
-  :global(.nostalgic-mode) .hover\:rotate-0,
-  :global(.nostalgic-mode) .rotate-1,
-  :global(.nostalgic-mode) .rotate-3,
-  :global(.nostalgic-mode) .rotate-6,
-  :global(.nostalgic-mode) .-rotate-2,
-  :global(.nostalgic-mode) .group-hover\:rotate-0,
-  :global(.nostalgic-mode) .hover\:scale-105,
-  :global(.nostalgic-mode) .transform,
-  :global(.nostalgic-mode) .hover\:transform {
-    transition: none !important;
-    transform: none !important;
-    animation: none !important;
+  /* Responsividade */
+  @media (max-width: 640px) {
+    .xp-image {
+      height: 180px;
+    }
   }
 </style>
