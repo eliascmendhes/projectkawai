@@ -86,7 +86,7 @@ interface Music {
   }
 
   .winamp-logo {
-    color: #20B2AA;
+    color: #20B2A0;
     font-size: 0.75rem;
     font-weight: bold;
   }
@@ -273,16 +273,27 @@ interface Music {
     background: #20B2AA;
     border-radius: 50%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: pulse 2s infinite;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    animation: musicPlayerPulse 2s infinite;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  @keyframes pulse {
-    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
+  @keyframes musicPlayerPulse {
+    0% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(0.8) !important;
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) !important;
+    }
+    100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(0.8) !important;
+    }
   }
 
   /* Estado Oculto */
