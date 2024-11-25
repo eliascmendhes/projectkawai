@@ -9,7 +9,7 @@ tags: ['design', 'desenvolvimento', 'windows-xp']
 
 # Mudanças no Design: Windows XP Style 🖥️
 
-Depois de muito pensar sobre a direção visual do blog, decidi fazer uma mudança significativa: adotar permanentemente o estilo Windows XP!
+Depois de muito pensar sobre a direção visual do blog, decidi fazer uma mudança: adotar permanentemente o estilo Windows XP!
 
 ## O que mudou?
 
