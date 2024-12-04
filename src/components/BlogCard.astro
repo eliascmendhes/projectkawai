@@ -12,52 +12,50 @@ const { title, date, preview, image, slug, tags = [] } = Astro.props;
 
 const tagColorMap = {
   // Tags de Desenvolvimento
-  "desenvolvimento": "#0000A0",
-  "feature": "#008000",
-  "bug": "#A00000",
-  "design": "#800080",
-  "performance": "#000080",
-  "refactor": "#008080",
+  "desenvolvimento": "#0057B7",
+  "feature": "#2E8B57",
+  "bug": "#DC143C",
+  "design": "#8A2BE2",
+  "performance": "#1E90FF",
+  "refactor": "#20B2AA",
   "teste": "#483D8B",
-  "deploy": "#006400",
+  "deploy": "#228B22",
 
-  // Tags de Estudos
-  "estudos": "#1E347B",
-  "produtivo": "#006000",
-  "foco": "#4B0082",
-  "revisão": "#00008B",
-  "anotações": "#8B4500",
-  "biblioteca": "#804000",
-  "deadline": "#8B0000",
-  "leitura": "#005000",
-  "organização": "#404080",
+  // Tags de Estudos e Produtividade
+  "estudos": "#4169E1",
+  "produtivo": "#32CD32",
+  "foco": "#6A5ACD",
+  "revisão": "#4682B4",
+  "anotações": "#CD853F",
+  "biblioteca": "#8B4513",
+  "deadline": "#B22222",
+  "leitura": "#006400",
+  "organização": "#4B0082",
 
   // Tags de Música
-  "rock": "#000060",
-  "indie-rock": "#400040",
-  "country": "#804000",
-  "folk": "#654321",
-  "metal": "#202020",
-  "jazz": "#000080",
-  "blues": "#00004B",
-  "pop": "#600060",
-  "eletrônica": "#400080",
-  "clássica": "#483000",
+  "música": "#9370DB",
+  "rock": "#483D8B",
+  "indie-rock": "#7B68EE",
+  "country": "#8B4513",
+  "folk": "#A0522D",
+  "metal": "#2F4F4F",
+  "jazz": "#00008B",
 
-  // Tags de Emoções
-  "feliz": "#B8860B",
-  "triste": "#505050",
-  "ansioso": "#600060",
-  "estressado": "#800000",
-  "depressivo": "#2F4F4F",
-  "nervoso": "#800000",
-  "calmo": "#006040",
-  "animado": "#806000",
-  "frustrado": "#804020",
-  "inspirado": "#006080",
-  "nostálgico": "#483D8B",
-  "esperançoso": "#006000",
+  // Tags de Reflexão e Vida
+  "reflexão": "#2F4F4F",
+  "vida": "#8B4513",
+  "pensamentos": "#696969",
+  "memórias": "#708090",
+  "experiências": "#A0522D",
+
+  // Tags de Estado de Espírito
+  "felicidade": "#FFD700",
+  "tristeza": "#4682B4",
+  "motivação": "#FF8C00",
+  "inspiração": "#9932CC",
+  "gratidão": "#20B2AA"
 };
+
 ---
 
 <a href={`/blog/${slug}`} class="block">
