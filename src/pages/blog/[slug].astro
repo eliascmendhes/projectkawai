@@ -1,6 +1,6 @@
 ---
+import { tagColorMap } from '../../components/BlogCard.astro';
 import Layout from '../../layouts/Layout.astro';
-
 const { slug } = Astro.params;
 const allPosts = await Astro.glob('../../posts/*.md');
 const post = allPosts.find(p => p.frontmatter.slug === slug);
@@ -25,23 +25,39 @@ if (!post) {
       <article class="post-content">
         <header class="post-header">
           <h1 class="post-title">◆ {post.frontmatter.title} ◆</h1>
-          <p class="post-date">[ Publicado em {post.frontmatter.date} ]</p>
+          <p class="post-date">[ {post.frontmatter.date} ]</p>
+
+          {post.frontmatter.tags && (
+            <div class="post-tags">
+              {post.frontmatter.tags.map((tag) => (
+                <span class="xp-tag" style={`background-color: ${tagColorMap[tag] || '#003366'}`}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </header>
 
         <div class="post-body">
-          <div class="image-container">
-            <img
-              src={post.frontmatter.image}
-              alt={post.frontmatter.title}
-              class="post-image"
-            />
-          </div>
-
-          <div class="content-container">
-            <div class="post-text">
-              <Fragment set:html={post.compiledContent()} />
+          {/* Se houver imagem, mostra primeiro */}
+          {post.frontmatter.image && (
+            <div class="image-container">
+              <img
+                src={post.frontmatter.image}
+                alt={post.frontmatter.title}
+                class="post-image"
+              />
             </div>
-          </div>
+          )}
+
+          {/* Conteúdo do post (se houver) */}
+          {post.compiledContent() !== '<p></p>' && (
+            <div class="content-container">
+              <div class="post-text">
+                <Fragment set:html={post.compiledContent()} />
+              </div>
+            </div>
+          )}
         </div>
 
         <footer class="post-footer">
@@ -255,6 +271,40 @@ if (!post) {
     box-shadow: inset 1px 1px #404040, inset -1px -1px #FFFFFF;
     padding-top: 5px;
     padding-left: 13px;
+  }
+
+  /
+  .post-tags {
+    margin: 10px 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .xp-tag {
+    color: #FFFFFF;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow:
+      inset 1px 1px rgba(255,255,255,0.3),
+      inset -1px -1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+  }
+
+  
+  .image-container:only-child {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .image-container:only-child .post-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
   }
 </style>
 
